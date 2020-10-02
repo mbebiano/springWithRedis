@@ -17,5 +17,5 @@ Após a data combinada o item deve ficar destacado na lista de coisas emprestada
 
 Quando algo for devolvido, deve ser marcado no sistema que irá salvar a data
 
-Modelo de Dominío:
+
 ![alt text](https://github.com/mbebiano/springWithRedis/blob/main/images/modeloDominioCoisasEmprestadas.png)
