@@ -11,17 +11,16 @@ public class Mutuante {
 	private String name;
 	private String email;
 	
-	private ItemEmprestado itemEmprestado;
 	
 	public Mutuante() {
 		
 	}
 
-	public Mutuante(String id, String name, String email, ItemEmprestado itemEmprestado) {
+	public Mutuante(String id, String name, String email) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
-		this.itemEmprestado = itemEmprestado;
+		
 	}
 
 	public String getId() {

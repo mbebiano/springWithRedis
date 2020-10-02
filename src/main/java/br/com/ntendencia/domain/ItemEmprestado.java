@@ -1,7 +1,5 @@
 package br.com.ntendencia.domain;
 
-import java.util.Date;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
@@ -11,18 +9,15 @@ public class ItemEmprestado {
 	@Id
 	private String id;
 	private String name;
-	private Date dataEmprestimo;
-	private Date dataDevolucao;
+
 	
 	public ItemEmprestado() {
 		
 	}
 
-	public ItemEmprestado(String id, String name, Date dataEmprestimo, Date dataDevolucao) {
+	public ItemEmprestado(String id, String name) {
 		this.id = id;
 		this.name = name;
-		this.dataEmprestimo = dataEmprestimo;
-		this.dataDevolucao = dataDevolucao;
 	}
 
 	public String getId() {
@@ -41,22 +36,36 @@ public class ItemEmprestado {
 		this.name = name;
 	}
 
-	public Date getDataEmprestimo() {
-		return dataEmprestimo;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
 	}
 
-	public void setDataEmprestimo(Date dataEmprestimo) {
-		this.dataEmprestimo = dataEmprestimo;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ItemEmprestado other = (ItemEmprestado) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
 	}
-
-	public Date getDataDevolucao() {
-		return dataDevolucao;
-	}
-
-	public void setDataDevolucao(Date dataDevolucao) {
-		this.dataDevolucao = dataDevolucao;
-	}
-	
-	
+		
 	
 }

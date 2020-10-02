@@ -10,21 +10,18 @@ public class Mutuario {
 	private String email;
 	private String senha;
 	
-	private ItemEmprestado itemEmprestado;
 	
 	
 	public Mutuario() {
 		
 	}
 
-
-	public Mutuario(String id, String name, String email, String senha, ItemEmprestado itemEmprestado) {
+	public Mutuario(String id, String name, String email, String senha) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.senha = senha;
-		this.itemEmprestado = itemEmprestado;
 	}
 
 
