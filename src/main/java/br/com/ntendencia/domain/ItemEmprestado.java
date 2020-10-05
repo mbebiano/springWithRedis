@@ -10,14 +10,18 @@ public class ItemEmprestado {
 	private String id;
 	private String name;
 
+	private Mutuante mutuante;
+	private Mutuario mutuario;
 	
 	public ItemEmprestado() {
 		
 	}
 
-	public ItemEmprestado(String id, String name) {
+	public ItemEmprestado(String id, String name, Mutuante mutuante, Mutuario mutuario) {
 		this.id = id;
 		this.name = name;
+		this.mutuante= mutuante;
+		this.mutuario = mutuario;
 	}
 
 	public String getId() {
@@ -35,6 +39,24 @@ public class ItemEmprestado {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	
+
+	public Mutuante getMutuante() {
+		return mutuante;
+	}
+
+	public void setMutuante(Mutuante mutuante) {
+		this.mutuante = mutuante;
+	}
+
+	public Mutuario getMutuario() {
+		return mutuario;
+	}
+
+	public void setMutuario(Mutuario mutuario) {
+		this.mutuario = mutuario;
+	}
 
 	@Override
 	public int hashCode() {
@@ -44,6 +66,8 @@ public class ItemEmprestado {
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
+	
+	
 
 	@Override
 	public boolean equals(Object obj) {

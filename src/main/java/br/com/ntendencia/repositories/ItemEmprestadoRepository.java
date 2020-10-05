@@ -1,14 +1,12 @@
 package br.com.ntendencia.repositories;
 
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.ntendencia.domain.User;
+import br.com.ntendencia.domain.ItemEmprestado;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, String> {
-	
-	
-
+public interface ItemEmprestadoRepository extends CrudRepository<ItemEmprestado, String> {
 
 }
