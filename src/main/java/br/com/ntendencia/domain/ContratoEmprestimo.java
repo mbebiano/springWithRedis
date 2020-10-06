@@ -60,7 +60,10 @@ public class ContratoEmprestimo {
 	public void setItemEmprestado(List<ItemEmprestado> itemEmprestado) {
 		this.itemEmprestado = itemEmprestado;
 	}
-
+	
+	public void setItemEmprestado2(ItemEmprestado itemEmprestado) {
+		this.itemEmprestado.add(itemEmprestado);
+	}
 
 	public String getId() {
 		return id;

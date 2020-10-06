@@ -1,5 +1,8 @@
 package br.com.ntendencia.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
@@ -12,14 +15,13 @@ public class Mutuario {
 	private String email;
 	private String senha;
 	
-	
+	private List<ItemEmprestado> itemsEmprestados = new ArrayList<>();
 	
 	public Mutuario() {
 		
 	}
 
 	public Mutuario(String id, String name, String email, String senha) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -66,6 +68,13 @@ public class Mutuario {
 		this.senha = senha;
 	}
 
+	public List<ItemEmprestado> getItemsEmprestados() {
+		return itemsEmprestados;
+	}
+
+	public void setItemsEmprestados(List<ItemEmprestado> itemsEmprestados) {
+		this.itemsEmprestados = itemsEmprestados;
+	}
 
 	@Override
 	public int hashCode() {

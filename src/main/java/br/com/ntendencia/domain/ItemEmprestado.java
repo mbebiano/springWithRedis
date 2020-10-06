@@ -10,18 +10,15 @@ public class ItemEmprestado {
 	private String id;
 	private String name;
 
-	private Mutuante mutuante;
-	private Mutuario mutuario;
 	
 	public ItemEmprestado() {
 		
 	}
 
-	public ItemEmprestado(String id, String name, Mutuante mutuante, Mutuario mutuario) {
+	public ItemEmprestado(String id, String name) {
 		this.id = id;
 		this.name = name;
-		this.mutuante= mutuante;
-		this.mutuario = mutuario;
+
 	}
 
 	public String getId() {
@@ -40,24 +37,6 @@ public class ItemEmprestado {
 		this.name = name;
 	}
 	
-	
-
-	public Mutuante getMutuante() {
-		return mutuante;
-	}
-
-	public void setMutuante(Mutuante mutuante) {
-		this.mutuante = mutuante;
-	}
-
-	public Mutuario getMutuario() {
-		return mutuario;
-	}
-
-	public void setMutuario(Mutuario mutuario) {
-		this.mutuario = mutuario;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
