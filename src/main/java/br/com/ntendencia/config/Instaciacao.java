@@ -2,18 +2,16 @@ package br.com.ntendencia.config;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
-
-
 import br.com.ntendencia.domain.ContratoEmprestimo;
 import br.com.ntendencia.domain.ItemEmprestado;
 import br.com.ntendencia.domain.Mutuante;
 import br.com.ntendencia.domain.Mutuario;
+import br.com.ntendencia.dto.MutuanteDTO;
 import br.com.ntendencia.dto.MutuarioDTO;
 import br.com.ntendencia.repositories.ContratoEmprestimoRepository;
 import br.com.ntendencia.repositories.ItemEmprestadoRepository;
@@ -58,6 +56,8 @@ public class Instaciacao implements CommandLineRunner {
 		
 		MutuarioDTO mariaDTO = new MutuarioDTO(maria);
 		MutuarioDTO bobDTO = new MutuarioDTO(bob);
+		MutuanteDTO alexDTO = new MutuanteDTO(alex);
+		MutuanteDTO jimmyDTO = new MutuanteDTO(jimmy);
 		
 		ItemEmprestado livro = new ItemEmprestado(null, "Harry Potter");
 		itemEmprestadoRepo.save(livro);
