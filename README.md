@@ -7,7 +7,7 @@ Sistema para você não esquecer para quem emprestou cada coisa
 
 O usuário acessa/instala e seus dados ficam salvo
 
-Deve receber o item emprestado, data que foi emprestado, e contato do amigo
+Deve receber contato de quem pegará emprestado,o item emprestado, data que foi emprestado, e contato do amigo
 
 Opcionalmente pode haver a data de devolução combinada
 
