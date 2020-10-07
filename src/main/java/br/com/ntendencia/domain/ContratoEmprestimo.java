@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
+import br.com.ntendencia.dto.MutuarioDTO;
+
 @RedisHash(value="c_contratoEmprestimo")
 public class ContratoEmprestimo {
 	
@@ -16,19 +18,19 @@ public class ContratoEmprestimo {
 	private Date dataDevolucao;
 	
 	private Mutuante mutuante;
-	private Mutuario mutuario;
+	private MutuarioDTO mutuarioDTO;
 	private List<ItemEmprestado> itemEmprestado = new ArrayList<>();
 	
 	public ContratoEmprestimo() {}
 
 	
 	public ContratoEmprestimo(String id, Date dataEmprestimo, Date dataDevolucao, Mutuante mutuante,
-			Mutuario mutuario) {
+			MutuarioDTO mutuarioDTO) {
 		this.id = id;
 		this.dataEmprestimo = dataEmprestimo;
 		this.dataDevolucao = dataDevolucao;
 		this.mutuante = mutuante;
-		this.mutuario = mutuario;
+		this.mutuarioDTO = mutuarioDTO;
 	}
 
 
@@ -42,13 +44,13 @@ public class ContratoEmprestimo {
 	}
 
 
-	public Mutuario getMutuario() {
-		return mutuario;
+	public MutuarioDTO getMutuario() {
+		return mutuarioDTO;
 	}
 
 
-	public void setMutuario(Mutuario mutuario) {
-		this.mutuario = mutuario;
+	public void setMutuario(MutuarioDTO mutuarioDTO) {
+		this.mutuarioDTO = mutuarioDTO;
 	}
 
 
