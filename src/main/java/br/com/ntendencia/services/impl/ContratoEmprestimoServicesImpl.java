@@ -1,9 +1,12 @@
 package br.com.ntendencia.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.ntendencia.domain.ContratoEmprestimo;
+import br.com.ntendencia.domain.ItemEmprestado;
 import br.com.ntendencia.repositories.ContratoEmprestimoRepository;
 import br.com.ntendencia.services.ContratoEmprestimoService;
 
@@ -24,5 +27,13 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
 		contratoEmprestimoRepo.deleteById(id);
 		
 	}
+
+	@Override
+	public List<ContratoEmprestimo> contratosEmprestimo() {
+		
+		return (List<ContratoEmprestimo>) contratoEmprestimoRepo.findAll();
+	}
+
+
 	
 }

@@ -1,5 +1,6 @@
 package br.com.ntendencia.domain;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,8 +15,9 @@ public class ContratoEmprestimo {
 	
 	@Id
 	private String id;
-	private Date dataEmprestimo;
-	private Date dataDevolucao;
+	
+	private LocalDate dataEmprestimo;
+	private LocalDate dataDevolucao;
 	
 	private Mutuante mutuante;
 	private MutuarioDTO mutuarioDTO;
@@ -24,7 +26,7 @@ public class ContratoEmprestimo {
 	public ContratoEmprestimo() {}
 
 	
-	public ContratoEmprestimo(String id, Date dataEmprestimo, Date dataDevolucao, Mutuante mutuante,
+	public ContratoEmprestimo(String id, LocalDate dataEmprestimo, LocalDate dataDevolucao, Mutuante mutuante,
 			MutuarioDTO mutuarioDTO) {
 		this.id = id;
 		this.dataEmprestimo = dataEmprestimo;
@@ -75,19 +77,19 @@ public class ContratoEmprestimo {
 		this.id = id;
 	}
 
-	public Date getDataEmprestimo() {
+	public LocalDate getDataEmprestimo() {
 		return dataEmprestimo;
 	}
 
-	public void setDataEmprestimo(Date dataEmprestimo) {
+	public void setDataEmprestimo(LocalDate dataEmprestimo) {
 		this.dataEmprestimo = dataEmprestimo;
 	}
 
-	public Date getDataDevolucao() {
+	public LocalDate getDataDevolucao() {
 		return dataDevolucao;
 	}
 
-	public void setDataDevolucao(Date dataDevolucao) {
+	public void setDataDevolucao(LocalDate dataDevolucao) {
 		this.dataDevolucao = dataDevolucao;
 	}
 
