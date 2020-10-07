@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
+
+
 import br.com.ntendencia.domain.ContratoEmprestimo;
 import br.com.ntendencia.domain.ItemEmprestado;
 import br.com.ntendencia.domain.Mutuante;
@@ -38,9 +40,11 @@ public class Instaciacao implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		
 		
+		contratoEmprestimoRepo.deleteAll();
+		itemEmprestadoRepo.deleteAll();
+		mutuarioRepo.deleteAll();
+		mutuanteRepo.deleteAll();
 		
-		
-//		Calendar data = new GregorianCalendar(2020, 9, 20);
 		
 		Mutuante jimmy = new Mutuante(null, "Jimmy Flauteado", "jimmy@flauteadomagico.com");
 		mutuanteRepo.save(jimmy);
@@ -51,6 +55,7 @@ public class Instaciacao implements CommandLineRunner {
 		Mutuario bob = new Mutuario(null, "Bob", "bob@teste.com", "bobo8");
 		mutuarioRepo.save(bob);
 		
+		
 		MutuarioDTO mariaDTO = new MutuarioDTO(maria);
 		MutuarioDTO bobDTO = new MutuarioDTO(bob);
 		
@@ -60,14 +65,21 @@ public class Instaciacao implements CommandLineRunner {
 		itemEmprestadoRepo.save(travanao);
 		ItemEmprestado mouse = new ItemEmprestado(null, "Mouse");
 		itemEmprestadoRepo.save(mouse);
-		maria.setItemsEmprestados(Arrays.asList(livro, mouse));
-		bob.setItemsEmprestados(Arrays.asList(travanao));
-		ContratoEmprestimo contrato1 = new ContratoEmprestimo(null, LocalDate.parse("2020-09-22", DateTimeFormatter.ofPattern("yyyy-MM-dd")),  LocalDate.parse("2020-10-22", DateTimeFormatter.ofPattern("yyyy-MM-dd")), jimmy, mariaDTO);
-		ContratoEmprestimo contrato2 = new ContratoEmprestimo(null, LocalDate.parse("2020-09-24", DateTimeFormatter.ofPattern("yyyy-MM-dd")),  LocalDate.parse("2020-10-24", DateTimeFormatter.ofPattern("yyyy-MM-dd")), alex, bobDTO);
+		
+		jimmy.getItemParaEmprestar().add(mouse);
+		ContratoEmprestimo contrato1 = new ContratoEmprestimo(null, LocalDate.parse("2020-09-22", DateTimeFormatter.ofPattern("yyyy-MM-dd")),  LocalDate.parse("2020-10-22", DateTimeFormatter.ofPattern("yyyy-MM-dd")), alex, mariaDTO);
+		ContratoEmprestimo contrato2 = new ContratoEmprestimo(null, LocalDate.parse("2020-09-24", DateTimeFormatter.ofPattern("yyyy-MM-dd")),  LocalDate.parse("2020-10-24", DateTimeFormatter.ofPattern("yyyy-MM-dd")), jimmy, bobDTO);
 		
 		contrato1.setItemEmprestado2(livro);
-		contrato1.setItemEmprestado2(mouse);
-		contrato2.setItemEmprestado2(travanao);
+		contrato1.setItemEmprestado2(travanao);
+		contrato2.getItemEmprestado().addAll(jimmy.getItemParaEmprestar());
+		
+		maria.getItemsEmprestados().addAll(contrato1.getItemEmprestado());
+		bob.getItemsEmprestados().addAll(contrato2.getItemEmprestado());
+		mutuarioRepo.save(maria);
+		mutuarioRepo.save(bob);
+		
+		mutuanteRepo.save(jimmy);
 		
 		contratoEmprestimoRepo.save(contrato1);
 		contratoEmprestimoRepo.save(contrato2);

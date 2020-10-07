@@ -1,5 +1,8 @@
 package br.com.ntendencia.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
@@ -11,6 +14,7 @@ public class Mutuante {
 	private String name;
 	private String email;
 	
+	private List<ItemEmprestado> itemParaEmprestar = new ArrayList<>();
 	
 	public Mutuante() {
 		
@@ -45,6 +49,14 @@ public class Mutuante {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public List<ItemEmprestado> getItemParaEmprestar() {
+		return itemParaEmprestar;
+	}
+
+	public void setItemParaEmprestar(List<ItemEmprestado> itemEmprestado) {
+		this.itemParaEmprestar= itemEmprestado;
 	}
 
 	@Override

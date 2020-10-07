@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ntendencia.domain.ContratoEmprestimo;
-import br.com.ntendencia.domain.ItemEmprestado;
 import br.com.ntendencia.services.impl.ContratoEmprestimoServicesImpl;
 
 @RestController

@@ -72,9 +72,7 @@ public class Mutuario {
 		return itemsEmprestados;
 	}
 
-	public void setItemsEmprestados(List<ItemEmprestado> itemsEmprestados) {
-		this.itemsEmprestados = itemsEmprestados;
-	}
+	
 
 	@Override
 	public int hashCode() {
