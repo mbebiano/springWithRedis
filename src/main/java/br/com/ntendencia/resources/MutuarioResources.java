@@ -45,9 +45,6 @@ public class MutuarioResources {
 	public Mutuario mutuarioPorId(@PathVariable String id){
 		return mutuarioService.findById(id);
 		}
-	@GetMapping("/mutuarioPorNome/{name}")
-	public Mutuario mutuarioPorName(@PathVariable String name){
-		return mutuarioService.findByName(name);
-		}
+
 
 }

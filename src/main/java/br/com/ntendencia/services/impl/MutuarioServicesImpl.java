@@ -44,16 +44,10 @@ public class MutuarioServicesImpl implements MutuarioService {
 		Mutuario mutuario = mutuarioOBJ.get();	
 		return mutuario;
 	}
+	
 	@Override
 	public List<Mutuario> listaMutuarios() {
 		List<Mutuario> list =(List<Mutuario>) mutuarioRepo.findAll();
 		return list;
-	}
-
-
-
-	
-	
-	
-	
+	}		
 }
