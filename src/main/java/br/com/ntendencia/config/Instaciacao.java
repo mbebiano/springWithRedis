@@ -67,8 +67,8 @@ public class Instaciacao implements CommandLineRunner {
 		itemEmprestadoRepo.save(mouse);
 		
 		jimmy.getItemParaEmprestar().add(mouse);
-		ContratoEmprestimo contrato1 = new ContratoEmprestimo(null, LocalDate.parse("2020-09-22", DateTimeFormatter.ofPattern("yyyy-MM-dd")),  LocalDate.parse("2020-10-22", DateTimeFormatter.ofPattern("yyyy-MM-dd")), alex, mariaDTO);
-		ContratoEmprestimo contrato2 = new ContratoEmprestimo(null, LocalDate.parse("2020-09-24", DateTimeFormatter.ofPattern("yyyy-MM-dd")),  LocalDate.parse("2020-10-24", DateTimeFormatter.ofPattern("yyyy-MM-dd")), jimmy, bobDTO);
+		ContratoEmprestimo contrato1 = new ContratoEmprestimo(null, LocalDate.parse("2020-09-22", DateTimeFormatter.ofPattern("yyyy-MM-dd")),  LocalDate.parse("2020-10-22", DateTimeFormatter.ofPattern("yyyy-MM-dd")), alexDTO, mariaDTO);
+		ContratoEmprestimo contrato2 = new ContratoEmprestimo(null, LocalDate.parse("2020-09-24", DateTimeFormatter.ofPattern("yyyy-MM-dd")),  LocalDate.parse("2020-10-24", DateTimeFormatter.ofPattern("yyyy-MM-dd")), jimmyDTO, bobDTO);
 		
 		contrato1.setItemEmprestado2(livro);
 		contrato1.setItemEmprestado2(travanao);
