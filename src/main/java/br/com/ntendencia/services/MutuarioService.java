@@ -10,4 +10,10 @@ public interface MutuarioService {
 	void mutuarioSave(Mutuario mutuario);
 	void deleteMutuario(String id);
 	List<ItemEmprestado> listaItens(String id);
+	
+	Mutuario findById(String id);
+	
+	
+	List<Mutuario> listaMutuarios();
+
 }

@@ -44,9 +44,9 @@ public class Instaciacao implements CommandLineRunner {
 		mutuanteRepo.deleteAll();
 		
 		
-		Mutuante jimmy = new Mutuante(null, "Jimmy Flauteado", "jimmy@flauteadomagico.com");
-		mutuanteRepo.save(jimmy);
-		Mutuante alex = new Mutuante(null, "Alex Flauteado", "alex@flauteadomagico.com");
+		Mutuante john = new Mutuante(null, "John Ferr", "johny@gmail.com");
+		mutuanteRepo.save(john);
+		Mutuante alex = new Mutuante(null, "Alex Gray", "alex@gmailo.com");
 		mutuanteRepo.save(alex);
 		Mutuario maria = new Mutuario(null, "Maria", "maria@teste.com", "maria8");
 		mutuarioRepo.save(maria);
@@ -57,29 +57,29 @@ public class Instaciacao implements CommandLineRunner {
 		MutuarioDTO mariaDTO = new MutuarioDTO(maria);
 		MutuarioDTO bobDTO = new MutuarioDTO(bob);
 		MutuanteDTO alexDTO = new MutuanteDTO(alex);
-		MutuanteDTO jimmyDTO = new MutuanteDTO(jimmy);
+		MutuanteDTO johnDTO = new MutuanteDTO(john);
 		
 		ItemEmprestado livro = new ItemEmprestado(null, "Harry Potter");
 		itemEmprestadoRepo.save(livro);
-		ItemEmprestado travanao = new ItemEmprestado(null, "Modelo compacto");
-		itemEmprestadoRepo.save(travanao);
+		ItemEmprestado carro = new ItemEmprestado(null, "Hatch Modelo compacto");
+		itemEmprestadoRepo.save(carro);
 		ItemEmprestado mouse = new ItemEmprestado(null, "Mouse");
 		itemEmprestadoRepo.save(mouse);
 		
-		jimmy.getItemParaEmprestar().add(mouse);
+		john.getItemParaEmprestar().add(mouse);
 		ContratoEmprestimo contrato1 = new ContratoEmprestimo(null, LocalDate.parse("2020-09-22", DateTimeFormatter.ofPattern("yyyy-MM-dd")),  LocalDate.parse("2020-10-22", DateTimeFormatter.ofPattern("yyyy-MM-dd")), alexDTO, mariaDTO);
-		ContratoEmprestimo contrato2 = new ContratoEmprestimo(null, LocalDate.parse("2020-09-24", DateTimeFormatter.ofPattern("yyyy-MM-dd")),  LocalDate.parse("2020-10-24", DateTimeFormatter.ofPattern("yyyy-MM-dd")), jimmyDTO, bobDTO);
+		ContratoEmprestimo contrato2 = new ContratoEmprestimo(null, LocalDate.parse("2020-09-24", DateTimeFormatter.ofPattern("yyyy-MM-dd")),  LocalDate.parse("2020-10-24", DateTimeFormatter.ofPattern("yyyy-MM-dd")), johnDTO, bobDTO);
 		
 		contrato1.setItemEmprestado2(livro);
-		contrato1.setItemEmprestado2(travanao);
-		contrato2.getItemEmprestado().addAll(jimmy.getItemParaEmprestar());
+		contrato1.setItemEmprestado2(carro);
+		contrato2.getItemEmprestado().addAll(john.getItemParaEmprestar());
 		
 		maria.getItemsEmprestados().addAll(contrato1.getItemEmprestado());
 		bob.getItemsEmprestados().addAll(contrato2.getItemEmprestado());
 		mutuarioRepo.save(maria);
 		mutuarioRepo.save(bob);
 		
-		mutuanteRepo.save(jimmy);
+		mutuanteRepo.save(john);
 		
 		contratoEmprestimoRepo.save(contrato1);
 		contratoEmprestimoRepo.save(contrato2);

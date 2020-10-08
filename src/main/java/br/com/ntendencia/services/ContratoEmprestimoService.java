@@ -10,4 +10,5 @@ public interface ContratoEmprestimoService {
 	void deleteContratoEmprestimo(String id);
 	
 	List<ContratoEmprestimo> contratosEmprestimo();
+	
 }

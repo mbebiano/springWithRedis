@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.ntendencia.domain.ContratoEmprestimo;
-import br.com.ntendencia.domain.ItemEmprestado;
 import br.com.ntendencia.repositories.ContratoEmprestimoRepository;
 import br.com.ntendencia.services.ContratoEmprestimoService;
 
@@ -15,11 +14,11 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
 
 	@Autowired
 	private ContratoEmprestimoRepository contratoEmprestimoRepo;
-
+	
+	
 	@Override
 	public void contratoEmprestimoSave(ContratoEmprestimo contratoEmprestimo) {
 		contratoEmprestimoRepo.save(contratoEmprestimo);
-		
 	}
 
 	@Override
@@ -33,7 +32,6 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
 		
 		return (List<ContratoEmprestimo>) contratoEmprestimoRepo.findAll();
 	}
-
 
 	
 }

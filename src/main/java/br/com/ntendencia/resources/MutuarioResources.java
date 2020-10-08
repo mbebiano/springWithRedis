@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.ntendencia.domain.ContratoEmprestimo;
 import br.com.ntendencia.domain.ItemEmprestado;
 import br.com.ntendencia.domain.Mutuario;
 import br.com.ntendencia.services.impl.MutuarioServicesImpl;
@@ -35,9 +34,20 @@ public class MutuarioResources {
 		return "Usuario Deletado";
 	}
 	
+	//informo a lista de itens emprestados para um id de mutuario
 	@GetMapping("/listaItens/{id}")
 	public List<ItemEmprestado> listaContratos(@PathVariable String id){
 		return mutuarioService.listaItens(id);
 	}
 	
+	
+	@GetMapping("/mutuarioId/{id}")
+	public Mutuario mutuarioPorId(@PathVariable String id){
+		return mutuarioService.findById(id);
+		}
+	@GetMapping("/mutuarioPorNome/{name}")
+	public Mutuario mutuarioPorName(@PathVariable String name){
+		return mutuarioService.findByName(name);
+		}
+
 }

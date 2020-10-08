@@ -34,6 +34,11 @@ public class ContratoEmprestimo {
 		this.mutuanteDTO = mutuanteDTO;
 		this.mutuarioDTO = mutuarioDTO;
 	}
+	public ContratoEmprestimo(String id, MutuanteDTO mutuanteDTO, MutuarioDTO mutuarioDTO) {
+		this.id = id;
+		this.mutuanteDTO= mutuanteDTO;
+		this.mutuarioDTO=mutuarioDTO;
+	}
 
 
 	public MutuanteDTO getMutuanteDTO() {
