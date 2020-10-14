@@ -1,0 +1,7 @@
+
+P
+java:S3655.":Call "mutuarioOBJ.isPresent()" before accessing the value.(²Žð—
+M
+java:S3655%"7Call "Optional#isPresent()" before accessing the value.(ì“¯³
+w
+java:S14883"\Immediately return this expression instead of assigning it to the temporary variable "list".(€÷Î¶úÿÿÿÿ
