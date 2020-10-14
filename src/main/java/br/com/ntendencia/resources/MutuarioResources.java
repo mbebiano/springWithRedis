@@ -24,7 +24,7 @@ public class MutuarioResources {
 	
 	@PostMapping("/save")
 	public String createUser(@RequestBody Mutuario mutuario) {
-		mutuarioService.mutuarioSave(mutuario);
+		mutuarioService.salvarMutuario(mutuario);
 		return "Usuário Salvo";
 	}
 	

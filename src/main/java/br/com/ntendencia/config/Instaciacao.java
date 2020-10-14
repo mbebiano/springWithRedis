@@ -37,20 +37,20 @@ public class Instaciacao implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		
-		contratoEmprestimoRepo.deleteAll();
-		itemEmprestadoRepo.deleteAll();
-		mutuarioRepo.deleteAll();
-		mutuanteRepo.deleteAll();
+//
+//		contratoEmprestimoRepo.deleteAll();
+//		itemEmprestadoRepo.deleteAll();
+//		mutuarioRepo.deleteAll();
+//		mutuanteRepo.deleteAll();
 		
 		
 		Mutuante john = new Mutuante(null, "John Ferr", "johny@gmail.com");
 		mutuanteRepo.save(john);
 		Mutuante alex = new Mutuante(null, "Alex Gray", "alex@gmailo.com");
 		mutuanteRepo.save(alex);
-		Mutuario maria = new Mutuario(null, "Maria", "maria@teste.com", "maria8");
+		Mutuario maria = new Mutuario(null, "Maria", "maria@teste.com", "maria8", 0);
 		mutuarioRepo.save(maria);
-		Mutuario bob = new Mutuario(null, "Bob", "bob@teste.com", "bobo8");
+		Mutuario bob = new Mutuario(null, "Bob", "bob@teste.com", "bobo8", 1);
 		mutuarioRepo.save(bob);
 		
 		

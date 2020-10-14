@@ -1,9 +1,11 @@
 package br.com.ntendencia.services.impl;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import br.com.ntendencia.domain.ItemEmprestado;
@@ -41,13 +43,33 @@ public class MutuarioServicesImpl implements MutuarioService {
 	public Mutuario findById(String id) {
 		
 		Optional<Mutuario> mutuarioOBJ = mutuarioRepo.findById(id);
-		Mutuario mutuario = mutuarioOBJ.get();	
-		return mutuario;
+		return mutuarioOBJ.get();
 	}
 	
 	@Override
 	public List<Mutuario> listaMutuarios() {
 		List<Mutuario> list =(List<Mutuario>) mutuarioRepo.findAll();
 		return list;
-	}		
+	}
+
+	@Override
+	public Integer gerarId() {
+		List<Mutuario> mutuarios = listaMutuarios();
+		Integer ultimoReferencial = 0;
+		Optional<Mutuario> mutuarioOpt = mutuarios.stream().max(Comparator.comparingInt(Mutuario::getIdReferencial));
+		if (mutuarioOpt.isPresent()){
+			ultimoReferencial = mutuarioOpt.get().getIdReferencial();
+		}
+
+		return ultimoReferencial+1;
+	}
+
+	@Override
+	public Mutuario salvarMutuario(Mutuario mutuario) {
+		Integer idReferencial = gerarId();
+		mutuario.setId(idReferencial.toString());
+		mutuario.setIdReferencial(idReferencial);
+
+		return mutuarioRepo.save(mutuario);
+	}
 }

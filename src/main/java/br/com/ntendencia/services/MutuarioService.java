@@ -16,4 +16,8 @@ public interface MutuarioService {
 	
 	List<Mutuario> listaMutuarios();
 
+	Integer gerarId ();
+
+	Mutuario salvarMutuario(Mutuario mutuario);
+
 }

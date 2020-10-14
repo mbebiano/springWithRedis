@@ -1,31 +1,34 @@
 package br.com.ntendencia.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RedisHash(value="c_mutuario")
 public class Mutuario {
-	
+
 	@Id
 	private String id;
 	private String name;
 	private String email;
 	private String senha;
-	
+
+	private Integer idReferencial;
+
 	private List<ItemEmprestado> itemsEmprestados = new ArrayList<>();
-	
+
 	public Mutuario() {
-		
+
 	}
 
-	public Mutuario(String id, String name, String email, String senha) {
+	public Mutuario(String id, String name, String email, String senha, Integer idReferencial) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.senha = senha;
+		this.idReferencial = idReferencial;
 	}
 
 
@@ -58,6 +61,13 @@ public class Mutuario {
 		this.email = email;
 	}
 
+	public Integer getIdReferencial() {
+		return idReferencial;
+	}
+
+	public void setIdReferencial(Integer idReferencial) {
+		this.idReferencial = idReferencial;
+	}
 
 	public String getSenha() {
 		return senha;
