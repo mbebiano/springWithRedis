@@ -3,20 +3,22 @@ package br.com.ntendencia.domain;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
+import java.util.Objects;
+
 @RedisHash(value="c_user")
 public class User  {
 
 	@Id
 	private String id;
-	private String nome;
+	private String name;
 	private String email;
 
 	public User() {
 	}
 
-	public User(String id, String nome, String email) {
+	public User(String id, String name, String email) {
 		this.id = id;
-		this.nome = nome;
+		this.name = name;
 		this.email = email;
 	}
 
@@ -28,12 +30,12 @@ public class User  {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getEmail() {
@@ -44,6 +46,16 @@ public class User  {
 		this.email = email;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		User user = (User) o;
+		return Objects.equals(id, user.id);
+	}
 
-
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
 }
