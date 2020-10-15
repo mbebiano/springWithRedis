@@ -49,6 +49,7 @@ public class MutuarioServicesImpl implements MutuarioService {
 	@Override
 	public List<Mutuario> listaMutuarios() {
 		List<Mutuario> list =(List<Mutuario>) mutuarioRepo.findAll();
+
 		return list;
 	}
 
@@ -71,5 +72,12 @@ public class MutuarioServicesImpl implements MutuarioService {
 		mutuario.setIdReferencial(idReferencial);
 
 		return mutuarioRepo.save(mutuario);
+	}
+
+	@Override
+	public Mutuario procurarPorNome(String nome) {
+		Optional<Mutuario> mutuarioOpt = mutuarioRepo.findByName(nome);
+		Mutuario mutuario = mutuarioOpt.get();
+		return mutuario;
 	}
 }

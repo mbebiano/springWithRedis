@@ -20,4 +20,6 @@ public interface MutuarioService {
 
 	Mutuario salvarMutuario(Mutuario mutuario);
 
+	Mutuario procurarPorNome(String nome);
+
 }

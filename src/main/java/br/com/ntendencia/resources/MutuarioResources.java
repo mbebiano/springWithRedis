@@ -46,5 +46,8 @@ public class MutuarioResources {
 		return mutuarioService.findById(id);
 		}
 
-
+	@GetMapping("/procuraPorNome/{nome}")
+	public Mutuario mutuarioPorNome(@PathVariable String nome){
+		return mutuarioService.procurarPorNome(nome);
+	}
 }
