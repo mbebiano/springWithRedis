@@ -15,3 +15,11 @@ m
 =src/main/java/br/com/ntendencia/services/MutuarioService.java,d\c\dc4a8dc202a53316090b6838174db9fa407e924f
 w
 Gsrc/main/java/br/com/ntendencia/services/impl/MutuarioServicesImpl.java,c\e\ce980f6323f39543dbd2c6927729bf5c51405842
+d
+4src/main/java/br/com/ntendencia/domain/Mutuante.java,1\4\14f841f672fcd2c103741d7d66c1423623e844da
+p
+@src/main/java/br/com/ntendencia/resources/MutuanteResources.java,5\b\5bfd94cb66aa56ac9401fc191d40fe58c59d604e
+`
+0src/main/java/br/com/ntendencia/domain/User.java,b\f\bf7915699a54182147a27128958a41597a0ea184
+t
+Dsrc/main/java/br/com/ntendencia/repositories/MutuarioRepository.java,7\0\700c64ab603f8cfeb912226b15f5f36a368e3792
