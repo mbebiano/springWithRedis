@@ -32,7 +32,7 @@ public class ContratoEmprestimoResources {
 		
 		Mutuario mutuario = mutuarioService.findById(contratoEmprestimo.getMutuario().getId());
 		
-		mutuario.getItemsEmprestados().addAll(contratoEmprestimo.getItemEmprestado());
+//		mutuario.getItemsEmprestados().addAll(contratoEmprestimo.getItemEmprestado());
 		mutuarioService.mutuarioSave(mutuario);
 		
 		contratoEmprestimoService.contratoEmprestimoSave(contratoEmprestimo);

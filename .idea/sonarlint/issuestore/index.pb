@@ -23,3 +23,8 @@ p
 0src/main/java/br/com/ntendencia/domain/User.java,b\f\bf7915699a54182147a27128958a41597a0ea184
 t
 Dsrc/main/java/br/com/ntendencia/repositories/MutuarioRepository.java,7\0\700c64ab603f8cfeb912226b15f5f36a368e3792
+:
+
+.classpath,3\5\354079a72b91a4280407c16a36f47d1986fd85a5
+v
+Fsrc/main/java/br/com/ntendencia/resources/ItemEmprestadoResources.java,c\f\cf79e0dad4247dc369b5003a892f5413cc6f09f1

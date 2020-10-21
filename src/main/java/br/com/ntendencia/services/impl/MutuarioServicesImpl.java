@@ -30,14 +30,14 @@ public class MutuarioServicesImpl implements MutuarioService {
 		
 	}
 
-	@Override
-	public List<ItemEmprestado> listaItens(String id) {
-		
-		
-		Mutuario obj = mutuarioRepo.findById(id).get();
-	
-		return obj.getItemsEmprestados();
-	}
+//	@Override
+//	public List<ItemEmprestado> listaItens(String id) {
+//
+//
+//		Mutuario obj = mutuarioRepo.findById(id).get();
+//
+//		return obj.getItemsEmprestados();
+//	}
 
 	@Override
 	public Mutuario findById(String id) {

@@ -11,7 +11,7 @@ public class Mutuante extends User{
 	
 
 	
-	private List<ItemEmprestado> itemParaEmprestar = new ArrayList<>();
+	//private List<ItemEmprestado> itemParaEmprestar = new ArrayList<>();
 	
 	public Mutuante() {
 		
@@ -21,14 +21,13 @@ public class Mutuante extends User{
 		super(id, name, email);
 	}
 
-	public List<ItemEmprestado> getItemParaEmprestar() {
-		return itemParaEmprestar;
-	}
-
-	public void setItemParaEmprestar(List<ItemEmprestado> itemEmprestado) {
-		this.itemParaEmprestar= itemEmprestado;
-	}
-
-
+//	public List<ItemEmprestado> getItemParaEmprestar() {
+//		return itemParaEmprestar;
+//	}
+//
+//	public void setItemParaEmprestar(List<ItemEmprestado> itemEmprestado) {
+//		this.itemParaEmprestar= itemEmprestado;
+//	}
+//
 	
 }

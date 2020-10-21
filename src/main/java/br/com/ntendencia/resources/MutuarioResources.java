@@ -35,10 +35,10 @@ public class MutuarioResources {
 	}
 	
 	//informo a lista de itens emprestados para um id de mutuario
-	@GetMapping("/listaItens/{id}")
-	public List<ItemEmprestado> listaContratos(@PathVariable String id){
-		return mutuarioService.listaItens(id);
-	}
+//	@GetMapping("/listaItens/{id}")
+//	public List<ItemEmprestado> listaContratos(@PathVariable String id){
+//		return mutuarioService.listaItens(id);
+//	}
 	
 	
 	@GetMapping("/mutuarioId/{id}")

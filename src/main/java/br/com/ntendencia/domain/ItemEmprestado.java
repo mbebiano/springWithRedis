@@ -9,6 +9,8 @@ public class ItemEmprestado {
 	@Id
 	private String id;
 	private String name;
+	private Mutuario mutuario;
+	private Mutuante mutuante;
 
 	
 	public ItemEmprestado() {
@@ -36,7 +38,23 @@ public class ItemEmprestado {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
+	public Mutuario getMutuario() {
+		return mutuario;
+	}
+
+	public void setMutuario(Mutuario mutuario) {
+		this.mutuario = mutuario;
+	}
+
+	public Mutuante getMutuante() {
+		return mutuante;
+	}
+
+	public void setMutuante(Mutuante mutuante) {
+		this.mutuante = mutuante;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
