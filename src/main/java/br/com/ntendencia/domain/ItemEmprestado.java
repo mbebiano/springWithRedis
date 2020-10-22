@@ -1,5 +1,6 @@
 package br.com.ntendencia.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
@@ -12,7 +13,6 @@ public class ItemEmprestado {
 	private Mutuario mutuario;
 	private Mutuante mutuante;
 
-	
 	public ItemEmprestado() {
 		
 	}
@@ -20,7 +20,6 @@ public class ItemEmprestado {
 	public ItemEmprestado(String id, String name) {
 		this.id = id;
 		this.name = name;
-
 	}
 
 	public String getId() {

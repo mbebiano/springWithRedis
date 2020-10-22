@@ -60,10 +60,13 @@ public class Instaciacao implements CommandLineRunner {
 		MutuanteDTO johnDTO = new MutuanteDTO(john);
 
 		ItemEmprestado livro = new ItemEmprestado(null, "Harry Potter");
+		livro.setMutuante(john);
 		itemEmprestadoRepo.save(livro);
 		ItemEmprestado carro = new ItemEmprestado(null, "Hatch Modelo compacto");
+		carro.setMutuante(john);
 		itemEmprestadoRepo.save(carro);
 		ItemEmprestado mouse = new ItemEmprestado(null, "Mouse");
+		mouse.setMutuante(alex);
 		itemEmprestadoRepo.save(mouse);
 
 //		john.getItemParaEmprestar().add(mouse);
@@ -85,7 +88,7 @@ public class Instaciacao implements CommandLineRunner {
 //		contratoEmprestimoRepo.save(contrato2);
 		
 		System.out.println("Salvo");
-		
+
 	}
 	
 }

@@ -8,10 +8,9 @@ import org.springframework.data.redis.core.RedisHash;
 
 @RedisHash(value="c_mutuante")
 public class Mutuante extends User{
-	
 
-	
-	//private List<ItemEmprestado> itemParaEmprestar = new ArrayList<>();
+	// Manter apenas o Get, para que a lista não possa ser trocada.
+	private List<ItemEmprestado> itemParaEmprestar = new ArrayList<>();
 	
 	public Mutuante() {
 		
@@ -21,13 +20,7 @@ public class Mutuante extends User{
 		super(id, name, email);
 	}
 
-//	public List<ItemEmprestado> getItemParaEmprestar() {
-//		return itemParaEmprestar;
-//	}
-//
-//	public void setItemParaEmprestar(List<ItemEmprestado> itemEmprestado) {
-//		this.itemParaEmprestar= itemEmprestado;
-//	}
-//
-	
+	public List<ItemEmprestado> getItemParaEmprestar() {
+		return itemParaEmprestar;
+	}
 }

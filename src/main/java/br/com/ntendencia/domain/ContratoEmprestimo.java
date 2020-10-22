@@ -26,20 +26,11 @@ public class ContratoEmprestimo {
 	public ContratoEmprestimo() {}
 
 	
-	public ContratoEmprestimo(String id, LocalDate dataEmprestimo, LocalDate dataDevolucao, MutuanteDTO mutuanteDTO,
-			MutuarioDTO mutuarioDTO) {
+	public ContratoEmprestimo(String id, LocalDate dataEmprestimo, LocalDate dataDevolucao) {
 		this.id = id;
 		this.dataEmprestimo = dataEmprestimo;
-		this.dataDevolucao = dataDevolucao;
-		this.mutuanteDTO = mutuanteDTO;
-		this.mutuarioDTO = mutuarioDTO;
+		this.dataDevolucao = dataDevolucao;;
 	}
-	public ContratoEmprestimo(String id, MutuanteDTO mutuanteDTO, MutuarioDTO mutuarioDTO) {
-		this.id = id;
-		this.mutuanteDTO= mutuanteDTO;
-		this.mutuarioDTO=mutuarioDTO;
-	}
-
 
 	public MutuanteDTO getMutuanteDTO() {
 		return mutuanteDTO;
@@ -63,15 +54,6 @@ public class ContratoEmprestimo {
 
 	public List<ItemEmprestado> getItemEmprestado() {
 		return itemEmprestado;
-	}
-
-
-	public void setItemEmprestado(List<ItemEmprestado> itemEmprestado) {
-		this.itemEmprestado = itemEmprestado;
-	}
-	
-	public void setItemEmprestado2(ItemEmprestado itemEmprestado) {
-		this.itemEmprestado.add(itemEmprestado);
 	}
 
 	public String getId() {

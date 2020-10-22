@@ -13,7 +13,7 @@ public class Mutuario extends User {
 	private Integer idReferencial;
 	private String senha;
 
-//	private List<ItemEmprestado> itemsEmprestados = new ArrayList<>();
+	private List<ItemEmprestado> itemsEmprestados = new ArrayList<>();
 
 	public Mutuario() {
 
@@ -41,8 +41,8 @@ public class Mutuario extends User {
 		this.senha = senha;
 	}
 
-//	public List<ItemEmprestado> getItemsEmprestados() {
-//		return itemsEmprestados;
-//	}
+	public List<ItemEmprestado> getItemsEmprestados() {
+		return itemsEmprestados;
+	}
 
 }

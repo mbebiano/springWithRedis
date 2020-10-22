@@ -2,6 +2,8 @@ package br.com.ntendencia.services.impl;
 
 import java.util.List;
 
+import br.com.ntendencia.services.MutuanteService;
+import br.com.ntendencia.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +16,24 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 
 	@Autowired
 	private ItemEmprestadoRepository itemEmprestadoRepo;
+	@Autowired
+	private MutuanteServicesImpl mutuanteService;
 	
 	@Override
-	public void itemEmprestadoSave(ItemEmprestado itemEmprestado) {
-		itemEmprestadoRepo.save(itemEmprestado);
-		
+	public ItemEmprestado itemEmprestadoSave(ItemEmprestado itemEmprestado) {
+		String id = itemEmprestado.getMutuante().getId();
+		try{
+			if (mutuanteService.procurarPorId(id) == null) {
+				throw new ResourceNotFoundException(id);
+			}
+			return itemEmprestadoRepo.save(itemEmprestado);
+		}
+		catch (RuntimeException e){
+			e.printStackTrace();
+			throw new ResourceNotFoundException(id);
+		}
 	}
+
 	@Override
 	public void deleteItemEmprestado(String id) {
 		itemEmprestadoRepo.deleteById(id);
