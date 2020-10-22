@@ -21,7 +21,7 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 	
 	@Override
 	public ItemEmprestado itemEmprestadoSave(ItemEmprestado itemEmprestado) {
-		String id = itemEmprestado.getMutuante().getId();
+		String id = itemEmprestado.getMutuanteDTO().getId();
 		try{
 			if (mutuanteService.procurarPorId(id) == null) {
 				throw new ResourceNotFoundException(id);

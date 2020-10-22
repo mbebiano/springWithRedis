@@ -1,26 +1,36 @@
 package br.com.ntendencia.domain;
 
+import org.springframework.data.redis.core.RedisHash;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.redis.core.RedisHash;
+
 
 @RedisHash(value="c_mutuante")
 public class Mutuante extends User{
 
-	// Manter apenas o Get, para que a lista não possa ser trocada.
-	private List<ItemEmprestado> itemParaEmprestar = new ArrayList<>();
-	
-	public Mutuante() {
-		
-	}
+	private Integer idReferencial;
 
-	public Mutuante(String id, String name, String email) {
+	private List<ItemEmprestado> itemsEmprestados = new ArrayList<>();
+
+	public Mutuante(){}
+
+	public Mutuante(String id, String name, String email, Integer idReferencial) {
 		super(id, name, email);
+		this.idReferencial = idReferencial;
 	}
 
-	public List<ItemEmprestado> getItemParaEmprestar() {
-		return itemParaEmprestar;
+	public Integer getIdReferencial() {
+		return idReferencial;
 	}
+
+	public void setIdReferencial(Integer idReferencial) {
+		this.idReferencial = idReferencial;
+	}
+
+	public List<ItemEmprestado> getItemsEmprestados() {
+		return itemsEmprestados;
+	}
+
 }

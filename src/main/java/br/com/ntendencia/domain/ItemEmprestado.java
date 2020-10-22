@@ -1,17 +1,24 @@
 package br.com.ntendencia.domain;
 
+import br.com.ntendencia.dto.MutuanteDTO;
+import br.com.ntendencia.dto.MutuarioDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
+import java.util.Collection;
+
 @RedisHash(value="c_itemEmprestado")
-public class ItemEmprestado {
+public class ItemEmprestado  {
 	
 	@Id
 	private String id;
 	private String name;
-	private Mutuario mutuario;
-	private Mutuante mutuante;
+	// Criar DTO
+	@JsonIgnore
+	private MutuarioDTO mutuarioDTO;
+	@JsonIgnore
+	private MutuanteDTO mutuanteDTO;
 
 	public ItemEmprestado() {
 		
@@ -38,20 +45,20 @@ public class ItemEmprestado {
 		this.name = name;
 	}
 
-	public Mutuario getMutuario() {
-		return mutuario;
+	public MutuarioDTO getMutuario() {
+		return mutuarioDTO;
 	}
 
-	public void setMutuario(Mutuario mutuario) {
-		this.mutuario = mutuario;
+	public void setMutuario(MutuarioDTO mutuarioDTO) {
+		this.mutuarioDTO = mutuarioDTO;
 	}
 
-	public Mutuante getMutuante() {
-		return mutuante;
+	public MutuanteDTO getMutuanteDTO() {
+		return mutuanteDTO;
 	}
 
-	public void setMutuante(Mutuante mutuante) {
-		this.mutuante = mutuante;
+	public void setMutuanteDTO(MutuanteDTO mutuanteDTO) {
+		this.mutuanteDTO = mutuanteDTO;
 	}
 
 	@Override
@@ -62,8 +69,6 @@ public class ItemEmprestado {
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
-	
-	
 
 	@Override
 	public boolean equals(Object obj) {
@@ -86,6 +91,6 @@ public class ItemEmprestado {
 			return false;
 		return true;
 	}
-		
-	
+
+
 }

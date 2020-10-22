@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
@@ -18,8 +19,7 @@ public class ContratoEmprestimo {
 	
 	private LocalDate dataEmprestimo;
 	private LocalDate dataDevolucao;
-	
-	private MutuanteDTO mutuanteDTO;
+	private Mutuante mutuante;
 	private MutuarioDTO mutuarioDTO;
 	private List<ItemEmprestado> itemEmprestado = new ArrayList<>();
 	
@@ -32,13 +32,13 @@ public class ContratoEmprestimo {
 		this.dataDevolucao = dataDevolucao;;
 	}
 
-	public MutuanteDTO getMutuanteDTO() {
-		return mutuanteDTO;
+	public Mutuante getMutuante() {
+		return mutuante;
 	}
 
 
-	public void setMutuante(MutuanteDTO mutuanteDTO) {
-		this.mutuanteDTO = mutuanteDTO;
+	public void setMutuante(Mutuante mutuante) {
+		this.mutuante = mutuante;
 	}
 
 
