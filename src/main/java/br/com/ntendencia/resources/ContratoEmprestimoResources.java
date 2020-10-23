@@ -29,12 +29,9 @@ public class ContratoEmprestimoResources {
 	
 	@PostMapping("/save")
 	public String createContratoEmprestimo(@RequestBody ContratoEmprestimo contratoEmprestimo) {
-		
-		Mutuario mutuario = mutuarioService.findById(contratoEmprestimo.getMutuario().getId());
-		
+		Mutuario mutuario = mutuarioService.findById(contratoEmprestimo.getMutuarioDTO().getId());
 //		mutuario.getItemsEmprestados().addAll(contratoEmprestimo.getItemEmprestado());
 		mutuarioService.mutuarioSave(mutuario);
-		
 		contratoEmprestimoService.contratoEmprestimoSave(contratoEmprestimo);
 		return "Contrato Salvo";
 	}
@@ -50,7 +47,6 @@ public class ContratoEmprestimoResources {
 	@GetMapping("/listaContratos")
 	public ResponseEntity<List<ContratoEmprestimo>> findAll(){
 		List<ContratoEmprestimo> list = contratoEmprestimoService.contratosEmprestimo();
-		
 		return ResponseEntity.ok().body(list);
 	}
 	

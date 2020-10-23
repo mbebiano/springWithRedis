@@ -15,9 +15,9 @@ public class ItemEmprestado  {
 	private String id;
 	private String name;
 	// Criar DTO
-	@JsonIgnore
+
 	private MutuarioDTO mutuarioDTO;
-	@JsonIgnore
+
 	private MutuanteDTO mutuanteDTO;
 
 	public ItemEmprestado() {
@@ -45,11 +45,11 @@ public class ItemEmprestado  {
 		this.name = name;
 	}
 
-	public MutuarioDTO getMutuario() {
+	public MutuarioDTO getMutuarioDTO() {
 		return mutuarioDTO;
 	}
 
-	public void setMutuario(MutuarioDTO mutuarioDTO) {
+	public void setMutuarioDTO(MutuarioDTO mutuarioDTO) {
 		this.mutuarioDTO = mutuarioDTO;
 	}
 

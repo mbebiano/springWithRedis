@@ -1,11 +1,10 @@
 
-P
-java:S3655.":Call "mutuarioOBJ.isPresent()" before accessing the value.(²Žð—
-w
-java:S14883"\Immediately return this expression instead of assigning it to the temporary variable "list".(€÷Î¶úÿÿÿÿ
-M
-java:S3655%"7Call "Optional#isPresent()" before accessing the value.(ì“¯³
 W
 java:S3655P":Call "mutuarioOpt.isPresent()" before accessing the value.(½ËÕÅ8ÈŒ±îÒ.
 }
 java:S1488P"`Immediately return this expression instead of assigning it to the temporary variable "mutuario".(½ËÕÅ8ÈŒ±îÒ.
+w
+java:S14883"\Immediately return this expression instead of assigning it to the temporary variable "list".(€÷Î¶úÿÿÿÿ
+P
+java:S3655.":Call "mutuarioOBJ.isPresent()" before accessing the value.(²Žð—
+]	java:S125""<This block of commented-out lines of code should be removed.(ÅµÉþÿÿÿÿ8Ñ¥®Õ.

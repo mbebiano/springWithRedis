@@ -41,7 +41,6 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 	}
 	@Override
 	public List<ItemEmprestado> itensEmprestados() {
-		
 		return (List<ItemEmprestado>) itemEmprestadoRepo.findAll();
 	}
 	

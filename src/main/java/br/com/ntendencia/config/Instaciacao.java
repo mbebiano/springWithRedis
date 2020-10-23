@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import br.com.ntendencia.domain.*;
+import br.com.ntendencia.dto.ItemEmprestadoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -39,17 +40,16 @@ public class Instaciacao implements CommandLineRunner {
 		mutuarioRepo.deleteAll();
 		mutuanteRepo.deleteAll();
 		System.out.println("Deletados");
-		
-		Mutuante john = new Mutuante(null, "John Ferr", "johny@gmail.com", 2);
+
+		//Instaciação Users
+		Mutuante john = new Mutuante("2", "John Ferr", "johny@gmail.com", 2);
 		mutuanteRepo.save(john);
-		Mutuante alex = new Mutuante(null, "Alex Gray", "alex@gmailo.com", 3);
+		Mutuante alex = new Mutuante("3", "Alex Gray", "alex@gmailo.com", 3);
 		mutuanteRepo.save(alex);
-		Mutuario maria = new Mutuario(null, "Maria", "maria@teste.com", "maria8", 0);
+		Mutuario maria = new Mutuario("0", "Maria", "maria@teste.com", "maria8", 0);
 		mutuarioRepo.save(maria);
-		Mutuario bob = new Mutuario(null, "Bob", "bob@teste.com", "bobo8", 1);
+		Mutuario bob = new Mutuario("1", "Bob", "bob@teste.com", "bobo8", 1);
 		mutuarioRepo.save(bob);
-
-
 
 		//Instaciação mocada de DTOS
 		MutuarioDTO mariaDTO = new MutuarioDTO(maria);
@@ -59,8 +59,8 @@ public class Instaciacao implements CommandLineRunner {
 
 		// Instaciação mocada de Items emprestados, setando os Mutuantes
 		ItemEmprestado livro = new ItemEmprestado(null, "Harry Potter");
-		john.getItemsEmprestados().add(livro);
 		livro.setMutuanteDTO(johnDTO);
+		livro.setMutuarioDTO(mariaDTO);
 		itemEmprestadoRepo.save(livro);
 		ItemEmprestado carro = new ItemEmprestado(null, "Hatch Modelo compacto");
 		carro.setMutuanteDTO(johnDTO);
@@ -69,26 +69,20 @@ public class Instaciacao implements CommandLineRunner {
 		mouse.setMutuanteDTO(alexDTO);
 		itemEmprestadoRepo.save(mouse);
 
+		//Instaciação mocada de DTO ItemEmprestado
+		ItemEmprestadoDTO livroDTO = new ItemEmprestadoDTO(livro);
+		john.getItemEmprestadoDTO().add(livroDTO);
+		ItemEmprestadoDTO carroDTO = new ItemEmprestadoDTO(carro);
+		john.getItemEmprestadoDTO().add(carroDTO);
+		ItemEmprestadoDTO mouseDTO = new ItemEmprestadoDTO(mouse);
+		alex.getItemEmprestadoDTO().add(mouseDTO);
+
 		//Instaciação mocada de ContratoEmprestimos emprestados, setando os Mutuantes, Mutuarios, Item Emprestado e datas
 
 		ContratoEmprestimo contrato1 = new ContratoEmprestimo(null, LocalDate.parse("2020-09-22", DateTimeFormatter.ofPattern("yyyy-MM-dd")),  LocalDate.parse("2020-10-22", DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-		contrato1.getItemEmprestado().add(livro);
-		contrato1.setMutuante(john);
-		livro.setMutuario(mariaDTO);
-		contrato1.setMutuario(livro.getMutuario());
-
-
-
-//		john.getItemParaEmprestar().add(mouse);
-//		ContratoEmprestimo contrato1 = new ContratoEmprestimo(null, LocalDate.parse("2020-09-22", DateTimeFormatter.ofPattern("yyyy-MM-dd")),  LocalDate.parse("2020-10-22", DateTimeFormatter.ofPattern("yyyy-MM-dd")), alexDTO, mariaDTO);
-//		ContratoEmprestimo contrato2 = new ContratoEmprestimo(null, LocalDate.parse("2020-09-24", DateTimeFormatter.ofPattern("yyyy-MM-dd")),  LocalDate.parse("2020-10-24", DateTimeFormatter.ofPattern("yyyy-MM-dd")), johnDTO, bobDTO);
-//
-//		contrato1.setItemEmprestado2(livro);
-//		contrato1.setItemEmprestado2(carro);
-//		contrato2.getItemEmprestado().addAll(john.getItemParaEmprestar());
-//
-//		maria.getItemsEmprestados().addAll(contrato1.getItemEmprestado());
-//		bob.getItemsEmprestados().addAll(contrato2.getItemEmprestado());
+		contrato1.getItemEmprestadoDTO().add(livroDTO);
+		contrato1.setMutuanteDTO(johnDTO);
+		contrato1.setMutuarioDTO(livro.getMutuarioDTO());
 
 		//Save mutuarios
 		contratoEmprestimoRepo.save(contrato1);
@@ -96,10 +90,8 @@ public class Instaciacao implements CommandLineRunner {
 		mutuarioRepo.save(bob);
 		mutuanteRepo.save(john);
 		mutuanteRepo.save(alex);
+		itemEmprestadoRepo.save(livro);
 
-//		contratoEmprestimoRepo.save(contrato1);
-//		contratoEmprestimoRepo.save(contrato2);
-		
 		System.out.println("Salvo");
 	}
 }

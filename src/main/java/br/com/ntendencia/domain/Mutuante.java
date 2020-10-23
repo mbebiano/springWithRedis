@@ -1,5 +1,6 @@
 package br.com.ntendencia.domain;
 
+import br.com.ntendencia.dto.ItemEmprestadoDTO;
 import org.springframework.data.redis.core.RedisHash;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class Mutuante extends User{
 
 	private Integer idReferencial;
 
-	private List<ItemEmprestado> itemsEmprestados = new ArrayList<>();
+	private List<ItemEmprestadoDTO> itemEmprestadoDTO = new ArrayList<>();
 
 	public Mutuante(){}
 
@@ -29,8 +30,8 @@ public class Mutuante extends User{
 		this.idReferencial = idReferencial;
 	}
 
-	public List<ItemEmprestado> getItemsEmprestados() {
-		return itemsEmprestados;
+	public List<ItemEmprestadoDTO> getItemEmprestadoDTO() {
+		return itemEmprestadoDTO;
 	}
 
 }

@@ -29,9 +29,6 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
 
 	@Override
 	public List<ContratoEmprestimo> contratosEmprestimo() {
-		
 		return (List<ContratoEmprestimo>) contratoEmprestimoRepo.findAll();
 	}
-
-	
 }

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.ntendencia.dto.ItemEmprestadoDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
@@ -19,9 +20,11 @@ public class ContratoEmprestimo {
 	
 	private LocalDate dataEmprestimo;
 	private LocalDate dataDevolucao;
-	private Mutuante mutuante;
+
+	private MutuanteDTO mutuanteDTO;
 	private MutuarioDTO mutuarioDTO;
-	private List<ItemEmprestado> itemEmprestado = new ArrayList<>();
+
+	private List<ItemEmprestadoDTO> itemEmprestadoDTO = new ArrayList<>();
 	
 	public ContratoEmprestimo() {}
 
@@ -30,30 +33,6 @@ public class ContratoEmprestimo {
 		this.id = id;
 		this.dataEmprestimo = dataEmprestimo;
 		this.dataDevolucao = dataDevolucao;;
-	}
-
-	public Mutuante getMutuante() {
-		return mutuante;
-	}
-
-
-	public void setMutuante(Mutuante mutuante) {
-		this.mutuante = mutuante;
-	}
-
-
-	public MutuarioDTO getMutuario() {
-		return mutuarioDTO;
-	}
-
-
-	public void setMutuario(MutuarioDTO mutuarioDTO) {
-		this.mutuarioDTO = mutuarioDTO;
-	}
-
-
-	public List<ItemEmprestado> getItemEmprestado() {
-		return itemEmprestado;
 	}
 
 	public String getId() {
@@ -80,6 +59,26 @@ public class ContratoEmprestimo {
 		this.dataDevolucao = dataDevolucao;
 	}
 
+	public MutuanteDTO getMutuanteDTO() {
+		return mutuanteDTO;
+	}
+
+	public void setMutuanteDTO(MutuanteDTO mutuanteDTO) {
+		this.mutuanteDTO = mutuanteDTO;
+	}
+
+	public MutuarioDTO getMutuarioDTO() {
+		return mutuarioDTO;
+	}
+
+	public void setMutuarioDTO(MutuarioDTO mutuarioDTO) {
+		this.mutuarioDTO = mutuarioDTO;
+	}
+
+	public List<ItemEmprestadoDTO> getItemEmprestadoDTO() {
+		return itemEmprestadoDTO;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -104,7 +103,4 @@ public class ContratoEmprestimo {
 			return false;
 		return true;
 	}
-	
-	
-
 }
