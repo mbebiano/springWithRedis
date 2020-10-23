@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ntendencia.domain.ContratoEmprestimo;
-import br.com.ntendencia.domain.Mutuario;
 import br.com.ntendencia.services.impl.ContratoEmprestimoServicesImpl;
 import br.com.ntendencia.services.impl.MutuarioServicesImpl;
 
@@ -29,11 +28,7 @@ public class ContratoEmprestimoResources {
 	
 	@PostMapping("/save")
 	public String createContratoEmprestimo(@RequestBody ContratoEmprestimo contratoEmprestimo) {
-		Mutuario mutuario = mutuarioService.findById(contratoEmprestimo.getMutuarioDTO().getId());
-//		mutuario.getItemsEmprestados().addAll(contratoEmprestimo.getItemEmprestado());
-		mutuarioService.mutuarioSave(mutuario);
-		contratoEmprestimoService.contratoEmprestimoSave(contratoEmprestimo);
-		return "Contrato Salvo";
+		return contratoEmprestimoService.contratoEmprestimoSave(contratoEmprestimo);
 	}
 	
 	@DeleteMapping("/delete/{id}")

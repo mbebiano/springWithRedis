@@ -1,8 +1,8 @@
 package br.com.ntendencia.services.impl;
 
 import java.util.List;
+import java.util.Optional;
 
-import br.com.ntendencia.services.MutuanteService;
 import br.com.ntendencia.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,5 +43,11 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 	public List<ItemEmprestado> itensEmprestados() {
 		return (List<ItemEmprestado>) itemEmprestadoRepo.findAll();
 	}
-	
+
+	@Override
+	public Optional<ItemEmprestado> procuraItemEmprestado(String id) {
+		Optional<ItemEmprestado> obj = itemEmprestadoRepo.findById(id);
+		return obj;
+	}
+
 }
