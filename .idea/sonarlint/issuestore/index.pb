@@ -62,3 +62,5 @@ s
 Csrc/main/java/br/com/ntendencia/services/ItemEmprestadoService.java,7\1\7120d98fde4dfeeb53341af67c548ddd802dc7c5
 }
 Msrc/main/java/br/com/ntendencia/services/impl/ItemEmprestadoServicesImpl.java,5\1\5138c57a0505a2d432ea8eaf4705ff3ea990ec35
+j
+:src/main/java/br/com/ntendencia/dto/ItemEmprestadoDTO.java,3\b\3b0663923dc6d96a02038b2198be3ffe254ef72d

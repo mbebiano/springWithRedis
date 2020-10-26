@@ -1,9 +1,7 @@
 
 M
 java:S14818"+Remove this unused "bobDTO" local variable.(½¤¿éþÿÿÿÿ8Î× ŽÕ.
-W	java:S125b"<This block of commented-out lines of code should be removed.(¨ 8Î× ŽÕ.
-U	java:S106)"9Replace this use of System.out or System.err by a logger.(¸ë¶¦8ó©•Õ.
-T	java:S106e"9Replace this use of System.out or System.err by a logger.(ÇƒÌ*8ôëþƒÕ.
-]	java:S125P"<This block of commented-out lines of code should be removed.(Ž‚½úÿÿÿÿ8¾‚§ŽÕ.
 \
 java:S18548":Remove this useless assignment to local variable "bobDTO".(½¤¿éþÿÿÿÿ8Î× ŽÕ.
+T	java:S106_"9Replace this use of System.out or System.err by a logger.(ÇƒÌ*8ôëþƒÕ.
+U	java:S106*"9Replace this use of System.out or System.err by a logger.(¸ë¶¦8ó©•Õ.
