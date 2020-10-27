@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
+import br.com.ntendencia.dto.ItemEmprestadoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -82,7 +83,12 @@ public class MutuarioServicesImpl implements MutuarioService {
 	}
 
 	@Override
-	public void atualizaMutuario(Mutuario mutuario) {
-		Mutuario mutuarioToUpdate = findById(mutuario.getId());
+	public void atualizaMutuarioItens(String id, ItemEmprestadoDTO itemEmprestadoDTO) {
+		Optional<Mutuario> mutuarioObj = mutuarioRepo.findById(id);
+		mutuarioObj.get().getItemsEmprestadosDTO().add(itemEmprestadoDTO);
+		Mutuario mutuario = mutuarioObj.get();
+		mutuarioRepo.save(mutuario);
 	}
+
+
 }

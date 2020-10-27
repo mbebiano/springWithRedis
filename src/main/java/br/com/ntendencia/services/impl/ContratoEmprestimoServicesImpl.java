@@ -28,14 +28,6 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
 	
 	@Override
 	public String contratoEmprestimoSave(ContratoEmprestimo contratoEmprestimo) {
-//		ItemEmprestadoDTO itemEmprestadoDTO = (ItemEmprestadoDTO) contratoEmprestimo.getItemEmprestadoDTO();
-//		String id = itemEmprestadoDTO.getId();
-//		Optional<ItemEmprestado> obj =itemEmprestadoServices.procuraItemEmprestado(id);
-//		ItemEmprestado itemEmprestado = obj.get();
-//
-//		if (itemEmprestado.getMutuarioDTO() != null) {
-//			return "Objeto já esta emprestado";
-//		}
 		List<ItemEmprestadoDTO> itensEmprestados=contratoEmprestimo.getItemEmprestadoDTO();
 		List<String> ids = new ArrayList<String>();
 		itensEmprestados.forEach(itemEmprestadoDTO -> ids.add(itemEmprestadoDTO.getId()));
@@ -51,14 +43,15 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
 			}
 		} catch (Exception e) {
 			String idMutuario = contratoEmprestimo.getMutuarioDTO().getId();
-
 			if(mutuarioServices.findById(idMutuario)!=null){
 				Mutuario mutuario =mutuarioServices.findById(idMutuario);
 				List<ItemEmprestadoDTO> list = contratoEmprestimo.getItemEmprestadoDTO();
 				for(ItemEmprestadoDTO item : list){
-					mutuario.getItemsEmprestadosDTO().add(item);
+					mutuarioServices.atualizaMutuarioItens(mutuario.getId(), item);
 				}
-				mutuarioServices.salvarMutuario(mutuario);
+			}
+			else{
+				return "Contrato não salvo, mutuario não encontrado";
 			}
 			contratoEmprestimoRepo.save(contratoEmprestimo);
 			return "Contrato Salvo";
@@ -71,7 +64,6 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
 		contratoEmprestimoRepo.deleteById(id);
 		
 	}
-
 	@Override
 	public List<ContratoEmprestimo> contratosEmprestimo() {
 		return (List<ContratoEmprestimo>) contratoEmprestimoRepo.findAll();

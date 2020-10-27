@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.com.ntendencia.domain.ItemEmprestado;
 import br.com.ntendencia.domain.Mutuario;
+import br.com.ntendencia.dto.ItemEmprestadoDTO;
 
 public interface MutuarioService {
 	
@@ -22,6 +23,6 @@ public interface MutuarioService {
 
 	Mutuario procurarPorNome(String nome);
 
-	void atualizaMutuarioItens(Mutuario mutuario);
+	void atualizaMutuarioItens(String id, ItemEmprestadoDTO itemEmprestadoDTO);
 
 }
