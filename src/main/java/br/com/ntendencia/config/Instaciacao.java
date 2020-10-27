@@ -77,6 +77,9 @@ public class Instaciacao implements CommandLineRunner {
 		ItemEmprestadoDTO mouseDTO = new ItemEmprestadoDTO(mouse);
 		alex.getItemEmprestadoDTO().add(mouseDTO);
 
+		//Instaciação mocada de DTO ItemEmprestado Mutuarios
+		maria.getItemsEmprestadosDTO().add(livroDTO);
+
 		//Instaciação mocada de ContratoEmprestimos emprestados, setando os Mutuantes, Mutuarios, Item Emprestado e datas
 
 		ContratoEmprestimo contrato1 = new ContratoEmprestimo(null, LocalDate.parse("2020-09-22", DateTimeFormatter.ofPattern("yyyy-MM-dd")),  LocalDate.parse("2020-10-22", DateTimeFormatter.ofPattern("yyyy-MM-dd")));

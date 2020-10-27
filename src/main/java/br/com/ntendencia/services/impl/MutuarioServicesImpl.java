@@ -80,4 +80,9 @@ public class MutuarioServicesImpl implements MutuarioService {
 		Mutuario mutuario = mutuarioOpt.get();
 		return mutuario;
 	}
+
+	@Override
+	public void atualizaMutuario(Mutuario mutuario) {
+		Mutuario mutuarioToUpdate = findById(mutuario.getId());
+	}
 }

@@ -28,6 +28,7 @@ public class MutuarioResources {
 		mutuarioService.salvarMutuario(mutuario);
 		return "Usuário Salvo";
 	}
+
 	
 	@DeleteMapping("/delete/{id}")
 	public String deleteMutuante(@PathVariable String id) {

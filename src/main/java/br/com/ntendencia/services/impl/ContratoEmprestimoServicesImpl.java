@@ -1,9 +1,12 @@
 package br.com.ntendencia.services.impl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import br.com.ntendencia.domain.ItemEmprestado;
+import br.com.ntendencia.domain.Mutuario;
 import br.com.ntendencia.dto.ItemEmprestadoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,19 +23,47 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
 
 	@Autowired
 	private ItemEmprestadoServicesImpl itemEmprestadoServices;
+
+	@Autowired MutuarioServicesImpl mutuarioServices;
 	
 	@Override
 	public String contratoEmprestimoSave(ContratoEmprestimo contratoEmprestimo) {
-		ItemEmprestadoDTO itemEmprestadoDTO = (ItemEmprestadoDTO) contratoEmprestimo.getItemEmprestadoDTO();
-		String id = itemEmprestadoDTO.getId();
-		Optional<ItemEmprestado> obj =itemEmprestadoServices.procuraItemEmprestado(id);
-		ItemEmprestado itemEmprestado = obj.get();
-
-		if (itemEmprestado.getMutuarioDTO() != null) {
-			return "Objeto já esta emprestado";
+//		ItemEmprestadoDTO itemEmprestadoDTO = (ItemEmprestadoDTO) contratoEmprestimo.getItemEmprestadoDTO();
+//		String id = itemEmprestadoDTO.getId();
+//		Optional<ItemEmprestado> obj =itemEmprestadoServices.procuraItemEmprestado(id);
+//		ItemEmprestado itemEmprestado = obj.get();
+//
+//		if (itemEmprestado.getMutuarioDTO() != null) {
+//			return "Objeto já esta emprestado";
+//		}
+		List<ItemEmprestadoDTO> itensEmprestados=contratoEmprestimo.getItemEmprestadoDTO();
+		List<String> ids = new ArrayList<String>();
+		itensEmprestados.forEach(itemEmprestadoDTO -> ids.add(itemEmprestadoDTO.getId()));
+		for(String id : ids){
+			Optional<ItemEmprestado> itemProcura = itemEmprestadoServices.procuraItemEmprestado(id);
+			if(itemProcura.get().getMutuarioDTO()!=null){
+				return "Um item já está emprestado";
+			}
 		}
-		contratoEmprestimoRepo.save(contratoEmprestimo);
-		return "Contrato Salvo";
+		try{
+			 if (contratoEmprestimoRepo.findById(contratoEmprestimo.getId()).isPresent()){
+				 return "Contrato Não Salvo, id será gerado pelo banco";
+			}
+		} catch (Exception e) {
+			String idMutuario = contratoEmprestimo.getMutuarioDTO().getId();
+
+			if(mutuarioServices.findById(idMutuario)!=null){
+				Mutuario mutuario =mutuarioServices.findById(idMutuario);
+				List<ItemEmprestadoDTO> list = contratoEmprestimo.getItemEmprestadoDTO();
+				for(ItemEmprestadoDTO item : list){
+					mutuario.getItemsEmprestadosDTO().add(item);
+				}
+				mutuarioServices.salvarMutuario(mutuario);
+			}
+			contratoEmprestimoRepo.save(contratoEmprestimo);
+			return "Contrato Salvo";
+		}
+		return "Contrato Não Salvo";
 	}
 
 	@Override

@@ -26,6 +26,9 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 			if (mutuanteService.procurarPorId(id) == null) {
 				throw new ResourceNotFoundException(id);
 			}
+			if (itemEmprestado.getId()!= null){
+				throw new ResourceNotFoundException(itemEmprestado.getId());
+			}
 			return itemEmprestadoRepo.save(itemEmprestado);
 		}
 		catch (RuntimeException e){

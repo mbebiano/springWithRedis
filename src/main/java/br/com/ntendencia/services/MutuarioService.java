@@ -22,4 +22,6 @@ public interface MutuarioService {
 
 	Mutuario procurarPorNome(String nome);
 
+	void atualizaMutuarioItens(Mutuario mutuario);
+
 }
