@@ -6,30 +6,30 @@ import org.springframework.data.redis.core.index.Indexed;
 
 import java.util.Objects;
 
-@RedisHash(value="c_user")
-public class User  {
+@RedisHash(value="c_usuario")
+public class Usuario  {
 
 	@Id
-	private String id;
+	private String idUsuario;
 	@Indexed
 	private String name;
 	private String email;
 
-	public User() {
+	public Usuario() {
 	}
 
-	public User(String id, String name, String email) {
-		this.id = id;
+	public Usuario(String idUsuario, String name, String email) {
+		this.idUsuario = idUsuario;
 		this.name = name;
 		this.email = email;
 	}
 
-	public String getId() {
-		return id;
+	public String getIdUsuario() {
+		return idUsuario;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setIdUsuario(String idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	public String getName() {
@@ -51,13 +51,13 @@ public class User  {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		User user = (User) o;
-		return Objects.equals(id, user.id);
+		if (!(o instanceof Usuario)) return false;
+		Usuario usuario = (Usuario) o;
+		return getIdUsuario().equals(usuario.getIdUsuario());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(getIdUsuario());
 	}
 }

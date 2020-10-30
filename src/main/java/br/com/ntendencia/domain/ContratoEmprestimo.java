@@ -1,38 +1,26 @@
 package br.com.ntendencia.domain;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
-import br.com.ntendencia.dto.ItemEmprestadoDTO;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
-import br.com.ntendencia.dto.MutuanteDTO;
-import br.com.ntendencia.dto.MutuarioDTO;
+import java.util.ArrayList;
+import java.util.List;
 
 @RedisHash(value="c_contratoEmprestimo")
 public class ContratoEmprestimo {
 	
 	@Id
 	private String id;
-	
-	private LocalDate dataEmprestimo;
-	private LocalDate dataDevolucao;
 
-	private MutuanteDTO mutuanteDTO;
-	private MutuarioDTO mutuarioDTO;
+	private String idMutuario;
 
-	private List<ItemEmprestadoDTO> itemEmprestadoDTO = new ArrayList<>();
+	private List<ItemEmprestado> itensEmprestados = new ArrayList<>();
 	
 	public ContratoEmprestimo() {}
 
 	
-	public ContratoEmprestimo(String id, LocalDate dataEmprestimo, LocalDate dataDevolucao) {
+	public ContratoEmprestimo(String id, String idMutuario) {
 		this.id = id;
-		this.dataEmprestimo = dataEmprestimo;
-		this.dataDevolucao = dataDevolucao;;
 	}
 
 	public String getId() {
@@ -43,41 +31,18 @@ public class ContratoEmprestimo {
 		this.id = id;
 	}
 
-	public LocalDate getDataEmprestimo() {
-		return dataEmprestimo;
+	public String getIdMutuario() {
+		return idMutuario;
 	}
 
-	public void setDataEmprestimo(LocalDate dataEmprestimo) {
-		this.dataEmprestimo = dataEmprestimo;
+	public void setIdMutuario(String idMutuario) {
+		this.idMutuario = idMutuario;
 	}
 
-	public LocalDate getDataDevolucao() {
-		return dataDevolucao;
+	public List<ItemEmprestado> getItensEmprestados() {
+		return itensEmprestados;
 	}
 
-	public void setDataDevolucao(LocalDate dataDevolucao) {
-		this.dataDevolucao = dataDevolucao;
-	}
-
-	public MutuanteDTO getMutuanteDTO() {
-		return mutuanteDTO;
-	}
-
-	public void setMutuanteDTO(MutuanteDTO mutuanteDTO) {
-		this.mutuanteDTO = mutuanteDTO;
-	}
-
-	public MutuarioDTO getMutuarioDTO() {
-		return mutuarioDTO;
-	}
-
-	public void setMutuarioDTO(MutuarioDTO mutuarioDTO) {
-		this.mutuarioDTO = mutuarioDTO;
-	}
-
-	public List<ItemEmprestadoDTO> getItemEmprestadoDTO() {
-		return itemEmprestadoDTO;
-	}
 
 	@Override
 	public int hashCode() {

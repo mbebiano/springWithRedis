@@ -1,12 +1,10 @@
 package br.com.ntendencia.domain;
 
-import br.com.ntendencia.dto.MutuanteDTO;
-import br.com.ntendencia.dto.MutuarioDTO;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import br.com.ntendencia.enums.EStatus;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
-import java.util.Collection;
+import java.time.LocalDate;
 
 @RedisHash(value="c_itemEmprestado")
 public class ItemEmprestado  {
@@ -14,19 +12,26 @@ public class ItemEmprestado  {
 	@Id
 	private String id;
 	private String name;
+	private String idMutuante;
 	// Criar DTO
 
-	private MutuarioDTO mutuarioDTO;
-
-	private MutuanteDTO mutuanteDTO;
+	private Integer idItemEmprestado;
+	private LocalDate dataEmprestimo;
+	private long qtdDiasDeDevolucao;
+	private EStatus eStatus;
 
 	public ItemEmprestado() {
 		
 	}
 
-	public ItemEmprestado(String id, String name) {
-		this.id = id;
+	public ItemEmprestado(String name, String idMutuante, long qtdDiasDeDevolucao) {
 		this.name = name;
+		this.idMutuante = idMutuante;
+		this.qtdDiasDeDevolucao = qtdDiasDeDevolucao;
+	}
+
+	public LocalDate dataDevolucao(){
+		return dataEmprestimo.plusDays(this.qtdDiasDeDevolucao);
 	}
 
 	public String getId() {
@@ -45,20 +50,44 @@ public class ItemEmprestado  {
 		this.name = name;
 	}
 
-	public MutuarioDTO getMutuarioDTO() {
-		return mutuarioDTO;
+	public LocalDate getDataEmprestimo() {
+		return dataEmprestimo;
 	}
 
-	public void setMutuarioDTO(MutuarioDTO mutuarioDTO) {
-		this.mutuarioDTO = mutuarioDTO;
+	public void setDataEmprestimo(LocalDate dataEmprestimo) {
+		this.dataEmprestimo = dataEmprestimo;
 	}
 
-	public MutuanteDTO getMutuanteDTO() {
-		return mutuanteDTO;
+	public long getQtdDiasDeDevolucao() {
+		return qtdDiasDeDevolucao;
 	}
 
-	public void setMutuanteDTO(MutuanteDTO mutuanteDTO) {
-		this.mutuanteDTO = mutuanteDTO;
+	public void setQtdDiasDeDevolucao(long qtdDiasDeDevolucao) {
+		this.qtdDiasDeDevolucao = qtdDiasDeDevolucao;
+	}
+
+	public EStatus geteStatus() {
+		return eStatus;
+	}
+
+	public void seteStatus(EStatus eStatus) {
+		this.eStatus = eStatus;
+	}
+
+	public String getIdMutuante() {
+		return idMutuante;
+	}
+
+	public void setIdMutuante(String idMutuante) {
+		this.idMutuante = idMutuante;
+	}
+
+	public Integer getIdItemEmprestado() {
+		return idItemEmprestado;
+	}
+
+	public void setIdItemEmprestado(Integer idItemEmprestado) {
+		this.idItemEmprestado = idItemEmprestado;
 	}
 
 	@Override

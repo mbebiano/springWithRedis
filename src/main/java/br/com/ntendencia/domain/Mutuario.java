@@ -8,30 +8,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RedisHash(value="c_mutuario")
-public class Mutuario extends User {
+public class Mutuario extends Usuario {
 
-
-	private Integer idReferencial;
+	private Integer idMutuario;
 	private String senha;
-
-	private List<ItemEmprestadoDTO> itemsEmprestadosDTO = new ArrayList<>();
 
 	public Mutuario() {
 
 	}
 
-	public Mutuario(String id, String name, String email, String senha,Integer idReferencial) {
+	public Mutuario(String id, String name, String email, String senha,Integer idMutuario) {
 		super(id, name, email);
 		this.senha = senha;
-		this.idReferencial = idReferencial;
+		this.idMutuario = idMutuario;
 	}
 
-	public Integer getIdReferencial() {
-		return idReferencial;
+	public Integer getIdMutuario() {
+		return idMutuario;
 	}
 
-	public void setIdReferencial(Integer idReferencial) {
-		this.idReferencial = idReferencial;
+	public void setIdMutuario(Integer idMutuario) {
+		this.idMutuario = idMutuario;
 	}
 
 	public String getSenha() {
@@ -40,10 +37,6 @@ public class Mutuario extends User {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public List<ItemEmprestadoDTO> getItemsEmprestadosDTO() {
-		return itemsEmprestadosDTO;
 	}
 
 }

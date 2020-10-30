@@ -1,3 +1,5 @@
 
-O
-java:S3655"2Call "obj.isPresent()" before accessing the value.(„â™è8×Ë ¸Õ.
+e
+java:S1854"HRemove this useless assignment to local variable "listItensEmprestados".(ÏÀ’8«é£ıÖ.
+V
+java:S1481"9Remove this unused "listItensEmprestados" local variable.(ÏÀ’8«é£ıÖ.

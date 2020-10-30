@@ -1,18 +1,15 @@
 package br.com.ntendencia.services.impl;
 
+import br.com.ntendencia.domain.Mutuario;
+import br.com.ntendencia.dto.ItemEmprestadoDTO;
+import br.com.ntendencia.repositories.MutuarioRepository;
+import br.com.ntendencia.services.MutuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-
-import br.com.ntendencia.dto.ItemEmprestadoDTO;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.stereotype.Service;
-
-import br.com.ntendencia.domain.ItemEmprestado;
-import br.com.ntendencia.domain.Mutuario;
-import br.com.ntendencia.repositories.MutuarioRepository;
-import br.com.ntendencia.services.MutuarioService;
 
 @Service
 public class MutuarioServicesImpl implements MutuarioService {
@@ -42,53 +39,50 @@ public class MutuarioServicesImpl implements MutuarioService {
 
 	@Override
 	public Mutuario findById(String id) {
-		
 		Optional<Mutuario> mutuarioOBJ = mutuarioRepo.findById(id);
-		return mutuarioOBJ.get();
+		return mutuarioOBJ.orElseThrow();
 	}
 	
 	@Override
 	public List<Mutuario> listaMutuarios() {
-		List<Mutuario> list =(List<Mutuario>) mutuarioRepo.findAll();
-
-		return list;
+		return (List<Mutuario>) mutuarioRepo.findAll();
 	}
 
 	@Override
 	public Integer gerarId() {
 		List<Mutuario> mutuarios = listaMutuarios();
-		Integer ultimoReferencial = 0;
-		Optional<Mutuario> mutuarioOpt = mutuarios.stream().max(Comparator.comparingInt(Mutuario::getIdReferencial));
+		Integer ultimoIdMutuario = 0;
+		Optional<Mutuario> mutuarioOpt = mutuarios.stream().max(Comparator.comparingInt(Mutuario::getIdMutuario));
 		if (mutuarioOpt.isPresent()){
-			ultimoReferencial = mutuarioOpt.get().getIdReferencial();
+			ultimoIdMutuario = mutuarioOpt.get().getIdMutuario();
 		}
-
-		return ultimoReferencial+1;
+		return ultimoIdMutuario+1;
 	}
 
 	@Override
 	public Mutuario salvarMutuario(Mutuario mutuario) {
-		Integer idReferencial = gerarId();
-		mutuario.setId(idReferencial.toString());
-		mutuario.setIdReferencial(idReferencial);
-
+		Integer idMutuario = gerarId();
+		mutuario.setIdUsuario(idMutuario.toString());
+		mutuario.setIdMutuario(idMutuario);
 		return mutuarioRepo.save(mutuario);
 	}
 
 	@Override
 	public Mutuario procurarPorNome(String nome) {
 		Optional<Mutuario> mutuarioOpt = mutuarioRepo.findByName(nome);
-		Mutuario mutuario = mutuarioOpt.get();
+		Mutuario mutuario = mutuarioOpt.orElseThrow();
 		return mutuario;
 	}
 
 	@Override
 	public void atualizaMutuarioItens(String id, ItemEmprestadoDTO itemEmprestadoDTO) {
 		Optional<Mutuario> mutuarioObj = mutuarioRepo.findById(id);
-		mutuarioObj.get().getItemsEmprestadosDTO().add(itemEmprestadoDTO);
-		Mutuario mutuario = mutuarioObj.get();
-		mutuarioRepo.save(mutuario);
+//		if(mutuarioObj.isPresent()){
+//			mutuarioObj.get().getItemsEmprestadosDTO().add(itemEmprestadoDTO);
+//			mutuarioRepo.save(mutuarioObj.get());
+//		}
+//		else{
+//			throw new ResourceNotFoundException(id);
+//		}
 	}
-
-
 }

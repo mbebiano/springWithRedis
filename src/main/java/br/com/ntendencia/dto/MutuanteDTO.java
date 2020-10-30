@@ -13,7 +13,7 @@ public class MutuanteDTO {
 	}
 
 	public MutuanteDTO(Mutuante obj) {
-		this.id = obj.getId();
+		this.id = obj.getIdUsuario();
 		this.name = obj.getName();
 		this.email = obj.getEmail();
 	}

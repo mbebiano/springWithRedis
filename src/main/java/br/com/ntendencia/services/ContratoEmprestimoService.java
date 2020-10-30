@@ -1,14 +1,14 @@
 package br.com.ntendencia.services;
 
-import java.util.List;
-
 import br.com.ntendencia.domain.ContratoEmprestimo;
+
+import java.util.List;
 
 public interface ContratoEmprestimoService {
 	
-	String contratoEmprestimoSave(ContratoEmprestimo contratoEmprestimo);
+	ContratoEmprestimo contratoEmprestimoSave(ContratoEmprestimo contratoEmprestimo);
 	void deleteContratoEmprestimo(String id);
 	
-	List<ContratoEmprestimo> contratosEmprestimo();
+	List<ContratoEmprestimo> listarTodoscontratosEmprestimo();
 	
 }

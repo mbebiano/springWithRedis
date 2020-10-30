@@ -1,6 +1,5 @@
 package br.com.ntendencia.services.impl;
 
-import br.com.ntendencia.domain.Mutuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,41 +31,37 @@ public class MutuanteServicesImpl implements MutuanteService {
 	@Override
 	public Mutuante procurarPorId(String id) {
 		Optional<Mutuante> mutuanteOBJ = mutuanteRepo.findById(id);
-		return mutuanteOBJ.get();
+		return mutuanteOBJ.orElse(null);
 	}
 
 	@Override
 	public List<Mutuante> listaMutuantes() {
-		List<Mutuante> list =(List<Mutuante>) mutuanteRepo.findAll();
-		return list;
+		return (List<Mutuante>) mutuanteRepo.findAll();
 	}
 
 	@Override
 	public Integer gerarId() {
 		List<Mutuante> mutuante = listaMutuantes();
-		Integer ultimoReferencial = 0;
-		Optional<Mutuante> mutuanteOpt = mutuante.stream().max(Comparator.comparingInt(Mutuante::getIdReferencial));
+		Integer ultimoIdMutuante = 0;
+		Optional<Mutuante> mutuanteOpt = mutuante.stream().max(Comparator.comparingInt(Mutuante::getIdMutuante));
 		if (mutuanteOpt.isPresent()){
-			ultimoReferencial = mutuanteOpt.get().getIdReferencial();
+			ultimoIdMutuante = mutuanteOpt.get().getIdMutuante();
 		}
-
-		return ultimoReferencial+1;
+		return ultimoIdMutuante+1;
 	}
 
 	@Override
-	public Mutuante salvarMutuario(Mutuante mutuante) {
-		Integer idReferencial = gerarId();
-		mutuante.setId(idReferencial.toString());
-		mutuante.setIdReferencial(idReferencial);
-
+	public Mutuante salvarMutuante(Mutuante mutuante) {
+		Integer idMutuante = gerarId();
+		mutuante.setIdUsuario(idMutuante.toString());
+		mutuante.setIdMutuante(idMutuante);
 		return mutuanteRepo.save(mutuante);
 	}
 
 	@Override
 	public Mutuante procurarPorNome(String nome) {
 		Optional<Mutuante> mutuanteOpt = mutuanteRepo.findByName(nome);
-		Mutuante mutuante = mutuanteOpt.get();
-		return mutuante;
+		return mutuanteOpt.orElse(null);
 	}
 
 }

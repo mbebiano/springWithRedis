@@ -1,19 +1,17 @@
 package br.com.ntendencia.services.impl;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-
+import br.com.ntendencia.domain.ContratoEmprestimo;
 import br.com.ntendencia.domain.ItemEmprestado;
-import br.com.ntendencia.domain.Mutuario;
-import br.com.ntendencia.dto.ItemEmprestadoDTO;
+import br.com.ntendencia.repositories.ContratoEmprestimoRepository;
+import br.com.ntendencia.services.ContratoEmprestimoService;
+import br.com.ntendencia.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.ntendencia.domain.ContratoEmprestimo;
-import br.com.ntendencia.repositories.ContratoEmprestimoRepository;
-import br.com.ntendencia.services.ContratoEmprestimoService;
+import java.util.List;
+
+import static br.com.ntendencia.enums.EStatus.DISPONIVEL;
+import static br.com.ntendencia.enums.EStatus.EMPRESTADO;
 
 @Service
 public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService {
@@ -25,38 +23,29 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
 	private ItemEmprestadoServicesImpl itemEmprestadoServices;
 
 	@Autowired MutuarioServicesImpl mutuarioServices;
-	
+
 	@Override
-	public String contratoEmprestimoSave(ContratoEmprestimo contratoEmprestimo) {
-		List<ItemEmprestadoDTO> itensEmprestados=contratoEmprestimo.getItemEmprestadoDTO();
-		List<String> ids = new ArrayList<String>();
-		itensEmprestados.forEach(itemEmprestadoDTO -> ids.add(itemEmprestadoDTO.getId()));
-		for(String id : ids){
-			Optional<ItemEmprestado> itemProcura = itemEmprestadoServices.procuraItemEmprestado(id);
-			if(itemProcura.get().getMutuarioDTO()!=null){
-				return "Um item já está emprestado";
+	public ContratoEmprestimo contratoEmprestimoSave(ContratoEmprestimo contratoEmprestimo) {
+//		contratoEmprestimo.getItensEmprestados().stream().
+//				filter(
+//
+//		);
+		contratoEmprestimo.getItensEmprestados().forEach(itemEmprestado -> {
+			ItemEmprestado itemEmprestadoObj =itemEmprestadoServices.
+					procurarItemEmprestado(itemEmprestado.getId()).orElseThrow();
+			if (itemEmprestadoObj.geteStatus()!=DISPONIVEL) {
+				throw new ResourceNotFoundException(itemEmprestadoObj.getId());
 			}
-		}
-		try{
-			 if (contratoEmprestimoRepo.findById(contratoEmprestimo.getId()).isPresent()){
-				 return "Contrato Não Salvo, id será gerado pelo banco";
-			}
-		} catch (Exception e) {
-			String idMutuario = contratoEmprestimo.getMutuarioDTO().getId();
-			if(mutuarioServices.findById(idMutuario)!=null){
-				Mutuario mutuario =mutuarioServices.findById(idMutuario);
-				List<ItemEmprestadoDTO> list = contratoEmprestimo.getItemEmprestadoDTO();
-				for(ItemEmprestadoDTO item : list){
-					mutuarioServices.atualizaMutuarioItens(mutuario.getId(), item);
-				}
-			}
-			else{
-				return "Contrato não salvo, mutuario não encontrado";
-			}
-			contratoEmprestimoRepo.save(contratoEmprestimo);
-			return "Contrato Salvo";
-		}
-		return "Contrato Não Salvo";
+		});
+
+		contratoEmprestimo.getItensEmprestados().forEach(itemEmprestado ->
+		{
+			itemEmprestado.seteStatus(EMPRESTADO);
+			itemEmprestadoServices.alterarStatusItemEmprestado(itemEmprestado.getId(), EMPRESTADO);
+			itemEmprestadoServices.definirDataDeEmprestimo(itemEmprestado);
+			itemEmprestadoServices.atualizarItemEmprestado(itemEmprestado);
+		});
+		return contratoEmprestimoRepo.save(contratoEmprestimo);
 	}
 
 	@Override
@@ -64,8 +53,9 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
 		contratoEmprestimoRepo.deleteById(id);
 		
 	}
+
 	@Override
-	public List<ContratoEmprestimo> contratosEmprestimo() {
+	public List<ContratoEmprestimo> listarTodoscontratosEmprestimo() {
 		return (List<ContratoEmprestimo>) contratoEmprestimoRepo.findAll();
 	}
 }

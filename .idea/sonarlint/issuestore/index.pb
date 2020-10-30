@@ -19,8 +19,6 @@ d
 4src/main/java/br/com/ntendencia/domain/Mutuante.java,1\4\14f841f672fcd2c103741d7d66c1423623e844da
 p
 @src/main/java/br/com/ntendencia/resources/MutuanteResources.java,5\b\5bfd94cb66aa56ac9401fc191d40fe58c59d604e
-`
-0src/main/java/br/com/ntendencia/domain/User.java,b\f\bf7915699a54182147a27128958a41597a0ea184
 t
 Dsrc/main/java/br/com/ntendencia/repositories/MutuarioRepository.java,7\0\700c64ab603f8cfeb912226b15f5f36a368e3792
 :
@@ -64,3 +62,11 @@ Csrc/main/java/br/com/ntendencia/services/ItemEmprestadoService.java,7\1\7120d9
 Msrc/main/java/br/com/ntendencia/services/impl/ItemEmprestadoServicesImpl.java,5\1\5138c57a0505a2d432ea8eaf4705ff3ea990ec35
 j
 :src/main/java/br/com/ntendencia/dto/ItemEmprestadoDTO.java,3\b\3b0663923dc6d96a02038b2198be3ffe254ef72d
+b
+2src/main/java/br/com/ntendencia/enums/EStatus.java,7\2\72eb31d22a08dc6cbe79ad8144c39000a043a887
+c
+3src/main/java/br/com/ntendencia/domain/Usuario.java,1\8\184ff6e8a84c84807ee9f968b617e6970df90ac1
+l
+<src/main/java/br/com/ntendencia/services/UsuarioService.java,7\a\7af2bc593f09e00054216dc3c8f2a739a841ad6f
+v
+Fsrc/main/java/br/com/ntendencia/services/impl/UsuarioServicesImpl.java,5\d\5df5b4fbf2d38e5a3d9faad3c429693aaae61097
