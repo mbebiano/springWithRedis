@@ -21,8 +21,7 @@ public class ContratoEmprestimoResources {
 	
 	@PostMapping("/save")
 	public String createContratoEmprestimo(@RequestBody ContratoEmprestimo contratoEmprestimo) {
-		System.out.println(contratoEmprestimoService.contratoEmprestimoSave(contratoEmprestimo));
-
+		contratoEmprestimoService.contratoEmprestimoSave(contratoEmprestimo);
 		return "Contrato Salvo";
 	}
 	
@@ -31,9 +30,7 @@ public class ContratoEmprestimoResources {
 		contratoEmprestimoService.deleteContratoEmprestimo(id);
 		return "Contrato Deletado";
 	}
-	
 
-	
 	@GetMapping("/listaContratos")
 	public ResponseEntity<List<ContratoEmprestimo>> findAll(){
 		List<ContratoEmprestimo> list = contratoEmprestimoService.listarTodoscontratosEmprestimo();

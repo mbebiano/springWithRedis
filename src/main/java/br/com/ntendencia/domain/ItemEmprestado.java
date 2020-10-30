@@ -30,9 +30,11 @@ public class ItemEmprestado  {
 		this.qtdDiasDeDevolucao = qtdDiasDeDevolucao;
 	}
 
-	public LocalDate dataDevolucao(){
-		return dataEmprestimo.plusDays(this.qtdDiasDeDevolucao);
-	}
+//	public LocalDate dataDevolucao(){
+//		LocalDate dataDeDevolucao = getDataEmprestimo().plusDays(this.qtdDiasDeDevolucao);
+//		return dataDeDevolucao;
+//		// nao ira existir essa função será feita direta no service
+//	}
 
 	public String getId() {
 		return id;

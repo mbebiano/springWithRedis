@@ -1,9 +1,9 @@
 
+]	java:S125P"<This block of commented-out lines of code should be removed.(Æü‹‹üÿÿÿÿ8ĞÃí÷Ö.
 }
-java:S1488M"`Immediately return this expression instead of assigning it to the temporary variable "mutuario".(¨Ã±Â8“ĞÏÛÖ.
+java:S1488I"`Immediately return this expression instead of assigning it to the temporary variable "mutuario".(¨Ã±Â8“ĞÏÛÖ.
+]	java:S125 "<This block of commented-out lines of code should be removed.(ÅµÉşÿÿÿÿ8Ñ¥®Õ.
 R
-java:S1481S"0Remove this unused "mutuarioObj" local variable.(§“õóûÿÿÿÿ8ĞÃí÷Ö.
+java:S1481O"0Remove this unused "mutuarioObj" local variable.(§“õóûÿÿÿÿ8ĞÃí÷Ö.
 a
-java:S1854S"?Remove this useless assignment to local variable "mutuarioObj".(§“õóûÿÿÿÿ8ĞÃí÷Ö.
-]	java:S125#"<This block of commented-out lines of code should be removed.(ÅµÉşÿÿÿÿ8Ñ¥®Õ.
-]	java:S125T"<This block of commented-out lines of code should be removed.(Æü‹‹üÿÿÿÿ8ĞÃí÷Ö.
+java:S1854O"?Remove this useless assignment to local variable "mutuarioObj".(§“õóûÿÿÿÿ8ĞÃí÷Ö.

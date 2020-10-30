@@ -4,13 +4,17 @@ import br.com.ntendencia.domain.ItemEmprestado;
 import br.com.ntendencia.enums.EStatus;
 import br.com.ntendencia.repositories.ItemEmprestadoRepository;
 import br.com.ntendencia.services.ItemEmprestadoService;
+import br.com.ntendencia.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+
+import static br.com.ntendencia.enums.EStatus.EMPRESTADO;
 
 @Service
 public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
@@ -84,10 +88,71 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 		atualizarDadoItemEmprestado(novoObj, obj);
 		return itemEmprestadoRepo.save(obj);
 	}
+
 	@Override
 	public void atualizarDadoItemEmprestado(Optional<ItemEmprestado> novoObj, ItemEmprestado obj) {
 		novoObj.get().setName(obj.getName());
 		novoObj.get().setDataEmprestimo(obj.getDataEmprestimo());
 		novoObj.get().seteStatus(obj.geteStatus());
 	}
+
+	@Override
+	public List<ItemEmprestado> dataDeDevolucao() {
+		List<ItemEmprestado> paraEmprestar = listarItensEmprestados();
+		List<ItemEmprestado> itensStatusEmprestadoAtrasado = new ArrayList<>();
+		paraEmprestar.forEach(itemEmprestado -> {
+			if(itemEmprestado.geteStatus()==EMPRESTADO){
+				System.out.println(itemEmprestado.getDataEmprestimo().
+						plusDays(itemEmprestado.getQtdDiasDeDevolucao()).
+						isAfter(LocalDate.now()));
+				if(itemEmprestado.getDataEmprestimo().
+						plusDays(itemEmprestado.getQtdDiasDeDevolucao()).
+						isBefore(LocalDate.now())){
+//					System.out.println(itemEmprestado.geteStatus());
+//					LocalDate data = itemEmprestado.getDataEmprestimo().plusDays(itemEmprestado.getQtdDiasDeDevolucao());
+//					System.out.println("Data eh" + data);
+//					LocalDate data2 = LocalDate.now();
+//					System.out.println("Data hj" + data2);
+//					System.out.println(data.isBefore(data2));
+					itensStatusEmprestadoAtrasado.add(itemEmprestado);
+				}
+
+			}
+		});
+//		paraEmprestar.forEach(itemEmprestado -> {
+//		    System.out.println(itemEmprestado.geteStatus());
+//			if(itemEmprestado.geteStatus()==EStatus.EMPRESTADO){
+//				if(itemEmprestado.getDataEmprestimo().
+//						plusDays(itemEmprestado.getQtdDiasDeDevolucao()).
+//						isAfter(LocalDate.now())){
+//					itensStatusEmprestadoAtrasado.add(itemEmprestado);
+//				}
+//			}
+//		});
+
+//				// pegar itens emprestados do status para verificar
+//		if(itemEmprestado.getDataEmprestimo()!=null){
+//			throw new ResourceNotFoundException(itemEmprestado.getId());
+//		}
+		if(itensStatusEmprestadoAtrasado.isEmpty()){
+			return null;
+		}
+		return itensStatusEmprestadoAtrasado;
+	}
+
+	@Override
+	public List<ItemEmprestado> listarItensEmAtraso() {
+//		List<ItemEmprestado> listaDeItens = listarItensEmprestados();
+//		List<ItemEmprestado> listaDeItensAtrasados = new ArrayList<>();
+//		listaDeItens.forEach(itemEmprestado -> {
+//			if (dataDeDevolucao(itemEmprestado).isAfter(LocalDate.now())){
+//				listaDeItensAtrasados.add(itemEmprestado);
+//			}
+//		});
+//		if(listaDeItensAtrasados.isEmpty()){
+//			return null;
+//		}
+		return null;
+	}
+
 }

@@ -14,7 +14,7 @@ public class ItemEmprestadoResources {
 	
 	@Autowired
 	private ItemEmprestadoServicesImpl itemEmprestadoService;
-	
+
 	@PostMapping("/save")
 	public String createUser(@RequestBody ItemEmprestado itemEmprestado) {
 		itemEmprestadoService.salvarItemEmprestado(itemEmprestado);
@@ -27,7 +27,7 @@ public class ItemEmprestadoResources {
 		return "Item Deletado";
 	}
 	
-	@GetMapping("/listaItens")
+	@GetMapping("/listarItens")
 	public List<ItemEmprestado> listaItens(){
 		return itemEmprestadoService.listarItensEmprestados();
 	}
@@ -36,5 +36,12 @@ public class ItemEmprestadoResources {
 	public Optional<ItemEmprestado> buscarPorId(@PathVariable String id){
 		return itemEmprestadoService.procurarItemEmprestado(id);
 	}
-	
+
+	@GetMapping("/listarItensAtrasados")
+	public List<ItemEmprestado> listaItensEmAtraso() {
+		if (itemEmprestadoService.dataDeDevolucao() != null) {
+			return itemEmprestadoService.dataDeDevolucao();
+		}
+		return null;
+	}
 }
