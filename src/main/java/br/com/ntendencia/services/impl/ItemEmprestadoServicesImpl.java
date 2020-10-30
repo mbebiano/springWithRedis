@@ -102,18 +102,9 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 		List<ItemEmprestado> itensStatusEmprestadoAtrasado = new ArrayList<>();
 		paraEmprestar.forEach(itemEmprestado -> {
 			if(itemEmprestado.geteStatus()==EMPRESTADO){
-				System.out.println(itemEmprestado.getDataEmprestimo().
-						plusDays(itemEmprestado.getQtdDiasDeDevolucao()).
-						isAfter(LocalDate.now()));
 				if(itemEmprestado.getDataEmprestimo().
 						plusDays(itemEmprestado.getQtdDiasDeDevolucao()).
 						isBefore(LocalDate.now())){
-//					System.out.println(itemEmprestado.geteStatus());
-//					LocalDate data = itemEmprestado.getDataEmprestimo().plusDays(itemEmprestado.getQtdDiasDeDevolucao());
-//					System.out.println("Data eh" + data);
-//					LocalDate data2 = LocalDate.now();
-//					System.out.println("Data hj" + data2);
-//					System.out.println(data.isBefore(data2));
 					itensStatusEmprestadoAtrasado.add(itemEmprestado);
 				}
 
