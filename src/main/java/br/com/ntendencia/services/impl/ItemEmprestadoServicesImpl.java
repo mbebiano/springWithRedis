@@ -97,7 +97,7 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 	}
 
 	@Override
-	public List<ItemEmprestado> dataDeDevolucao() {
+	public List<ItemEmprestado> listarItensEmAtraso() {
 		List<ItemEmprestado> paraEmprestar = listarItensEmprestados();
 		List<ItemEmprestado> itensStatusEmprestadoAtrasado = new ArrayList<>();
 		paraEmprestar.forEach(itemEmprestado -> {
@@ -119,40 +119,13 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 
 			}
 		});
-//		paraEmprestar.forEach(itemEmprestado -> {
-//		    System.out.println(itemEmprestado.geteStatus());
-//			if(itemEmprestado.geteStatus()==EStatus.EMPRESTADO){
-//				if(itemEmprestado.getDataEmprestimo().
-//						plusDays(itemEmprestado.getQtdDiasDeDevolucao()).
-//						isAfter(LocalDate.now())){
-//					itensStatusEmprestadoAtrasado.add(itemEmprestado);
-//				}
-//			}
-//		});
 
-//				// pegar itens emprestados do status para verificar
-//		if(itemEmprestado.getDataEmprestimo()!=null){
-//			throw new ResourceNotFoundException(itemEmprestado.getId());
-//		}
 		if(itensStatusEmprestadoAtrasado.isEmpty()){
 			return null;
 		}
 		return itensStatusEmprestadoAtrasado;
 	}
 
-	@Override
-	public List<ItemEmprestado> listarItensEmAtraso() {
-//		List<ItemEmprestado> listaDeItens = listarItensEmprestados();
-//		List<ItemEmprestado> listaDeItensAtrasados = new ArrayList<>();
-//		listaDeItens.forEach(itemEmprestado -> {
-//			if (dataDeDevolucao(itemEmprestado).isAfter(LocalDate.now())){
-//				listaDeItensAtrasados.add(itemEmprestado);
-//			}
-//		});
-//		if(listaDeItensAtrasados.isEmpty()){
-//			return null;
-//		}
-		return null;
-	}
+
 
 }

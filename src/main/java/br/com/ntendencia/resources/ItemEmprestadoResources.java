@@ -39,9 +39,6 @@ public class ItemEmprestadoResources {
 
 	@GetMapping("/listarItensAtrasados")
 	public List<ItemEmprestado> listaItensEmAtraso() {
-		if (itemEmprestadoService.dataDeDevolucao() != null) {
-			return itemEmprestadoService.dataDeDevolucao();
-		}
-		return null;
+		return itemEmprestadoService.listarItensEmAtraso();
 	}
 }
