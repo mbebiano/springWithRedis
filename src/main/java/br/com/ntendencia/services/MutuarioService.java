@@ -23,6 +23,4 @@ public interface MutuarioService {
 
 	Mutuario procurarPorNome(String nome);
 
-	void atualizaMutuarioItens(String id, ItemEmprestadoDTO itemEmprestadoDTO);
-
 }

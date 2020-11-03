@@ -63,16 +63,28 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 
 	@Override
 	public void deletarItemEmprestado(String id) {
-		itemEmprestadoRepo.deleteById(id);
+		if(procurarItemEmprestado(id).isPresent()){
+			itemEmprestadoRepo.deleteById(id);
+		}
 	}
 	@Override
 	public List<ItemEmprestado> listarItensEmprestados() {
-		return (List<ItemEmprestado>) itemEmprestadoRepo.findAll();
+		if (itemEmprestadoRepo.findAll() != null) {
+			return (List<ItemEmprestado>) itemEmprestadoRepo.findAll();
+		}
+		else{
+			throw new ResourceNotFoundException("Não foi encontrado itens registrados");
+		}
 	}
 
 	@Override
 	public Optional<ItemEmprestado> procurarItemEmprestado(String id) {
-		return itemEmprestadoRepo.findById(id);
+		if(itemEmprestadoRepo.findById(id).isPresent()){
+			return itemEmprestadoRepo.findById(id);
+		}
+		else{
+			throw new ResourceNotFoundException("Item id: "+id+" não foi encontrado.");
+		}
 	}
 
 	@Override
@@ -127,7 +139,7 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 		});
 
 		if(itensStatusEmprestadoAtrasado.isEmpty()){
-			return null;
+			throw new ResourceNotFoundException("Não há itens em atraso");
 		}
 		return itensStatusEmprestadoAtrasado;
 	}

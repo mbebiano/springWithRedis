@@ -4,6 +4,7 @@ import br.com.ntendencia.domain.Mutuario;
 import br.com.ntendencia.dto.ItemEmprestadoDTO;
 import br.com.ntendencia.repositories.MutuarioRepository;
 import br.com.ntendencia.services.MutuarioService;
+import br.com.ntendencia.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,28 +25,33 @@ public class MutuarioServicesImpl implements MutuarioService {
 
 	@Override
 	public void deleteMutuario(String id) {
-		mutuarioRepo.deleteById(id);
-		
+		System.out.println(mutuarioRepo.findById(id).isPresent());
+		if(mutuarioRepo.findById(id).isPresent()){
+			mutuarioRepo.deleteById(id);
+		}
+		else{
+			throw new ResourceNotFoundException("Mutuario id: "+id+" não foi encontrado.");
+		}
 	}
-
-//	@Override
-//	public List<ItemEmprestado> listaItens(String id) {
-//
-//
-//		Mutuario obj = mutuarioRepo.findById(id).get();
-//
-//		return obj.getItemsEmprestados();
-//	}
 
 	@Override
 	public Mutuario findById(String id) {
-		Optional<Mutuario> mutuarioOBJ = mutuarioRepo.findById(id);
-		return mutuarioOBJ.orElseThrow();
+		if(mutuarioRepo.findById(id).isPresent()){
+			return mutuarioRepo.findById(id).get();
+		}
+		else{
+			throw new ResourceNotFoundException("Mutuario id: "+id+" não foi encontrado.");
+		}
 	}
 	
 	@Override
 	public List<Mutuario> listaMutuarios() {
-		return (List<Mutuario>) mutuarioRepo.findAll();
+		if (mutuarioRepo.findAll() != null) {
+			return (List<Mutuario>) mutuarioRepo.findAll();
+		}
+		else {
+			throw new ResourceNotFoundException("Não há mutuarios registrados");
+		}
 	}
 
 	@Override
@@ -69,20 +75,12 @@ public class MutuarioServicesImpl implements MutuarioService {
 
 	@Override
 	public Mutuario procurarPorNome(String nome) {
-		Optional<Mutuario> mutuarioOpt = mutuarioRepo.findByName(nome);
-		Mutuario mutuario = mutuarioOpt.orElseThrow();
-		return mutuario;
+		if(mutuarioRepo.findByName(nome).isPresent()){
+			return mutuarioRepo.findByName(nome).orElseThrow();
+		}
+		else{
+			throw new ResourceNotFoundException("Mutuario com nome: "+nome+" não encontrado");
+		}
 	}
 
-	@Override
-	public void atualizaMutuarioItens(String id, ItemEmprestadoDTO itemEmprestadoDTO) {
-		Optional<Mutuario> mutuarioObj = mutuarioRepo.findById(id);
-//		if(mutuarioObj.isPresent()){
-//			mutuarioObj.get().getItemsEmprestadosDTO().add(itemEmprestadoDTO);
-//			mutuarioRepo.save(mutuarioObj.get());
-//		}
-//		else{
-//			throw new ResourceNotFoundException(id);
-//		}
-	}
 }
