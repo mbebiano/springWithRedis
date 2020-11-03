@@ -10,23 +10,11 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/itemEmprestado")
-public class ItemEmprestadoResources {
+public class ItemEmprestadoLeitura {
 	
 	@Autowired
 	private ItemEmprestadoServicesImpl itemEmprestadoService;
 
-	@PostMapping("/save")
-	public String createUser(@RequestBody ItemEmprestado itemEmprestado) {
-		itemEmprestadoService.salvarItemEmprestado(itemEmprestado);
-		return "Item salvo";
-	}
-	
-	@DeleteMapping("/delete/{id}")
-	public String deleteItem(@PathVariable String id) {
-		itemEmprestadoService.deletarItemEmprestado(id);
-		return "Item Deletado";
-	}
-	
 	@GetMapping("/listarItens")
 	public List<ItemEmprestado> listaItens(){
 		return itemEmprestadoService.listarItensEmprestados();

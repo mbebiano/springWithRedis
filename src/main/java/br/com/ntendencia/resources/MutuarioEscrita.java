@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/mutuario")
-public class MutuarioResources {
+public class MutuarioEscrita {
 	
 	@Autowired
 	private MutuarioServicesImpl mutuarioService;
@@ -28,18 +28,4 @@ public class MutuarioResources {
 		return "Usuario Deletado";
 	}
 
-	@GetMapping("/mutuarioId/{id}")
-	public Mutuario mutuarioPorId(@PathVariable String id){
-		return mutuarioService.findById(id);
-		}
-
-	@GetMapping("/procuraPorNome/{nome}")
-	public Mutuario mutuarioPorNome(@PathVariable String nome){
-		return mutuarioService.procurarPorNome(nome);
-	}
-
-	@GetMapping("/listaTodos")
-	public ResponseEntity<List<Mutuario>> listaTodos(){
-		return ResponseEntity.ok().body(mutuarioService.listaMutuarios());
-	}
 }

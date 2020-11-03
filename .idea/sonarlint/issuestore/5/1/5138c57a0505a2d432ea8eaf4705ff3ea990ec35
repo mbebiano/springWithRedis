@@ -1,12 +1,8 @@
 
-X
-java:S3655\"6Call "novoObj.isPresent()" before accessing the value.(’ïû˜ıÿÿÿÿ8˜áÃÌ×.
-]	java:S125"<This block of commented-out lines of code should be removed.(üë„åûÿÿÿÿ8Áƒæ÷Ö.
-Q
-java:S1066g"/Merge this if statement with the enclosing one.(Êßşºûÿÿÿÿ8ó¦ŞÕ×.
-I
-java:S1168…"+Return an empty collection instead of null.(¥¹ï8ÁğÕ×.
-]	java:S125p"<This block of commented-out lines of code should be removed.(çØûªÿÿÿÿÿ8ùôƒÕ×.
+]	java:S125"<This block of commented-out lines of code should be removed.(üë„åûÿÿÿÿ8Áƒæ÷Ö.
 H
-java:S1168t"+Return an empty collection instead of null.(¥¹ï8£ÅâÕ×.
-X	java:S125{"<This block of commented-out lines of code should be removed.(œãöÉ8·«ğÕ×.
+java:S1168s"+Return an empty collection instead of null.(¥¹ï8£ÅâÕ×.
+Q
+java:S1066i"/Merge this if statement with the enclosing one.(Êßşºûÿÿÿÿ8£ÄÙ×.
+X
+java:S3655^"6Call "novoObj.isPresent()" before accessing the value.(’ïû˜ıÿÿÿÿ8˜áÃÌ×.

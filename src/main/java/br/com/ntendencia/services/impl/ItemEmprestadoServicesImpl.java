@@ -14,6 +14,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
+import static br.com.ntendencia.enums.EStatus.DISPONIVEL;
 import static br.com.ntendencia.enums.EStatus.EMPRESTADO;
 
 @Service
@@ -26,24 +27,38 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 	
 	@Override
 	public ItemEmprestado salvarItemEmprestado(ItemEmprestado itemEmprestado) {
-//		String id = itemEmprestado.getMutuanteDTO().getId();
-//		try{
-//			if (mutuanteService.procurarPorId(id) == null) {
-//				throw new ResourceNotFoundException(id);
-//			}
-//			if (itemEmprestado.getId()!= null){
-//				throw new ResourceNotFoundException(itemEmprestado.getId());
-//			}
-//			return itemEmprestadoRepo.save(itemEmprestado);
-//		}
-//		catch (RuntimeException e){
-//			e.printStackTrace();
-//			throw new ResourceNotFoundException(id);
-//		}
-		Integer idItemEmprestado = gerarId();
-		itemEmprestado.setId(idItemEmprestado.toString());
-		itemEmprestado.setIdItemEmprestado(idItemEmprestado);
-		return itemEmprestadoRepo.save(itemEmprestado);
+		String id = itemEmprestado.getIdMutuante();
+		try{
+			if (mutuanteService.procurarPorId(id) == null) {
+				throw new ResourceNotFoundException("Id de mutuante: "+id+"não foi encontrado");
+			}
+			if (itemEmprestado.getId()!= null){
+				throw new ResourceNotFoundException("Id será gerado pelo banco");
+			}
+			if(itemEmprestado.getQtdDiasDeDevolucao()<=1){
+				throw new ResourceNotFoundException("Qtd dias deve ser igual ou superior a 2");
+			}
+			itemEmprestado.seteStatus(DISPONIVEL);// Setar como disponível ou indisponível if
+			Integer idItemEmprestado = gerarId();
+			itemEmprestado.setId(idItemEmprestado.toString());
+			itemEmprestado.setIdItemEmprestado(idItemEmprestado);
+			return itemEmprestadoRepo.save(itemEmprestado);
+		}
+		catch (RuntimeException e){
+			if (mutuanteService.procurarPorId(id) == null) {
+				throw new ResourceNotFoundException("Id de mutuante: "+id+" não foi encontrado");
+			}
+			if (itemEmprestado.getId()!= null){
+				throw new ResourceNotFoundException("Id será gerado pelo banco");
+			}
+			if(itemEmprestado.getQtdDiasDeDevolucao()<=1){
+				throw new ResourceNotFoundException("Qtd dias deve ser igual ou superior a 2");
+			}
+			else{
+				throw new ResourceNotFoundException("Excessão não tratada");
+			}
+
+		}
 	}
 
 	@Override
@@ -116,7 +131,4 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 		}
 		return itensStatusEmprestadoAtrasado;
 	}
-
-
-
 }
