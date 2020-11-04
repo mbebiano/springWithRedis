@@ -1,8 +1,8 @@
 
-]	java:S125"<This block of commented-out lines of code should be removed.(üë„åûÿÿÿÿ8Áƒæ÷Ö.
-H
-java:S1168s"+Return an empty collection instead of null.(¥¹ï8£ÅâÕ×.
-Q
-java:S1066i"/Merge this if statement with the enclosing one.(Êßşºûÿÿÿÿ8£ÄÙ×.
+_
+java:S2583<"CChange this condition so that it does not always evaluate to "true"(­Şµt8¼—òØ.
+d
+java:S1126€"AReplace this if-then-else statement by a single return statement.(íéÁÊşÿÿÿÿ8Ë£Œ„Ù.
+]	java:S125s"<This block of commented-out lines of code should be removed.(ÍŞÎ€ùÿÿÿÿ8ëÅíƒÙ.
 X
-java:S3655^"6Call "novoObj.isPresent()" before accessing the value.(’ïû˜ıÿÿÿÿ8˜áÃÌ×.
+java:S3655k"6Call "novoObj.isPresent()" before accessing the value.(’ïû˜ıÿÿÿÿ8‚òßñØ.

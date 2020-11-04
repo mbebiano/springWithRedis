@@ -53,6 +53,9 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
         if (procurarItemEmprestado(id).isPresent()) {
             itemEmprestadoRepo.deleteById(id);
         }
+        else {
+            throw new ResourceNotFoundException("Não foi encontrado item com o id: "+id);
+        }
     }
 
     @Override

@@ -56,8 +56,12 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
 
     @Override
     public void deleteContratoEmprestimo(String id) {
-        contratoEmprestimoRepo.deleteById(id);
-
+        if (contratoEmprestimoRepo.findById(id).isPresent()) {
+            contratoEmprestimoRepo.deleteById(id);
+        }
+        else {
+            throw new ResourceNotFoundException("Não foi encontrado contrato com o id: "+id);
+        }
     }
 
     @Override

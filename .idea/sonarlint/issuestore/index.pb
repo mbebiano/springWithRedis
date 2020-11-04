@@ -3,8 +3,6 @@ q
 Asrc/main/java/br/com/ntendencia/CoisasEmprestadasApplication.java,c\6\c65841a52af8803dd4ca359c5286eec5d081f263
 E
 coisasEmprestadas.iml,a\9\a984e152c6af1c03aa4127c456e224a5660272b5
-p
-@src/main/java/br/com/ntendencia/resources/MutuarioResources.java,3\0\30d94974dedb1ba20406d8aa0221fe8458759954
 d
 4src/main/java/br/com/ntendencia/domain/Mutuario.java,4\b\4b3b3abbc4d19dfe0d1568da75a56d064e1c0f29
 j
@@ -17,15 +15,11 @@ w
 Gsrc/main/java/br/com/ntendencia/services/impl/MutuarioServicesImpl.java,c\e\ce980f6323f39543dbd2c6927729bf5c51405842
 d
 4src/main/java/br/com/ntendencia/domain/Mutuante.java,1\4\14f841f672fcd2c103741d7d66c1423623e844da
-p
-@src/main/java/br/com/ntendencia/resources/MutuanteResources.java,5\b\5bfd94cb66aa56ac9401fc191d40fe58c59d604e
 t
 Dsrc/main/java/br/com/ntendencia/repositories/MutuarioRepository.java,7\0\700c64ab603f8cfeb912226b15f5f36a368e3792
 :
 
 .classpath,3\5\354079a72b91a4280407c16a36f47d1986fd85a5
-v
-Fsrc/main/java/br/com/ntendencia/resources/ItemEmprestadoResources.java,c\f\cf79e0dad4247dc369b5003a892f5413cc6f09f1
 ~
 Nsrc/main/java/br/com/ntendencia/repositories/ContratoEmprestimoRepository.java,e\7\e74a54cee55d1d1f76fc3d6df1ec5b8dee171d2f
 z
@@ -38,8 +32,6 @@ Gsrc/main/java/br/com/ntendencia/resources/exceptions/StandardError.java,9\f\9f
 Rsrc/main/java/br/com/ntendencia/services/exceptions/ResourceNotFoundException.java,4\9\49d7382e09eaae5b71e09dc526d6f03d008a4dc8
 ‚
 Rsrc/main/java/br/com/ntendencia/resources/exceptions/ResourceExceptionHandler.java,c\9\c9aa5e1e3dda7f80e26bedde2c0f86c13faac8d7
-z
-Jsrc/main/java/br/com/ntendencia/resources/ContratoEmprestimoResources.java,2\d\2d7ef15250f047201b328003ba837f26ba9bc8c8
 w
 Gsrc/main/java/br/com/ntendencia/services/ContratoEmprestimoService.java,9\1\910a26875548f759909a4f9aa3aa6e554242cb4f
 m
@@ -70,3 +62,19 @@ l
 <src/main/java/br/com/ntendencia/services/UsuarioService.java,7\a\7af2bc593f09e00054216dc3c8f2a739a841ad6f
 v
 Fsrc/main/java/br/com/ntendencia/services/impl/UsuarioServicesImpl.java,5\d\5df5b4fbf2d38e5a3d9faad3c429693aaae61097
+x
+Hsrc/main/java/br/com/ntendencia/resources/ContratoEmprestimoLeitura.java,b\f\bfb62913c5eb0e87fff709d6ca62ea822dcc55bf
+n
+>src/main/java/br/com/ntendencia/resources/MutuanteEscrita.java,7\a\7a46367b162b6357206181998ea4797f159a346c
+n
+>src/main/java/br/com/ntendencia/resources/MutuanteLeitura.java,d\0\d081dacc5c7bb392c19fcc49badd83321c22d2e9
+x
+Hsrc/main/java/br/com/ntendencia/resources/ContratoEmprestimoEscrita.java,9\e\9e789cdaf652f7e4c9bb266350b9deba2e921a79
+n
+>src/main/java/br/com/ntendencia/resources/MutuarioEscrita.java,4\f\4f9168b137711da2ec44670651b63398f7eceeb0
+n
+>src/main/java/br/com/ntendencia/resources/MutuarioLeitura.java,8\4\841b6421cc43fb247d2fb2661dc76c52a7f7db26
+t
+Dsrc/main/java/br/com/ntendencia/resources/ItemEmprestadoEscrita.java,3\3\33c3e8afea94bd99256e194664972efad957981e
+t
+Dsrc/main/java/br/com/ntendencia/resources/ItemEmprestadoLeitura.java,7\b\7b269ef9c584afff5076c7f59f5ec98cf209c3b1
