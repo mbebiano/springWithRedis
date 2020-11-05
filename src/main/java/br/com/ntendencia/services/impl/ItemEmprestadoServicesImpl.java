@@ -28,7 +28,6 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
     @Override
     public ItemEmprestado salvarItemEmprestado(ItemEmprestado itemEmprestado) {
         String id = itemEmprestado.getIdMutuante();
-
         if (mutuanteService.procurarPorId(id) == null) {
             throw new ResourceNotFoundException("Id de mutuante: " + id + "não foi encontrado");
         }
