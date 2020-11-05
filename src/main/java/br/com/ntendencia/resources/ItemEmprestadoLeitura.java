@@ -17,11 +17,8 @@ public class ItemEmprestadoLeitura {
     private ItemEmprestadoServicesImpl itemEmprestadoService;
 
     @GetMapping("/listarItens")
-    public List<ItemEmprestado> listarItens(HttpServletRequest request) {
-        if (request.getServletPath().startsWith("/itemEmprestado/listarItensAtrasados")) {
-            return itemEmprestadoService.listarItensEmAtraso();
-        }
-        return itemEmprestadoService.listarItensEmprestados();
+    public List<ItemEmprestado> listarItens(@RequestParam boolean atrasado) {
+        return itemEmprestadoService.listarItens(atrasado);
     }
 
     @GetMapping("/buscarPorId/{id}")

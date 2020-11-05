@@ -143,4 +143,12 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
         }
         return itensStatusEmprestadoAtrasado;
     }
+
+    @Override
+    public List<ItemEmprestado> listarItens(boolean atrasado) {
+        if (atrasado == true) {
+            return listarItensEmAtraso();
+        }
+        return listarItensEmprestados();
+    }
 }
