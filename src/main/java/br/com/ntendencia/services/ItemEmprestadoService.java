@@ -20,6 +20,7 @@ public interface ItemEmprestadoService {
 	void atualizarDadoItemEmprestado(Optional<ItemEmprestado> novoObj, ItemEmprestado obj);
 	ItemEmprestado atualizarItemEmprestado(ItemEmprestado obj);
 	List<ItemEmprestado> listarItensEmAtraso();
-	List<ItemEmprestado> listarItens(boolean atrasado);
+	List<ItemEmprestado> listarItensDisponiveis();
+	List<ItemEmprestado> listarItens(boolean atrasado, boolean disponiveis);
 
 }

@@ -64,7 +64,7 @@ public class Instaciacao implements CommandLineRunner {
 		livro.setId("1");
 		livro.setIdItemEmprestado(1);
 		livro.seteStatus(EStatus.EMPRESTADO);
-		livro.setDataEmprestimo(LocalDate.of(2020, 10, 30));
+		livro.setDataEmprestimo(LocalDate.of(2020, 10, 10));
 		ItemEmprestado notebook = new ItemEmprestado("Notebook","3",4);
 		notebook.seteStatus(EStatus.DISPONIVEL);
 		notebook.setId("2");

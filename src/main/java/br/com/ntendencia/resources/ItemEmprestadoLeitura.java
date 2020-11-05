@@ -17,13 +17,13 @@ public class ItemEmprestadoLeitura {
     private ItemEmprestadoServicesImpl itemEmprestadoService;
 
     @GetMapping("/listarItens")
-    public List<ItemEmprestado> listarItens(@RequestParam boolean atrasado) {
-        return itemEmprestadoService.listarItens(atrasado);
+    public List<ItemEmprestado> listarItens(@RequestParam(required = false) boolean atrasado,
+                                            @RequestParam(required = false) boolean disponiveis) {
+        return itemEmprestadoService.listarItens(atrasado, disponiveis);
     }
 
     @GetMapping("/buscarPorId/{id}")
     public Optional<ItemEmprestado> buscarPorId(@PathVariable String id) {
         return itemEmprestadoService.procurarItemEmprestado(id);
     }
-
 }

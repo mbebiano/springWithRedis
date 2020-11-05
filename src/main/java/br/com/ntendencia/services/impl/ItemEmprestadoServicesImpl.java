@@ -131,11 +131,8 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
         });*/
 
         List<ItemEmprestado> itensStatusEmprestadoAtrasado = paraEmprestar.stream().filter(itemEmprestado -> {
-            if (itemEmprestado.geteStatus() == EMPRESTADO && itemEmprestado.getDataEmprestimo().
-                    plusDays(itemEmprestado.getQtdDiasDeDevolucao()).isBefore(LocalDate.now())) {
-                return true;
-            }
-            return false;
+            return itemEmprestado.geteStatus() == EMPRESTADO && itemEmprestado.getDataEmprestimo().
+                    plusDays(itemEmprestado.getQtdDiasDeDevolucao()).isBefore(LocalDate.now());
         }).collect(Collectors.toList());
 
         if (itensStatusEmprestadoAtrasado.isEmpty()) {
@@ -145,9 +142,24 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
     }
 
     @Override
-    public List<ItemEmprestado> listarItens(boolean atrasado) {
-        if (atrasado == true) {
+    public List<ItemEmprestado> listarItensDisponiveis() {
+        List<ItemEmprestado> paraEmprestar = listarItensEmprestados();
+        List<ItemEmprestado> itensStatusEmprestadoDisponivel = paraEmprestar.stream().
+                filter(itemEmprestado -> {return itemEmprestado.geteStatus()==DISPONIVEL;}).collect(Collectors.toList());
+
+        if (itensStatusEmprestadoDisponivel.isEmpty()) {
+            throw new ResourceNotFoundException("Não há itens disponiveis para emprestimo");
+        }
+        return itensStatusEmprestadoDisponivel;
+    }
+
+    @Override
+    public List<ItemEmprestado> listarItens(boolean atrasado, boolean disponiveis) {
+        if (atrasado) {
             return listarItensEmAtraso();
+        }
+        if(disponiveis){
+            return listarItensDisponiveis();
         }
         return listarItensEmprestados();
     }
