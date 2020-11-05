@@ -2,7 +2,6 @@ package br.com.ntendencia.services.impl;
 
 import br.com.ntendencia.domain.ContratoEmprestimo;
 import br.com.ntendencia.domain.ItemEmprestado;
-import br.com.ntendencia.enums.EStatus;
 import br.com.ntendencia.repositories.ContratoEmprestimoRepository;
 import br.com.ntendencia.services.ContratoEmprestimoService;
 import br.com.ntendencia.services.exceptions.ResourceNotFoundException;
@@ -36,13 +35,13 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
         if(!itemEmprestadoList.isEmpty()){
             throw new ResourceNotFoundException("Esse(s) Item(S)" +itemEmprestadoList.size() + "Emprestados e indisponivel");
         }
-//        contratoEmprestimo.getItensEmprestados().forEach(itemEmprestado -> {
-//            ItemEmprestado itemEmprestadoObj = itemEmprestadoServices.
-//                    procurarItemEmprestado(itemEmprestado.getId()).orElseThrow();
-//            if (itemEmprestadoObj.geteStatus() != DISPONIVEL) {
-//                throw new ResourceNotFoundException(itemEmprestadoObj.getId());
-//            }
-//        });
+        /*       contratoEmprestimo.getItensEmprestados().forEach(itemEmprestado -> {
+         ItemEmprestado itemEmprestadoObj = itemEmprestadoServices.
+         procurarItemEmprestado(itemEmprestado.getId()).orElseThrow();
+         if (itemEmprestadoObj.geteStatus() != DISPONIVEL) {
+         throw new ResourceNotFoundException(itemEmprestadoObj.getId());
+         }
+         }); ***/
 
         contratoEmprestimo.getItensEmprestados().forEach(itemEmprestado ->
         {

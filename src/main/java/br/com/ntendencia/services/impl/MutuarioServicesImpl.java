@@ -1,7 +1,6 @@
 package br.com.ntendencia.services.impl;
 
 import br.com.ntendencia.domain.Mutuario;
-import br.com.ntendencia.dto.ItemEmprestadoDTO;
 import br.com.ntendencia.repositories.MutuarioRepository;
 import br.com.ntendencia.services.MutuarioService;
 import br.com.ntendencia.services.exceptions.ResourceNotFoundException;

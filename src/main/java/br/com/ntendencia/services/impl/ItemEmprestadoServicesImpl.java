@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -52,15 +51,15 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
     public void deletarItemEmprestado(String id) {
         if (procurarItemEmprestado(id).isPresent()) {
             itemEmprestadoRepo.deleteById(id);
-        }
-        else {
-            throw new ResourceNotFoundException("Não foi encontrado item com o id: "+id);
+        } else {
+            throw new ResourceNotFoundException("Não foi encontrado item com o id: " + id);
         }
     }
 
     @Override
     public List<ItemEmprestado> listarItensEmprestados() {
-        if (itemEmprestadoRepo.findAll() != null) {
+
+        if (itemEmprestadoRepo.findAll().iterator().hasNext()) {
             return (List<ItemEmprestado>) itemEmprestadoRepo.findAll();
         } else {
             throw new ResourceNotFoundException("Não foi encontrado itens registrados");
@@ -107,15 +106,19 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 
     @Override
     public void atualizarDadoItemEmprestado(Optional<ItemEmprestado> novoObj, ItemEmprestado obj) {
-        novoObj.get().setName(obj.getName());
-        novoObj.get().setDataEmprestimo(obj.getDataEmprestimo());
-        novoObj.get().seteStatus(obj.geteStatus());
+        if (novoObj.isPresent()) {
+            novoObj.get().setName(obj.getName());
+            novoObj.get().setDataEmprestimo(obj.getDataEmprestimo());
+            novoObj.get().seteStatus(obj.geteStatus());
+        } else {
+            throw new ResourceNotFoundException("Item emprestado não encontrado para atualizar");
+        }
     }
 
     @Override
     public List<ItemEmprestado> listarItensEmAtraso() {
         List<ItemEmprestado> paraEmprestar = listarItensEmprestados();
-//        List<ItemEmprestado> itensStatusEmprestadoAtrasado = new ArrayList<>();
+/*       List<ItemEmprestado> itensStatusEmprestadoAtrasado = new ArrayList<>();
 //        paraEmprestar.forEach(itemEmprestado -> {
 //            if (itemEmprestado.geteStatus() == EMPRESTADO) {
 //                if (itemEmprestado.getDataEmprestimo().
@@ -125,7 +128,7 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 //                }
 //
 //            }
-//        });
+        });*/
 
         List<ItemEmprestado> itensStatusEmprestadoAtrasado = paraEmprestar.stream().filter(itemEmprestado -> {
             if (itemEmprestado.geteStatus() == EMPRESTADO && itemEmprestado.getDataEmprestimo().
