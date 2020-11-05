@@ -16,7 +16,7 @@ public class ItemEmprestadoLeitura {
     @Autowired
     private ItemEmprestadoServicesImpl itemEmprestadoService;
 
-    @RequestMapping(value = {"/listarItens", "/listarItensAtrasados"}, method = RequestMethod.GET)
+    @GetMapping("/listarItens")
     public List<ItemEmprestado> listarItens(HttpServletRequest request) {
         if (request.getServletPath().startsWith("/itemEmprestado/listarItensAtrasados")) {
             return itemEmprestadoService.listarItensEmAtraso();
