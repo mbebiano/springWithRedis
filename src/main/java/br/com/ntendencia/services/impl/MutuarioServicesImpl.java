@@ -1,12 +1,15 @@
 package br.com.ntendencia.services.impl;
 
 import br.com.ntendencia.domain.Mutuario;
+import br.com.ntendencia.dto.MutuarioDTO;
 import br.com.ntendencia.repositories.MutuarioRepository;
 import br.com.ntendencia.services.MutuarioService;
 import br.com.ntendencia.services.exceptions.ResourceNotFoundException;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -17,10 +20,8 @@ public class MutuarioServicesImpl implements MutuarioService {
     @Autowired
     private MutuarioRepository mutuarioRepo;
 
-    @Override
-    public void mutuarioSave(Mutuario mutuario) {
-        mutuarioRepo.save(mutuario);
-    }
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Override
     public void deleteMutuario(String id) {
@@ -32,8 +33,23 @@ public class MutuarioServicesImpl implements MutuarioService {
     }
 
     @Override
-    public Mutuario findById(String id) {
-        return mutuarioRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Mutuario id: " + id + " não foi encontrado."));
+    public MutuarioDTO findById(String id) {
+        return new MutuarioDTO(mutuarioRepo.findById(id).
+                orElseThrow(() -> new ResourceNotFoundException
+                        ("Mutuario id: " + id + " não foi encontrado.")));
+    }
+
+    @Override
+    public List<MutuarioDTO> listaMutuariosDTO() {
+        if (mutuarioRepo.findAll().iterator().hasNext()) {
+            List<MutuarioDTO> listDTO = new ArrayList<>();
+            for (Mutuario mutuario : mutuarioRepo.findAll()) {
+                listDTO.add(new MutuarioDTO(mutuario));
+            }
+            return listDTO;
+        } else {
+            throw new ResourceNotFoundException("Não há mutuarios registrados");
+        }
     }
 
     @Override
@@ -57,7 +73,8 @@ public class MutuarioServicesImpl implements MutuarioService {
     }
 
     @Override
-    public Mutuario salvarMutuario(Mutuario mutuario) {
+    public Mutuario salvarMutuario(MutuarioDTO mutuarioDTO) {
+        Mutuario mutuario = modelMapper.map(mutuarioDTO, Mutuario.class);
         Integer idMutuario = gerarId();
         mutuario.setIdUsuario(idMutuario.toString());
         mutuario.setIdMutuario(idMutuario);
@@ -65,9 +82,9 @@ public class MutuarioServicesImpl implements MutuarioService {
     }
 
     @Override
-    public Mutuario procurarPorNome(String nome) {
+    public MutuarioDTO procurarPorNome(String nome) {
         if (mutuarioRepo.findByName(nome).isPresent()) {
-            return mutuarioRepo.findByName(nome).orElseThrow();
+            return new MutuarioDTO(mutuarioRepo.findByName(nome).orElseThrow());
         } else {
             throw new ResourceNotFoundException("Mutuario com nome: " + nome + " não encontrado");
         }

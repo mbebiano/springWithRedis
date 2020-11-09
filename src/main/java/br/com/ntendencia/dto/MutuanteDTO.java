@@ -7,15 +7,22 @@ public class MutuanteDTO {
 	private String id;
 	private String name;
 	private String email;
+	private Integer idMutuante;
 	
 	public MutuanteDTO() {
 		
 	}
-
 	public MutuanteDTO(Mutuante obj) {
 		this.id = obj.getIdUsuario();
 		this.name = obj.getName();
 		this.email = obj.getEmail();
+	}
+
+	public MutuanteDTO(Mutuante obj, Integer idMutuante) {
+		this.id = obj.getIdUsuario();
+		this.name = obj.getName();
+		this.email = obj.getEmail();
+		this.idMutuante=idMutuante;
 	}
 
 	public String getId() {
@@ -24,6 +31,14 @@ public class MutuanteDTO {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public Integer getIdMutuante() {
+		return idMutuante;
+	}
+
+	public void setIdMutuante(Integer idMutuante) {
+		this.idMutuante = idMutuante;
 	}
 
 	public String getName() {

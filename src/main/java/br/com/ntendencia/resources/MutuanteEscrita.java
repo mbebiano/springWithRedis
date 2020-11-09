@@ -1,7 +1,9 @@
 package br.com.ntendencia.resources;
 
-import br.com.ntendencia.domain.Mutuante;
+
+import br.com.ntendencia.dto.MutuanteDTO;
 import br.com.ntendencia.services.impl.MutuanteServicesImpl;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,10 +13,13 @@ public class MutuanteEscrita {
 	
 	@Autowired
 	private MutuanteServicesImpl mutuanteService;
+
+	@Autowired
+	private ModelMapper modelMapper;
 	
 	@PostMapping("/save")
-	public String createUser(@RequestBody Mutuante mutuante) {
-		mutuanteService.salvarMutuante(mutuante);
+	public String createUser(@RequestBody MutuanteDTO mutuanteDTO) {
+		mutuanteService.salvarMutuante(mutuanteDTO);
 		return "Usuário Salvo";
 	}
 	

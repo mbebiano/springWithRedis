@@ -2,25 +2,23 @@ package br.com.ntendencia.services;
 
 import java.util.List;
 
-import br.com.ntendencia.domain.ItemEmprestado;
 import br.com.ntendencia.domain.Mutuario;
-import br.com.ntendencia.dto.ItemEmprestadoDTO;
+import br.com.ntendencia.dto.MutuarioDTO;
 
 public interface MutuarioService {
-	
-	void mutuarioSave(Mutuario mutuario);
-	void deleteMutuario(String id);
-	//List<ItemEmprestado> listaItens(String id);
-	
-	Mutuario findById(String id);
-	
-	
-	List<Mutuario> listaMutuarios();
 
-	Integer gerarId ();
+    void deleteMutuario(String id);
 
-	Mutuario salvarMutuario(Mutuario mutuario);
+    MutuarioDTO findById(String id);
 
-	Mutuario procurarPorNome(String nome);
+    List<Mutuario> listaMutuarios();
+
+    List<MutuarioDTO> listaMutuariosDTO();
+
+    Integer gerarId();
+
+    Mutuario salvarMutuario(MutuarioDTO mutuarioDTO);
+
+    MutuarioDTO procurarPorNome(String nome);
 
 }

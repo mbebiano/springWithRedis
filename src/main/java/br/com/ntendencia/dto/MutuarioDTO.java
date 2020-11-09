@@ -7,6 +7,8 @@ public class MutuarioDTO {
 	private String id;
 	private String name;
 	private String email;
+
+	private Integer idMutuario;
 	
 	public MutuarioDTO() {
 		
@@ -17,6 +19,12 @@ public class MutuarioDTO {
 		this.name = obj.getName();
 		this.email = obj.getEmail();
 	}
+	public MutuarioDTO(Mutuario obj, Integer idMutuario) {
+		this.id = obj.getIdUsuario();
+		this.name = obj.getName();
+		this.email = obj.getEmail();
+		this.idMutuario = idMutuario;
+	}
 
 	public String getId() {
 		return id;
@@ -24,6 +32,14 @@ public class MutuarioDTO {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public Integer getIdMutuario() {
+		return idMutuario;
+	}
+
+	public void setIdMutuario(Integer idMutuario) {
+		this.idMutuario = idMutuario;
 	}
 
 	public String getName() {
