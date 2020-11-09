@@ -14,14 +14,18 @@ public class ContratoEmprestimo {
 
 	private String idMutuario;
 
+	private Integer idContrato;
+
 	private List<ItemEmprestado> itensEmprestados = new ArrayList<>();
 	
 	public ContratoEmprestimo() {}
 
-	
-	public ContratoEmprestimo(String id, String idMutuario) {
+	public ContratoEmprestimo(String id, String idMutuario, Integer idContrato) {
 		this.id = id;
+		this.idMutuario= idMutuario;
+		this.idContrato = idContrato;
 	}
+	public ContratoEmprestimo(String idMutuario){ this.idMutuario = idMutuario;}
 
 	public String getId() {
 		return id;
@@ -29,6 +33,14 @@ public class ContratoEmprestimo {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public Integer getIdContrato() {
+		return idContrato;
+	}
+
+	public void setIdContrato(Integer idContrato) {
+		this.idContrato = idContrato;
 	}
 
 	public String getIdMutuario() {

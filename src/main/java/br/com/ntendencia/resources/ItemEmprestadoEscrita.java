@@ -1,6 +1,6 @@
 package br.com.ntendencia.resources;
 
-import br.com.ntendencia.domain.ItemEmprestado;
+import br.com.ntendencia.dto.ItemEmprestadoDTO;
 import br.com.ntendencia.services.impl.ItemEmprestadoServicesImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +13,8 @@ public class ItemEmprestadoEscrita {
 	private ItemEmprestadoServicesImpl itemEmprestadoService;
 
 	@PostMapping("/save")
-	public String createUser(@RequestBody ItemEmprestado itemEmprestado) {
-		itemEmprestadoService.salvarItemEmprestado(itemEmprestado);
+	public String createUser(@RequestBody ItemEmprestadoDTO itemEmprestadoDTO) {
+		itemEmprestadoService.salvarItemEmprestado(itemEmprestadoDTO);
 		return "Item salvo";
 	}
 	

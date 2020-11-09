@@ -1,14 +1,17 @@
 package br.com.ntendencia.services.impl;
 
 import br.com.ntendencia.domain.ItemEmprestado;
+import br.com.ntendencia.dto.ItemEmprestadoDTO;
 import br.com.ntendencia.enums.EStatus;
 import br.com.ntendencia.repositories.ItemEmprestadoRepository;
 import br.com.ntendencia.services.ItemEmprestadoService;
 import br.com.ntendencia.services.exceptions.ResourceNotFoundException;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -25,9 +28,18 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
     @Autowired
     private MutuanteServicesImpl mutuanteService;
 
+
+    @Autowired
+    private ModelMapper modelMapper;
+
     @Override
-    public ItemEmprestado salvarItemEmprestado(ItemEmprestado itemEmprestado) {
+    public ItemEmprestado salvarItemEmprestado(ItemEmprestadoDTO itemEmprestadoDTO) {
+
+        ItemEmprestado itemEmprestado = modelMapper.map(itemEmprestadoDTO,ItemEmprestado.class);
+        //UsuarioDTO usuarioDTOS = mapper.map(usuarioService.buscarPeloId(id), UsuarioDTO.class);
         String id = itemEmprestado.getIdMutuante();
+
+
         if (mutuanteService.procurarPorId(id) == null) {
             throw new ResourceNotFoundException("Id de mutuante: " + id + "não foi encontrado");
         }
@@ -69,6 +81,17 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
     public Optional<ItemEmprestado> procurarItemEmprestado(String id) {
         if (itemEmprestadoRepo.findById(id).isPresent()) {
             return itemEmprestadoRepo.findById(id);
+        } else {
+            throw new ResourceNotFoundException("Item id: " + id + " não foi encontrado.");
+        }
+    }
+
+    @Override
+    public ItemEmprestadoDTO procurarItemEmprestadoDTO(String id) {
+        if (itemEmprestadoRepo.findById(id).isPresent()) {
+            Optional<ItemEmprestado> itemEmprestado = itemEmprestadoRepo.findById(id);
+            ItemEmprestadoDTO itemEmprestadoDTO = new ItemEmprestadoDTO(itemEmprestado.get());
+            return itemEmprestadoDTO;
         } else {
             throw new ResourceNotFoundException("Item id: " + id + " não foi encontrado.");
         }
@@ -153,13 +176,23 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
     }
 
     @Override
-    public List<ItemEmprestado> listarItens(boolean atrasado, boolean disponiveis) {
+    public List<ItemEmprestadoDTO> listarItensDTO(boolean atrasado, boolean disponiveis) {
+        List<ItemEmprestadoDTO> listDTO = new ArrayList<>();
         if (atrasado) {
-            return listarItensEmAtraso();
+            for(ItemEmprestado itemEmprestado : listarItensEmAtraso()){
+                listDTO.add(new ItemEmprestadoDTO(itemEmprestado));
+            }
+            return listDTO;
         }
         if(disponiveis){
-            return listarItensDisponiveis();
+            for(ItemEmprestado itemEmprestado : listarItensDisponiveis()){
+                listDTO.add(new ItemEmprestadoDTO(itemEmprestado));
+            }
+            return listDTO;
         }
-        return listarItensEmprestados();
+        for(ItemEmprestado itemEmprestado : listarItensEmprestados()){
+            listDTO.add(new ItemEmprestadoDTO(itemEmprestado));
+        }
+        return listDTO;
     }
 }

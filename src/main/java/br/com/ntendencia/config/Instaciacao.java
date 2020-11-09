@@ -55,7 +55,7 @@ public class Instaciacao implements CommandLineRunner {
 
 		//Instaciacão Contrato Emprestimo
 
-		ContratoEmprestimo contrato1 = new ContratoEmprestimo("1","1");
+		ContratoEmprestimo contrato1 = new ContratoEmprestimo("1","1", 1);
 		contratoEmprestimoRepo.save(contrato1);
 
 		//Instaciacão Item Emprestado
@@ -64,7 +64,7 @@ public class Instaciacao implements CommandLineRunner {
 		livro.setId("1");
 		livro.setIdItemEmprestado(1);
 		livro.seteStatus(EStatus.EMPRESTADO);
-		livro.setDataEmprestimo(LocalDate.of(2020, 10, 10));
+		livro.setDataEmprestimo(LocalDate.of(2020, 11, 7));
 		ItemEmprestado notebook = new ItemEmprestado("Notebook","3",4);
 		notebook.seteStatus(EStatus.DISPONIVEL);
 		notebook.setId("2");

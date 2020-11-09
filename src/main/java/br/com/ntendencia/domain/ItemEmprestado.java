@@ -1,5 +1,6 @@
 package br.com.ntendencia.domain;
 
+import br.com.ntendencia.dto.ItemEmprestadoDTO;
 import br.com.ntendencia.enums.EStatus;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
@@ -23,7 +24,9 @@ public class ItemEmprestado  {
 	public ItemEmprestado() {
 		
 	}
+	public ItemEmprestado(ItemEmprestadoDTO itemEmprestadoDTO){
 
+	}
 	public ItemEmprestado(String name, String idMutuante, long qtdDiasDeDevolucao) {
 		this.name = name;
 		this.idMutuante = idMutuante;
