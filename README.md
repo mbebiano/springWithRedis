@@ -1,21 +1,26 @@
 # Spring With Redis
 Criação de projeto Coisas Emprestada usando spring e redis.
 
-Escopo do projeto:
+Escopo do projeto Release2.0:
 
-Sistema para você não esquecer para quem emprestou cada coisa
 
-O usuário acessa/instala e seus dados ficam salvo
+Adicionar ID de forma incremental no Redis
+Validação dos Endpoints
+Retornar Status Code 
+Lock para não permitir um item ser emprestado novamente
+Separação de Endpoints, em leitura e escrita
+Criação de endpoint para listar itens atrasados
+Refatoração de classes mutuário e mutuante 
+Refatoração de código 
+Criar endpoint de update para Mutuário 
+Refatoração dos Domínios  
+Remodelagem das associações
+Refatoração do endpoint para listar itens atrasados
+DTO camada de resources
+Criação de Endpoint de cadastro
 
-Deve receber contato de quem pegará emprestado,o item emprestado, data que foi emprestado, e contato do amigo
 
-Opcionalmente pode haver a data de devolução combinada
 
-A tela inicial lista as coisas emprestadas e permite clicar em botão para incluir novo empréstimo
-
-Após a data combinada o item deve ficar destacado na lista de coisas emprestadas
-
-Quando algo for devolvido, deve ser marcado no sistema que irá salvar a data
 
 
 ![alt text](https://github.com/mbebiano/springWithRedis/blob/main/images/modeloDominioCoisasEmprestadas.png)
