@@ -1,10 +1,13 @@
 package br.com.ntendencia.dto;
 
 import br.com.ntendencia.domain.Mutuario;
+import org.jetbrains.annotations.NotNull;
 
 public class MutuarioDTO {
-	
+
+	@NotNull
 	private String id;
+
 	private String name;
 	private String email;
 

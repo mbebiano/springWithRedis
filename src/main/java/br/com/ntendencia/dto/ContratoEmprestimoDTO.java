@@ -2,25 +2,26 @@ package br.com.ntendencia.dto;
 
 import br.com.ntendencia.domain.ContratoEmprestimo;
 import br.com.ntendencia.domain.ItemEmprestado;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ContratoEmprestimoDTO {
 
+    @NotNull
     private String id;
 
     private String idMutuario;
 
-    private List<ItemEmprestado> itensEmprestados = new ArrayList<>();
+    private List<String> listaIdsItens = new ArrayList<>();
 
     public ContratoEmprestimoDTO(){
-
     }
     public ContratoEmprestimoDTO(ContratoEmprestimo obj) {
         this.id =obj.getId();
         this.idMutuario = obj.getIdMutuario();
-        this.itensEmprestados= obj.getItensEmprestados();
+        this.listaIdsItens= obj.getListaIdsItens();
     }
 
     public String getId() {
@@ -39,11 +40,11 @@ public class ContratoEmprestimoDTO {
         this.idMutuario = idMutuario;
     }
 
-    public List<ItemEmprestado> getItensEmprestados() {
-        return itensEmprestados;
+    public List<String> getListaIdsItens() {
+        return listaIdsItens;
     }
 
-    public void setItensEmprestados(List<ItemEmprestado> itensEmprestados) {
-        this.itensEmprestados = itensEmprestados;
+    public void setListaIdsItens(List<String> listaIdsItens) {
+        this.listaIdsItens = listaIdsItens;
     }
 }

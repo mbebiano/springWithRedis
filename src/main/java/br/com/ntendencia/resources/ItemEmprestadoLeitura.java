@@ -17,7 +17,7 @@ public class ItemEmprestadoLeitura {
 
     @GetMapping("/listarItens")
     public List<ItemEmprestadoDTO> listarItensDTO(@RequestParam(required = false) boolean atrasado,
-                                            @RequestParam(required = false) boolean disponiveis) {
+                                                  @RequestParam(required = false) boolean disponiveis) {
         return itemEmprestadoService.listarItensDTO(atrasado, disponiveis);
     }
 

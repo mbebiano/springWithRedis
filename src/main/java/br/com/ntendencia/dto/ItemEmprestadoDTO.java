@@ -2,11 +2,13 @@ package br.com.ntendencia.dto;
 
 import br.com.ntendencia.domain.ItemEmprestado;
 import br.com.ntendencia.enums.EStatus;
+import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 
 public class ItemEmprestadoDTO {
 
+    @NotNull
     private String id;
     private String name;
 

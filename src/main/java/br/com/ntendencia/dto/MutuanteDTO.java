@@ -1,9 +1,11 @@
 package br.com.ntendencia.dto;
 
 import br.com.ntendencia.domain.Mutuante;
+import org.jetbrains.annotations.NotNull;
 
 public class MutuanteDTO {
-	
+
+	@NotNull
 	private String id;
 	private String name;
 	private String email;

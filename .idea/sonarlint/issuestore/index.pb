@@ -78,3 +78,9 @@ t
 Dsrc/main/java/br/com/ntendencia/resources/ItemEmprestadoEscrita.java,3\3\33c3e8afea94bd99256e194664972efad957981e
 t
 Dsrc/main/java/br/com/ntendencia/resources/ItemEmprestadoLeitura.java,7\b\7b269ef9c584afff5076c7f59f5ec98cf209c3b1
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+m
+=src/main/java/br/com/ntendencia/config/ModelMapperConfig.java,0\2\02f4c275084f31ae2bfd40491c89cc18c4a75b6f
+n
+>src/main/java/br/com/ntendencia/dto/ContratoEmprestimoDTO.java,d\1\d1977a66d26ab765f31a6a206601cda0db4c4432

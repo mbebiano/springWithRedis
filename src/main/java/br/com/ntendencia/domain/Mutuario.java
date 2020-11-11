@@ -1,11 +1,6 @@
 package br.com.ntendencia.domain;
 
-
-import br.com.ntendencia.dto.ItemEmprestadoDTO;
 import org.springframework.data.redis.core.RedisHash;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RedisHash(value="c_mutuario")
 public class Mutuario extends Usuario {

@@ -1,8 +1,11 @@
 
-]	java:S125v"<This block of commented-out lines of code should be removed.(ÍŞÎ€ùÿÿÿÿ8ëÅíƒÙ.
-X
-java:S3655n"6Call "novoObj.isPresent()" before accessing the value.(’ïû˜ıÿÿÿÿ8‚òßñØ.
-_
-java:S2583?"CChange this condition so that it does not always evaluate to "true"(­Şµt8¼—òØ.
-d
-java:S1126ƒ"AReplace this if-then-else statement by a single return statement.(íéÁÊşÿÿÿÿ8Ë£Œ„Ù.
+Y	java:S125"<This block of commented-out lines of code should be removed.(§Ä÷ş8¨©¢êÚ.
+p
+java:S1602ª"SRemove useless curly braces around statement and then remove useless return keyword(¨ñÁ8¨©¢êÚ.
+†
+java:S1488]"iImmediately return this expression instead of assigning it to the temporary variable "itemEmprestadoDTO".(ìêÇŒ8Í†úêÚ.
+]	java:S125'"<This block of commented-out lines of code should be removed.(ò“—€øÿÿÿÿ8¨©¢êÚ.
+v
+java:S1602›"SRemove useless curly braces around statement and then remove useless return keyword(û˜‚†øÿÿÿÿ8¨©¢êÚ.
+Z
+java:S3655]"=Call "itemEmprestado.isPresent()" before accessing the value.(ìêÇŒ8ğÏùêÚ.

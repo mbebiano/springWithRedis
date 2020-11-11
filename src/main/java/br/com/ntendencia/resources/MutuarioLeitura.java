@@ -29,4 +29,5 @@ public class MutuarioLeitura {
 	public ResponseEntity<List<MutuarioDTO>> listaTodos(){
 		return ResponseEntity.ok().body(mutuarioService.listaMutuariosDTO());
 	}
+
 }

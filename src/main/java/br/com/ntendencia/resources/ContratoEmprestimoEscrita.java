@@ -1,5 +1,6 @@
 package br.com.ntendencia.resources;
 
+import br.com.ntendencia.domain.ContratoEmprestimo;
 import br.com.ntendencia.dto.ContratoEmprestimoDTO;
 import br.com.ntendencia.services.impl.ContratoEmprestimoServicesImpl;
 import br.com.ntendencia.services.impl.MutuarioServicesImpl;
@@ -30,5 +31,4 @@ public class ContratoEmprestimoEscrita {
 		return "Contrato Deletado";
 	}
 
-	
 }

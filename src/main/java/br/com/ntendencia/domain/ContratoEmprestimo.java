@@ -16,7 +16,7 @@ public class ContratoEmprestimo {
 
 	private Integer idContrato;
 
-	private List<ItemEmprestado> itensEmprestados = new ArrayList<>();
+	private List<String> listaIdsItens = new ArrayList<>();
 	
 	public ContratoEmprestimo() {}
 
@@ -51,10 +51,9 @@ public class ContratoEmprestimo {
 		this.idMutuario = idMutuario;
 	}
 
-	public List<ItemEmprestado> getItensEmprestados() {
-		return itensEmprestados;
+	public List<String> getListaIdsItens() {
+		return listaIdsItens;
 	}
-
 
 	@Override
 	public int hashCode() {

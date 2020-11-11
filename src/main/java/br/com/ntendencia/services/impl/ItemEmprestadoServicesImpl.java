@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static br.com.ntendencia.enums.EStatus.DISPONIVEL;
@@ -39,7 +36,6 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
         //UsuarioDTO usuarioDTOS = mapper.map(usuarioService.buscarPeloId(id), UsuarioDTO.class);
         String id = itemEmprestado.getIdMutuante();
 
-
         if (mutuanteService.procurarPorId(id) == null) {
             throw new ResourceNotFoundException("Id de mutuante: " + id + "não foi encontrado");
         }
@@ -49,6 +45,9 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
         if (itemEmprestado.getQtdDiasDeDevolucao() <= 1) {
             throw new ResourceNotFoundException("Qtd dias deve ser igual ou superior a 2");
         }
+        if (itemEmprestado.getDataEmprestimo()!=null) {
+            throw new ResourceNotFoundException("Não é possível criar item com data de empréstimo já definida");
+        }
         itemEmprestado.seteStatus(DISPONIVEL);// Setar como disponível ou indisponível if
         Integer idItemEmprestado = gerarId();
         itemEmprestado.setId(idItemEmprestado.toString());
@@ -56,7 +55,6 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
         return itemEmprestadoRepo.save(itemEmprestado);
 
     }
-
 
     @Override
     public void deletarItemEmprestado(String id) {
@@ -105,7 +103,7 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 
     @Override
     public Integer gerarId() {
-        List<ItemEmprestado> itemEmprestadoList = listarItensEmprestados();
+        List<ItemEmprestado> itemEmprestadoList = (List<ItemEmprestado>) itemEmprestadoRepo.findAll();
         Integer ultimoIdItemEmprestado = 0;
         Optional<ItemEmprestado> itemEmprestadoOpt = itemEmprestadoList.stream().max(Comparator.comparingInt(ItemEmprestado::getIdItemEmprestado));
         if (itemEmprestadoOpt.isPresent()) {
@@ -195,4 +193,16 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
         }
         return listDTO;
     }
+
+    @Override
+    public List<ItemEmprestadoDTO> listarItensEmprestadosOrdenarLista() {
+
+        List<ItemEmprestado> listaDeItens = listarItensEmprestados();
+
+        Collections.sort(listaDeItens, Comparator.comparing(ItemEmprestado::getDataEmprestimo));
+
+        return null;
+    }
+
+
 }

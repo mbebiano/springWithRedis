@@ -70,7 +70,7 @@ public class Instaciacao implements CommandLineRunner {
 		notebook.setId("2");
 		notebook.setIdItemEmprestado(2);
 
-		contrato1.getItensEmprestados().add(livro);
+		contrato1.getListaIdsItens().add(livro.getId());
 		contrato1.setIdMutuario(maria.getIdUsuario());
 
 		itemEmprestadoRepo.saveAll(Arrays.asList(livro, notebook));
@@ -128,7 +128,11 @@ public class Instaciacao implements CommandLineRunner {
 //		mutuanteRepo.save(john);
 //		mutuanteRepo.save(alex);
 //		itemEmprestadoRepo.save(livro);
-
+		//TODO Remover zerando DB
+		contratoEmprestimoRepo.deleteAll();
+		itemEmprestadoRepo.deleteAll();
+		mutuarioRepo.deleteAll();
+		mutuanteRepo.deleteAll();
 		System.out.println("Salvo");
 	}
 }

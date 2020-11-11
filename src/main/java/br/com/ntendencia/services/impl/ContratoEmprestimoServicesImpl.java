@@ -33,25 +33,53 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
 
     @Override
     public ContratoEmprestimo contratoEmprestimoSave(ContratoEmprestimoDTO contratoEmprestimoDTO) {
+        if (contratoEmprestimoDTO.getListaIdsItens().isEmpty()) {
+            throw new ResourceNotFoundException("Não é permitido criar contrato de emprestimo sem itens");
+        }
+        if (contratoEmprestimoDTO.getIdMutuario().isBlank()) {
+            throw new ResourceNotFoundException("Informe o id do mutuario");
+        }
+        if (contratoEmprestimoDTO.getId()!=null){
+            throw new ResourceNotFoundException("Id não deve ser preenchido, será gerado pelo banco");
+        }
+        if (mutuarioServices.findById(contratoEmprestimoDTO.getIdMutuario())==null) {
+            throw new ResourceNotFoundException("Mutuario não encontrado no banco de dados");
+        }
         ContratoEmprestimo contratoEmprestimo = new ContratoEmprestimo(contratoEmprestimoDTO.getIdMutuario());
-        contratoEmprestimo.getItensEmprestados().addAll(contratoEmprestimoDTO.getItensEmprestados());
-        Integer idContrato = gerarId();
-        contratoEmprestimo.setId(idContrato.toString());
-        contratoEmprestimo.setIdContrato(idContrato);
+        //contratoEmprestimo.getItensEmprestados().addAll(contratoEmprestimoDTO.getItensEmprestados());
+        contratoEmprestimo.getListaIdsItens().addAll(contratoEmprestimoDTO.getListaIdsItens());
+        // TODO Verificar uso do filter trabalhando validação do item Emprestado
+        /*
         List<ItemEmprestado> itemEmprestadoList = contratoEmprestimo.getItensEmprestados().stream().
                 filter(
                         itemEmprestado -> !DISPONIVEL.equals(itemEmprestado.geteStatus())
                 ).collect(Collectors.toList());
         if(!itemEmprestadoList.isEmpty()){
             throw new ResourceNotFoundException("Esse(s) Item(S)" +itemEmprestadoList.size() + "Emprestados e indisponivel");
-        }
-        /*       contratoEmprestimo.getItensEmprestados().forEach(itemEmprestado -> {
-         ItemEmprestado itemEmprestadoObj = itemEmprestadoServices.
-         procurarItemEmprestado(itemEmprestado.getId()).orElseThrow();
-         if (itemEmprestadoObj.geteStatus() != DISPONIVEL) {
-         throw new ResourceNotFoundException(itemEmprestadoObj.getId());
-         }
-         }); ***/
+        }*/
+        contratoEmprestimo.getListaIdsItens().forEach(idItem ->{
+            Optional<ItemEmprestado> itemEmprestadoObj = itemEmprestadoServices.procurarItemEmprestado(idItem);
+            if (itemEmprestadoObj.get().geteStatus() != DISPONIVEL) {
+                throw new ResourceNotFoundException("Item indisponivel para emprestimo");
+            }
+        });
+        contratoEmprestimo.getListaIdsItens().forEach(idItem ->
+        {
+            Optional<ItemEmprestado> itemEmprestadoObj = itemEmprestadoServices.procurarItemEmprestado(idItem);
+            itemEmprestadoObj.get().seteStatus(EMPRESTADO);
+            itemEmprestadoServices.alterarStatusItemEmprestado(itemEmprestadoObj.get().getId(), EMPRESTADO);
+            itemEmprestadoServices.definirDataDeEmprestimo(itemEmprestadoObj.get());
+            itemEmprestadoServices.atualizarItemEmprestado(itemEmprestadoObj.get());
+        });
+    /*
+        contratoEmprestimo.getItensEmprestados().forEach(itemEmprestado -> {
+            ItemEmprestado itemEmprestadoObj = itemEmprestadoServices.
+                    procurarItemEmprestado(itemEmprestado.getId()).orElseThrow();
+            if (itemEmprestadoObj.geteStatus() != DISPONIVEL) {
+                throw new ResourceNotFoundException("Item indisponivel para emprestimo");
+            }
+        });
+
 
         contratoEmprestimo.getItensEmprestados().forEach(itemEmprestado ->
         {
@@ -59,8 +87,10 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
             itemEmprestadoServices.alterarStatusItemEmprestado(itemEmprestado.getId(), EMPRESTADO);
             itemEmprestadoServices.definirDataDeEmprestimo(itemEmprestado);
             itemEmprestadoServices.atualizarItemEmprestado(itemEmprestado);
-        });
-
+        });*/
+        Integer idContrato = gerarId();
+        contratoEmprestimo.setId(idContrato.toString());
+        contratoEmprestimo.setIdContrato(idContrato);
         return contratoEmprestimoRepo.save(contratoEmprestimo);
     }
 
@@ -68,9 +98,8 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
     public void deleteContratoEmprestimo(String id) {
         if (contratoEmprestimoRepo.findById(id).isPresent()) {
             contratoEmprestimoRepo.deleteById(id);
-        }
-        else {
-            throw new ResourceNotFoundException("Não foi encontrado contrato com o id: "+id);
+        } else {
+            throw new ResourceNotFoundException("Não foi encontrado contrato com o id: " + id);
         }
     }
 
@@ -87,7 +116,6 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
         }
         return list;
     }
-
 
 
     @Override

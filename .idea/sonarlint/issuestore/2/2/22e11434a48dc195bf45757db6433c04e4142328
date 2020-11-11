@@ -1,4 +1,4 @@
 
-^
-java:S1128"<Remove this unused import 'br.com.ntendencia.enums.EStatus'.(ÿÈ Ãûÿÿÿÿ8»Ğ»ƒÙ.
-]	java:S125'"<This block of commented-out lines of code should be removed.(²ú‹àûÿÿÿÿ8«¤ÓƒÙ.
+[
+java:S1128">Remove this unused import 'br.com.ntendencia.domain.Mutuario'.(Ú©ÈÌ8«ĞèÚ.
+]	java:S1250"<This block of commented-out lines of code should be removed.(¨¸­•ûÿÿÿÿ8„ÌæÚ.

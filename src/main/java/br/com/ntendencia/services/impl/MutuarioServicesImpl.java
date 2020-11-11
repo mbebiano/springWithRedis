@@ -63,7 +63,7 @@ public class MutuarioServicesImpl implements MutuarioService {
 
     @Override
     public Integer gerarId() {
-        List<Mutuario> mutuarios = listaMutuarios();
+        List<Mutuario> mutuarios = (List<Mutuario>) mutuarioRepo.findAll();
         Integer ultimoIdMutuario = 0;
         Optional<Mutuario> mutuarioOpt = mutuarios.stream().max(Comparator.comparingInt(Mutuario::getIdMutuario));
         if (mutuarioOpt.isPresent()) {
