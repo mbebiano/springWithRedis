@@ -2,6 +2,8 @@ package br.com.ntendencia.domain;
 
 import org.springframework.data.redis.core.RedisHash;
 
+import java.util.Objects;
+
 @RedisHash(value="c_mutuario")
 public class Mutuario extends Usuario {
 
@@ -34,4 +36,17 @@ public class Mutuario extends Usuario {
 		this.senha = senha;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Mutuario)) return false;
+		if (!super.equals(o)) return false;
+		Mutuario mutuario = (Mutuario) o;
+		return getIdMutuario().equals(mutuario.getIdMutuario());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(super.hashCode(), getIdMutuario());
+	}
 }

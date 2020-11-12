@@ -4,6 +4,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 
 @RedisHash(value="c_usuario")
@@ -12,6 +14,7 @@ public class Usuario  {
 	@Id
 	private String idUsuario;
 	@Indexed
+	@NotBlank
 	private String name;
 	private String email;
 

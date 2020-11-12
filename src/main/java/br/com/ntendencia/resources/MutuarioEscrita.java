@@ -5,6 +5,8 @@ import br.com.ntendencia.services.impl.MutuarioServicesImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 
 @RestController
 @RequestMapping("/mutuario")
@@ -14,7 +16,7 @@ public class MutuarioEscrita {
     private MutuarioServicesImpl mutuarioService;
 
     @PostMapping("/save")
-    public String createUser(@RequestBody MutuarioDTO mutuarioDTO) {
+    public String createUser(@RequestBody @Valid MutuarioDTO mutuarioDTO) {
         mutuarioService.salvarMutuario(mutuarioDTO);
         return "Usuário Salvo";
     }

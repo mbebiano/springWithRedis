@@ -84,3 +84,7 @@ m
 =src/main/java/br/com/ntendencia/config/ModelMapperConfig.java,0\2\02f4c275084f31ae2bfd40491c89cc18c4a75b6f
 n
 >src/main/java/br/com/ntendencia/dto/ContratoEmprestimoDTO.java,d\1\d1977a66d26ab765f31a6a206601cda0db4c4432
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+8
+mvnw.cmd,1\f\1f1763f358c257ea3515417352b82b0165647ad1
