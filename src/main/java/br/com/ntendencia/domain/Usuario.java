@@ -1,11 +1,10 @@
 package br.com.ntendencia.domain;
 
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 
 @RedisHash(value="c_usuario")
@@ -34,7 +33,7 @@ public class Usuario  {
 		this.idUsuario = idUsuario;
 	}
 
-	public @NotBlank String getName() {
+	public String getName() {
 		return name;
 	}
 

@@ -7,6 +7,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/mutuantes")
 public class MutuanteEscrita {
@@ -18,7 +20,7 @@ public class MutuanteEscrita {
 	private ModelMapper modelMapper;
 	
 	@PostMapping("/save")
-	public String createUser(@RequestBody MutuanteDTO mutuanteDTO) {
+	public String createUser(@RequestBody @Valid MutuanteDTO mutuanteDTO) {
 		mutuanteService.salvarMutuante(mutuanteDTO);
 		return "Usuário Salvo";
 	}

@@ -2,12 +2,18 @@ package br.com.ntendencia.dto;
 
 import br.com.ntendencia.domain.Mutuante;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 public class MutuanteDTO {
 
+
 	private String id;
+	@NotEmpty (message = "Nome não pode ficar em branco")
+	@Size(min = 3)
 	private String name;
+	@Email
 	private String email;
 	private Integer idMutuante;
 
