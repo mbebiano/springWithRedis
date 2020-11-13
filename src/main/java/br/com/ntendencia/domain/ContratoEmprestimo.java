@@ -16,7 +16,7 @@ public class ContratoEmprestimo {
 
 	private Integer idContrato;
 
-	private List<String> listaIdsItens = new ArrayList<>();
+	private final List<String> listaIdsItens = new ArrayList<>();
 	
 	public ContratoEmprestimo() {}
 

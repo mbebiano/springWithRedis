@@ -9,7 +9,8 @@ import org.springframework.context.annotation.Configuration;
 public class ModelMapperConfig {
     @Bean
     public ModelMapper mapper() {
-        ModelMapper mapper = new ModelMapper();
+        ModelMapper mapper;
+        mapper = new ModelMapper();
 
 //        PropertyMap<Usuario, UsuarioDTO> usuariotoUsuarioDTOPropertyMap = new PropertyMap<Usuario, UsuarioDTO>() {
 //            protected void configure() {

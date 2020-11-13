@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.logging.Logger;
+
 import java.time.LocalDate;
 import java.util.Arrays;
 
@@ -30,16 +32,16 @@ public class Instaciacao implements CommandLineRunner {
 	
 	@Autowired
 	private ContratoEmprestimoRepository contratoEmprestimoRepo;
-	
+
+	static Logger log = Logger.getLogger(String.valueOf(Instaciacao.class));
 
 	@Override
 	public void run(String... args) throws Exception {
-
 		contratoEmprestimoRepo.deleteAll();
 		itemEmprestadoRepo.deleteAll();
 		mutuarioRepo.deleteAll();
 		mutuanteRepo.deleteAll();
-		System.out.println("Deletados");
+		log.warning("Deletados");
 
 		//Instaciação Mutuante
 		Mutuante john = new Mutuante("1", "john@gmail.com","john", 1);
@@ -133,6 +135,8 @@ public class Instaciacao implements CommandLineRunner {
 		itemEmprestadoRepo.deleteAll();
 		mutuarioRepo.deleteAll();
 		mutuanteRepo.deleteAll();
-		System.out.println("Salvo");
+
+		log.warning("Salvo");
+
 	}
 }

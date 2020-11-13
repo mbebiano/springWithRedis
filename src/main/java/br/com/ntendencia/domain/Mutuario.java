@@ -42,7 +42,7 @@ public class Mutuario extends Usuario {
 		if (!(o instanceof Mutuario)) return false;
 		if (!super.equals(o)) return false;
 		Mutuario mutuario = (Mutuario) o;
-		return getIdMutuario().equals(mutuario.getIdMutuario());
+		return Objects.equals(getIdMutuario(), mutuario.getIdMutuario());
 	}
 
 	@Override

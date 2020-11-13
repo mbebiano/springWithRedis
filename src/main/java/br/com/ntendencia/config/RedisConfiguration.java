@@ -22,8 +22,7 @@ public class RedisConfiguration {
         //redisStandaloneConfiguration.setDatabase(1);
         //redisStandaloneConfiguration.setPassword("password");
 
-        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(redisStandaloneConfiguration);
-        return  jedisConnectionFactory;
+        return new JedisConnectionFactory(redisStandaloneConfiguration);
     }
 
     @Bean

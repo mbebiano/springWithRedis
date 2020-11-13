@@ -1,7 +1,5 @@
 package br.com.ntendencia.services.impl;
 
-
-import br.com.ntendencia.domain.Mutuario;
 import br.com.ntendencia.dto.MutuanteDTO;
 import br.com.ntendencia.services.exceptions.ResourceNotFoundException;
 import org.modelmapper.ModelMapper;

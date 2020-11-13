@@ -1,4 +1,4 @@
-//package br.com.ntendencia.services;
+package br.com.ntendencia.services;
 //
 //import br.com.ntendencia.domain.Mutuario;
 //import br.com.ntendencia.dto.ItemEmprestadoDTO;

@@ -88,8 +88,7 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
     public ItemEmprestadoDTO procurarItemEmprestadoDTO(String id) {
         if (itemEmprestadoRepo.findById(id).isPresent()) {
             Optional<ItemEmprestado> itemEmprestado = itemEmprestadoRepo.findById(id);
-            ItemEmprestadoDTO itemEmprestadoDTO = new ItemEmprestadoDTO(itemEmprestado.get());
-            return itemEmprestadoDTO;
+            return new ItemEmprestadoDTO(itemEmprestado.orElseThrow());
         } else {
             throw new ResourceNotFoundException("Item id: " + id + " não foi encontrado.");
         }
@@ -165,7 +164,7 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
     public List<ItemEmprestado> listarItensDisponiveis() {
         List<ItemEmprestado> paraEmprestar = listarItensEmprestados();
         List<ItemEmprestado> itensStatusEmprestadoDisponivel = paraEmprestar.stream().
-                filter(itemEmprestado -> {return itemEmprestado.geteStatus()==DISPONIVEL;}).collect(Collectors.toList());
+                filter(itemEmprestado -> itemEmprestado.geteStatus()==DISPONIVEL).collect(Collectors.toList());
 
         if (itensStatusEmprestadoDisponivel.isEmpty()) {
             throw new ResourceNotFoundException("Não há itens disponiveis para emprestimo");
@@ -197,9 +196,9 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
     @Override
     public List<ItemEmprestadoDTO> listarItensEmprestadosOrdenarLista() {
 
-        List<ItemEmprestado> listaDeItens = listarItensEmprestados();
+       // List<ItemEmprestado> listaDeItens = listarItensEmprestados();
 
-        Collections.sort(listaDeItens, Comparator.comparing(ItemEmprestado::getDataEmprestimo));
+        //Collections.sort(listaDeItens, Comparator.comparing(ItemEmprestado::getDataEmprestimo));
 
         return null;
     }

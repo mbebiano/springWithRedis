@@ -14,7 +14,6 @@ public class Usuario  {
 	@Id
 	private String idUsuario;
 	@Indexed
-	@NotBlank
 	private String name;
 	private String email;
 
@@ -35,7 +34,7 @@ public class Usuario  {
 		this.idUsuario = idUsuario;
 	}
 
-	public String getName() {
+	public @NotBlank String getName() {
 		return name;
 	}
 

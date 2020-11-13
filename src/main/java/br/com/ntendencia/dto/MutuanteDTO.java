@@ -1,19 +1,20 @@
 package br.com.ntendencia.dto;
 
 import br.com.ntendencia.domain.Mutuante;
-import org.jetbrains.annotations.NotNull;
+
+import javax.validation.constraints.NotBlank;
 
 public class MutuanteDTO {
 
-	@NotNull
 	private String id;
 	private String name;
 	private String email;
 	private Integer idMutuante;
-	
-	public MutuanteDTO() {
-		
+
+	public MutuanteDTO(){
+
 	}
+
 	public MutuanteDTO(Mutuante obj) {
 		this.id = obj.getIdUsuario();
 		this.name = obj.getName();
@@ -58,5 +59,5 @@ public class MutuanteDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 }

@@ -1,5 +1,7 @@
 package br.com.ntendencia.utils;
 
+import br.com.ntendencia.services.exceptions.ResourceNotFoundException;
+
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -10,6 +12,10 @@ import java.util.Date;
 import java.util.TimeZone;
 
 public final class DateUtils {
+
+    private DateUtils(){
+        throw new ResourceNotFoundException("Date utils");
+    }
 
     private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private static final DateTimeFormatter dateFormatterTraco = DateTimeFormatter.ofPattern("dd-MMM-yyyy");

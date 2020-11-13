@@ -2,7 +2,6 @@ package br.com.ntendencia.services.impl;
 
 import br.com.ntendencia.domain.ContratoEmprestimo;
 import br.com.ntendencia.domain.ItemEmprestado;
-import br.com.ntendencia.domain.Mutuario;
 import br.com.ntendencia.dto.ContratoEmprestimoDTO;
 import br.com.ntendencia.repositories.ContratoEmprestimoRepository;
 import br.com.ntendencia.services.ContratoEmprestimoService;

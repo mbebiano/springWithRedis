@@ -2,25 +2,23 @@ package br.com.ntendencia.dto;
 
 import br.com.ntendencia.domain.ItemEmprestado;
 import br.com.ntendencia.enums.EStatus;
-import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 
 public class ItemEmprestadoDTO {
 
-    @NotNull
     private String id;
     private String name;
-
     private String idMutuante;
     // Criar DTO
-
     private Integer idItemEmprestado;
     private LocalDate dataEmprestimo;
     private long qtdDiasDeDevolucao;
     private EStatus eStatus;
 
-    public ItemEmprestadoDTO(){}
+    public ItemEmprestadoDTO(){
+
+    }
 
     public ItemEmprestadoDTO(ItemEmprestado obj) {
         this.id =obj.getId();

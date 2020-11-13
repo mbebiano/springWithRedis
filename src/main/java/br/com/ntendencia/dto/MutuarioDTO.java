@@ -1,14 +1,12 @@
 package br.com.ntendencia.dto;
 
 import br.com.ntendencia.domain.Mutuario;
-import org.jetbrains.annotations.NotNull;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 public class MutuarioDTO {
 
-	@NotNull
 	private String id;
 	@NotBlank
 	private String name;
@@ -17,9 +15,7 @@ public class MutuarioDTO {
 
 	private Integer idMutuario;
 
-	public MutuarioDTO() {
-
-	}
+	public MutuarioDTO(){}
 
 	public MutuarioDTO(Mutuario obj) {
 		this.id = obj.getIdUsuario();
@@ -33,11 +29,11 @@ public class MutuarioDTO {
 		this.idMutuario = idMutuario;
 	}
 
-	public @NotNull String getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(@NotNull String id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

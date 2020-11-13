@@ -3,9 +3,7 @@ package br.com.ntendencia.services;
 import br.com.ntendencia.domain.ItemEmprestado;
 import br.com.ntendencia.dto.ItemEmprestadoDTO;
 import br.com.ntendencia.enums.EStatus;
-import org.apache.tomcat.jni.Local;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,5 +23,4 @@ public interface ItemEmprestadoService {
 	List<ItemEmprestado> listarItensDisponiveis();
 	List<ItemEmprestadoDTO> listarItensDTO(boolean atrasado, boolean disponiveis);
 	List<ItemEmprestadoDTO> listarItensEmprestadosOrdenarLista();
-
 }
