@@ -1,13 +1,5 @@
 
-Y	java:S125"<This block of commented-out lines of code should be removed.(§Ä÷ş8¨©¢êÚ.
 I
-java:S1168Ì"+Return an empty collection instead of null.(¥¹ï8¸¥«ºÛ.
-]	java:S125$"<This block of commented-out lines of code should be removed.(ò“—€øÿÿÿÿ8¨©¢êÚ.
-†
-java:S1488["iImmediately return this expression instead of assigning it to the temporary variable "itemEmprestadoDTO".(ìêÇŒ8Í†úêÚ.
-Z
-java:S3655["=Call "itemEmprestado.isPresent()" before accessing the value.(ìêÇŒ8ğÏùêÚ.
+java:S1168Ë"+Return an empty collection instead of null.(¥¹ï8¸¥«ºÛ.
 v
-java:S1602™"SRemove useless curly braces around statement and then remove useless return keyword(û˜‚†øÿÿÿÿ8¨©¢êÚ.
-p
-java:S1602¨"SRemove useless curly braces around statement and then remove useless return keyword(¨ñÁ8¨©¢êÚ.
+java:S1602˜"SRemove useless curly braces around statement and then remove useless return keyword(û˜‚†øÿÿÿÿ8¨©¢êÚ.
