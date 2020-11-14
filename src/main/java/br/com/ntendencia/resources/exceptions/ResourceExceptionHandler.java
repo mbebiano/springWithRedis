@@ -20,4 +20,10 @@ public class ResourceExceptionHandler {
         StandardError err = new StandardError(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
         return ResponseEntity.status(status).body(err);
     }
+    public ResponseEntity<StandardError> erroNaValidacao(ResourceNotFoundException e, HttpServletRequest request){
+        String error = "Erro na validação";
+        HttpStatus status = HttpStatus.PRECONDITION_REQUIRED;
+        StandardError err = new StandardError(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
+        return ResponseEntity.status(status).body(err);
+    }
 }

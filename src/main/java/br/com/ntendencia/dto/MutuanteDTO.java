@@ -10,7 +10,7 @@ public class MutuanteDTO {
 
 
 	private String id;
-	@NotEmpty (message = "Nome não pode ficar em branco")
+	@NotEmpty (message = "{card.nomeusuario.empty}")
 	@Size(min = 3)
 	private String name;
 	@Email
