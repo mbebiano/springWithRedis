@@ -2,15 +2,17 @@ package br.com.ntendencia.dto;
 
 import br.com.ntendencia.domain.Mutuario;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 public class MutuarioDTO {
 
 	private String id;
-	@NotBlank
+	@NotEmpty(message = "{card.id.empty}")
+	@Size(min = 3, message = "Minímo de 3 caracteres")
 	private String name;
-	@NotEmpty
+	@Email(message = "Email invalido")
 	private String email;
 
 	private Integer idMutuario;

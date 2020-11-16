@@ -3,11 +3,15 @@ package br.com.ntendencia.dto;
 import br.com.ntendencia.domain.ItemEmprestado;
 import br.com.ntendencia.enums.EStatus;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 public class ItemEmprestadoDTO {
 
     private String id;
+    @NotEmpty(message = "O campo não pode estar vazio")
+    @Size(min = 3, message = "Minímo de 3 caracteres")
     private String name;
     private String idMutuante;
     // Criar DTO

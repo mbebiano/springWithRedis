@@ -8,12 +8,12 @@ import javax.validation.constraints.Size;
 
 public class MutuanteDTO {
 
-
+	//Validações porém a messagem não é passada
 	private String id;
-	@NotEmpty (message = "{card.nomeusuario.empty}")
-	@Size(min = 3)
+	@NotEmpty (message = "O campo não pode estar vazio")
+	@Size(min = 3, message = "Minímo de 3 caracteres")
 	private String name;
-	@Email
+	@Email(message = "Emal invalido")
 	private String email;
 	private Integer idMutuante;
 

@@ -21,7 +21,7 @@ public class ItemEmprestadoLeitura {
         return itemEmprestadoService.listarItensDTO(atrasado, disponiveis);
     }
 
-    @GetMapping("/buscarPorId/{id}")
+    @GetMapping("{id}")
     public ItemEmprestadoDTO buscarPorId(@PathVariable String id) {
         return itemEmprestadoService.procurarItemEmprestadoDTO(id);
     }
