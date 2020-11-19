@@ -102,3 +102,5 @@ v
 F.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_4_1_Final.xml,7\c\7c81ba4baa50d32307fa090c2970f7e03ecba056
 ê
 `.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_2_3_4_RELEASE.xml,3\e\3e80b1d812ab9d4cdb5884c45218ec063f36e761
+z
+Jsrc/test/java/br/com/ntendencia/services/impl/MutuarioServicesImpTest.java,3\2\32cc9a6873a1125c4af700e09006cd3eb3df5753
