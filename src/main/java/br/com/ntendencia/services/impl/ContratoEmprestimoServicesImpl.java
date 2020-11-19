@@ -38,10 +38,10 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
         if (contratoEmprestimoDTO.getIdMutuario().isBlank()) {
             throw new ResourceNotFoundException("Informe o id do mutuario");
         }
-        if (contratoEmprestimoDTO.getId()!=null){
+        if (contratoEmprestimoDTO.getId() != null) {
             throw new ResourceNotFoundException("Id não deve ser preenchido, será gerado pelo banco");
         }
-        if (mutuarioServices.findById(contratoEmprestimoDTO.getIdMutuario())==null) {
+        if (mutuarioServices.findById(contratoEmprestimoDTO.getIdMutuario()) == null) {
             throw new ResourceNotFoundException("Mutuario não encontrado no banco de dados");
         }
         ContratoEmprestimo contratoEmprestimo = new ContratoEmprestimo(contratoEmprestimoDTO.getIdMutuario());
@@ -56,7 +56,7 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
         if(!itemEmprestadoList.isEmpty()){
             throw new ResourceNotFoundException("Esse(s) Item(S)" +itemEmprestadoList.size() + "Emprestados e indisponivel");
         }*/
-        contratoEmprestimo.getListaIdsItens().forEach(idItem ->{
+        contratoEmprestimo.getListaIdsItens().forEach(idItem -> {
             Optional<ItemEmprestado> itemEmprestadoObj = itemEmprestadoServices.procurarItemEmprestado(idItem);
             if (itemEmprestadoObj.get().geteStatus() != DISPONIVEL) {
                 throw new ResourceNotFoundException("Item indisponivel para emprestimo");
@@ -115,7 +115,6 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
         }
         return list;
     }
-
 
     @Override
     public Integer gerarId() {

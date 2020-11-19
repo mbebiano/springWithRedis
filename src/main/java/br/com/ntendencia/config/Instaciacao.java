@@ -130,7 +130,7 @@ public class Instaciacao implements CommandLineRunner {
 //		mutuanteRepo.save(john);
 //		mutuanteRepo.save(alex);
 //		itemEmprestadoRepo.save(livro);
-		//TODO Remover zerando DB
+		// zerar DB
 //		contratoEmprestimoRepo.deleteAll();
 //		itemEmprestadoRepo.deleteAll();
 //		mutuarioRepo.deleteAll();

@@ -32,7 +32,7 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
     @Override
     public ItemEmprestado salvarItemEmprestado(ItemEmprestadoDTO itemEmprestadoDTO) {
 
-        ItemEmprestado itemEmprestado = modelMapper.map(itemEmprestadoDTO,ItemEmprestado.class);
+        ItemEmprestado itemEmprestado = modelMapper.map(itemEmprestadoDTO, ItemEmprestado.class);
         //UsuarioDTO usuarioDTOS = mapper.map(usuarioService.buscarPeloId(id), UsuarioDTO.class);
         String id = itemEmprestado.getIdMutuante();
 
@@ -45,7 +45,7 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
         if (itemEmprestado.getQtdDiasDeDevolucao() <= 1) {
             throw new ResourceNotFoundException("Qtd dias deve ser igual ou superior a 2");
         }
-        if (itemEmprestado.getDataEmprestimo()!=null) {
+        if (itemEmprestado.getDataEmprestimo() != null) {
             throw new ResourceNotFoundException("Não é possível criar item com data de empréstimo já definida");
         }
         itemEmprestado.seteStatus(DISPONIVEL);// Setar como disponível ou indisponível if
@@ -162,7 +162,7 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
     public List<ItemEmprestado> listarItensDisponiveis() {
         List<ItemEmprestado> paraEmprestar = listarItensEmprestados();
         List<ItemEmprestado> itensStatusEmprestadoDisponivel = paraEmprestar.stream().
-                filter(itemEmprestado -> itemEmprestado.geteStatus()==DISPONIVEL).collect(Collectors.toList());
+                filter(itemEmprestado -> itemEmprestado.geteStatus() == DISPONIVEL).collect(Collectors.toList());
 
         if (itensStatusEmprestadoDisponivel.isEmpty()) {
             throw new ResourceNotFoundException("Não há itens disponiveis para emprestimo");
@@ -174,18 +174,18 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
     public List<ItemEmprestadoDTO> listarItensDTO(boolean atrasado, boolean disponiveis) {
         List<ItemEmprestadoDTO> listDTO = new ArrayList<>();
         if (atrasado) {
-            for(ItemEmprestado itemEmprestado : listarItensEmAtraso()){
+            for (ItemEmprestado itemEmprestado : listarItensEmAtraso()) {
                 listDTO.add(new ItemEmprestadoDTO(itemEmprestado));
             }
             return listDTO;
         }
-        if(disponiveis){
-            for(ItemEmprestado itemEmprestado : listarItensDisponiveis()){
+        if (disponiveis) {
+            for (ItemEmprestado itemEmprestado : listarItensDisponiveis()) {
                 listDTO.add(new ItemEmprestadoDTO(itemEmprestado));
             }
             return listDTO;
         }
-        for(ItemEmprestado itemEmprestado : listarItensEmprestados()){
+        for (ItemEmprestado itemEmprestado : listarItensEmprestados()) {
             listDTO.add(new ItemEmprestadoDTO(itemEmprestado));
         }
         return listDTO;
@@ -194,12 +194,11 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
     @Override
     public List<ItemEmprestadoDTO> listarItensEmprestadosOrdenarLista() {
 
-       // List<ItemEmprestado> listaDeItens = listarItensEmprestados();
+        // List<ItemEmprestado> listaDeItens = listarItensEmprestados();
 
         //Collections.sort(listaDeItens, Comparator.comparing(ItemEmprestado::getDataEmprestimo));
 
         return listarItensDTO(true, true);
     }
-
 
 }

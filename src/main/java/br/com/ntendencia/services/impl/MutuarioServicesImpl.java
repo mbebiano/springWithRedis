@@ -17,9 +17,7 @@ import java.util.Optional;
 @Service
 public class MutuarioServicesImpl implements MutuarioService {
 
-
     private final MutuarioRepository mutuarioRepo;
-
 
     private final ModelMapper modelMapper;
 
@@ -29,7 +27,6 @@ public class MutuarioServicesImpl implements MutuarioService {
         this.mutuarioRepo = mutuarioRepo;
         this.modelMapper = modelMapper;
     }
-
 
     @Override
     public void deleteMutuario(String id) {
@@ -97,5 +94,4 @@ public class MutuarioServicesImpl implements MutuarioService {
             throw new ResourceNotFoundException("Mutuario com nome: " + nome + " não encontrado");
         }
     }
-
 }
