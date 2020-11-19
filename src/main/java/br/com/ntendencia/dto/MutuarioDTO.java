@@ -8,7 +8,6 @@ import javax.validation.constraints.Size;
 
 public class MutuarioDTO {
 
-	private String id;
 	@NotEmpty(message = "{card.id.empty}")
 	@Size(min = 3, message = "Minímo de 3 caracteres")
 	private String name;
@@ -19,24 +18,19 @@ public class MutuarioDTO {
 
 	public MutuarioDTO(){}
 
+	public MutuarioDTO(MutuarioDTO objDTO){
+		this.name = objDTO.getName();
+		this.email = objDTO.getEmail();
+		this.idMutuario= objDTO.getIdMutuario();
+	}
 	public MutuarioDTO(Mutuario obj) {
-		this.id = obj.getIdUsuario();
 		this.name = obj.getName();
 		this.email = obj.getEmail();
 	}
 	public MutuarioDTO(Mutuario obj, Integer idMutuario) {
-		this.id = obj.getIdUsuario();
 		this.name = obj.getName();
 		this.email = obj.getEmail();
 		this.idMutuario = idMutuario;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public Integer getIdMutuario() {

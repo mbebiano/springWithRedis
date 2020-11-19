@@ -17,11 +17,19 @@ import java.util.Optional;
 @Service
 public class MutuarioServicesImpl implements MutuarioService {
 
-    @Autowired
-    private MutuarioRepository mutuarioRepo;
 
+    private final MutuarioRepository mutuarioRepo;
+
+
+    private final ModelMapper modelMapper;
+
+    // Injeção de dependências do spring
     @Autowired
-    private ModelMapper modelMapper;
+    public MutuarioServicesImpl(MutuarioRepository mutuarioRepo, ModelMapper modelMapper) {
+        this.mutuarioRepo = mutuarioRepo;
+        this.modelMapper = modelMapper;
+    }
+
 
     @Override
     public void deleteMutuario(String id) {

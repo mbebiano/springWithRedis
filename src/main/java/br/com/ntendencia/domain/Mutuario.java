@@ -14,6 +14,10 @@ public class Mutuario extends Usuario {
 
 	}
 
+	public Mutuario(Mutuario mutuario){
+		this.idMutuario = mutuario.getIdMutuario();
+		this.senha = mutuario.getSenha();
+	}
 	public Mutuario(String id, String name, String email, String senha,Integer idMutuario) {
 		super(id, name, email);
 		this.senha = senha;

@@ -47,7 +47,7 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
         ContratoEmprestimo contratoEmprestimo = new ContratoEmprestimo(contratoEmprestimoDTO.getIdMutuario());
         //contratoEmprestimo.getItensEmprestados().addAll(contratoEmprestimoDTO.getItensEmprestados());
         contratoEmprestimo.getListaIdsItens().addAll(contratoEmprestimoDTO.getListaIdsItens());
-        // TODO Verificar uso do filter trabalhando validação do item Emprestado
+        //  Verificar uso do filter trabalhando validação do item Emprestado
         /*
         List<ItemEmprestado> itemEmprestadoList = contratoEmprestimo.getItensEmprestados().stream().
                 filter(
