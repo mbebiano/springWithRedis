@@ -149,10 +149,8 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 //            }
         });*/
 
-        List<ItemEmprestado> itensStatusEmprestadoAtrasado = paraEmprestar.stream().filter(itemEmprestado -> {
-            return itemEmprestado.geteStatus() == EMPRESTADO && itemEmprestado.getDataEmprestimo().
-                    plusDays(itemEmprestado.getQtdDiasDeDevolucao()).isBefore(LocalDate.now());
-        }).collect(Collectors.toList());
+        List<ItemEmprestado> itensStatusEmprestadoAtrasado = paraEmprestar.stream().filter(itemEmprestado -> itemEmprestado.geteStatus() == EMPRESTADO && itemEmprestado.getDataEmprestimo().
+                plusDays(itemEmprestado.getQtdDiasDeDevolucao()).isBefore(LocalDate.now())).collect(Collectors.toList());
 
         if (itensStatusEmprestadoAtrasado.isEmpty()) {
             throw new ResourceNotFoundException("Não há itens em atraso");
@@ -200,7 +198,7 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 
         //Collections.sort(listaDeItens, Comparator.comparing(ItemEmprestado::getDataEmprestimo));
 
-        return null;
+        return listarItensDTO(true, true);
     }
 
 
