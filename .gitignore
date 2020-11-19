@@ -1,8 +1,9 @@
 HELP.md
-target/
+/target/
+/bin/
 !.mvn/wrapper/maven-wrapper.jar
-!/src/main/
-!/src/test/
+/txt/
+/.metadata/
 
 ### STS ###
 .apt_generated
@@ -18,9 +19,8 @@ target/
 *.iws
 *.iml
 *.ipr
-/.idea/
-/.metadata/
-/target/
+*.log
+/logs/
 
 ### NetBeans ###
 /nbproject/private/
@@ -28,10 +28,23 @@ target/
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
+/build/
 
 ### VS Code ###
 .vscode/
-/.idea/
-/.metadata/
-/target/
+
+### CI ###
+#buildspec.yml
+#application.yml
+
+### Maven template
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
