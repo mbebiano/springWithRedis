@@ -88,8 +88,10 @@ public class MutuarioServicesImpl implements MutuarioService {
 
     @Override
     public MutuarioDTO procurarPorNome(String nome) {
-        if (mutuarioRepo.findByName(nome).isPresent()) {
-            return new MutuarioDTO(mutuarioRepo.findByName(nome).orElseThrow());
+
+        Optional<Mutuario> mutuarioOpt = mutuarioRepo.findByName(nome);
+        if (mutuarioOpt.isPresent()) {
+            return new MutuarioDTO(mutuarioOpt.get());
         } else {
             throw new ResourceNotFoundException("Mutuario com nome: " + nome + " não encontrado");
         }

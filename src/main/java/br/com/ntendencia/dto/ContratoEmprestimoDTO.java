@@ -2,6 +2,8 @@ package br.com.ntendencia.dto;
 
 import br.com.ntendencia.domain.ContratoEmprestimo;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +11,10 @@ public class ContratoEmprestimoDTO {
 
     private String id;
 
+    @NotBlank(message = "{card.nomeusuario.empty}")
     private String idMutuario;
 
+    @Size(min = 1, message = "A lista de itens nao pode estar vazia")
     private List<String> listaIdsItens = new ArrayList<>();
 
     public ContratoEmprestimoDTO(){}

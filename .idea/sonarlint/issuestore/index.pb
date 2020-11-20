@@ -17,9 +17,6 @@ d
 4src/main/java/br/com/ntendencia/domain/Mutuante.java,1\4\14f841f672fcd2c103741d7d66c1423623e844da
 t
 Dsrc/main/java/br/com/ntendencia/repositories/MutuarioRepository.java,7\0\700c64ab603f8cfeb912226b15f5f36a368e3792
-:
-
-.classpath,3\5\354079a72b91a4280407c16a36f47d1986fd85a5
 ~
 Nsrc/main/java/br/com/ntendencia/repositories/ContratoEmprestimoRepository.java,e\7\e74a54cee55d1d1f76fc3d6df1ec5b8dee171d2f
 z
@@ -104,3 +101,5 @@ F.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_4_1_Final.xml,7\c\7c8
 `.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_2_3_4_RELEASE.xml,3\e\3e80b1d812ab9d4cdb5884c45218ec063f36e761
 z
 Jsrc/test/java/br/com/ntendencia/services/impl/MutuarioServicesImpTest.java,3\2\32cc9a6873a1125c4af700e09006cd3eb3df5753
+k
+;src/main/java/br/com/ntendencia/utils/CollectionsUtils.java,2\f\2fd6326cc5f4d865c74e07a6468abb21ff40a27d

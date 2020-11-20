@@ -12,12 +12,12 @@ public interface ItemEmprestadoService {
 	ItemEmprestado salvarItemEmprestado(ItemEmprestadoDTO itemEmprestadoDTO);
 	void deletarItemEmprestado(String id);
 	List<ItemEmprestado> listarItensEmprestados();
-	Optional<ItemEmprestado> procurarItemEmprestado(String id);
+	ItemEmprestado procurarItemEmprestado(String id);
 	ItemEmprestadoDTO procurarItemEmprestadoDTO(String id);
 	void alterarStatusItemEmprestado(String id, EStatus status);
 	Integer gerarId ();
 	void definirDataDeEmprestimo(ItemEmprestado itemEmprestado);
-	void atualizarDadoItemEmprestado(Optional<ItemEmprestado> novoObj, ItemEmprestado obj);
+	void atualizarDadoItemEmprestado(ItemEmprestado novoObj, ItemEmprestado obj);
 	ItemEmprestado atualizarItemEmprestado(ItemEmprestado obj);
 	List<ItemEmprestado> listarItensEmAtraso();
 	List<ItemEmprestado> listarItensDisponiveis();

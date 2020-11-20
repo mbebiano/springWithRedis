@@ -58,11 +58,8 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 
     @Override
     public void deletarItemEmprestado(String id) {
-        if (procurarItemEmprestado(id).isPresent()) {
-            itemEmprestadoRepo.deleteById(id);
-        } else {
-            throw new ResourceNotFoundException("Não foi encontrado item com o id: " + id);
-        }
+        ItemEmprestado itemEmprestado = procurarItemEmprestado(id);
+        itemEmprestadoRepo.deleteById(itemEmprestado.getId());
     }
 
     @Override
@@ -76,9 +73,10 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
     }
 
     @Override
-    public Optional<ItemEmprestado> procurarItemEmprestado(String id) {
-        if (itemEmprestadoRepo.findById(id).isPresent()) {
-            return itemEmprestadoRepo.findById(id);
+    public ItemEmprestado procurarItemEmprestado(String id) {
+        Optional<ItemEmprestado> itemEmprestadoOpt = itemEmprestadoRepo.findById(id);
+        if (itemEmprestadoOpt.isPresent()) {
+            return itemEmprestadoOpt.get();
         } else {
             throw new ResourceNotFoundException("Item id: " + id + " não foi encontrado.");
         }
@@ -86,9 +84,9 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 
     @Override
     public ItemEmprestadoDTO procurarItemEmprestadoDTO(String id) {
-        if (itemEmprestadoRepo.findById(id).isPresent()) {
-            Optional<ItemEmprestado> itemEmprestado = itemEmprestadoRepo.findById(id);
-            return new ItemEmprestadoDTO(itemEmprestado.orElseThrow());
+        Optional<ItemEmprestado> itemEmprestadoOpt = itemEmprestadoRepo.findById(id);
+        if (itemEmprestadoOpt.isPresent()) {
+            return new ItemEmprestadoDTO(itemEmprestadoOpt.get());
         } else {
             throw new ResourceNotFoundException("Item id: " + id + " não foi encontrado.");
         }
@@ -96,7 +94,7 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 
     @Override
     public void alterarStatusItemEmprestado(String id, EStatus status) {
-        ItemEmprestado obj = procurarItemEmprestado(id).orElseThrow();
+        ItemEmprestado obj = procurarItemEmprestado(id);
         obj.seteStatus(status);
     }
 
@@ -118,20 +116,16 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 
     @Override
     public ItemEmprestado atualizarItemEmprestado(ItemEmprestado obj) {
-        Optional<ItemEmprestado> novoObj = procurarItemEmprestado(obj.getId());
+        ItemEmprestado novoObj = procurarItemEmprestado(obj.getId());
         atualizarDadoItemEmprestado(novoObj, obj);
         return itemEmprestadoRepo.save(obj);
     }
 
     @Override
-    public void atualizarDadoItemEmprestado(Optional<ItemEmprestado> novoObj, ItemEmprestado obj) {
-        if (novoObj.isPresent()) {
-            novoObj.get().setName(obj.getName());
-            novoObj.get().setDataEmprestimo(obj.getDataEmprestimo());
-            novoObj.get().seteStatus(obj.geteStatus());
-        } else {
-            throw new ResourceNotFoundException("Item emprestado não encontrado para atualizar");
-        }
+    public void atualizarDadoItemEmprestado(ItemEmprestado novoObj, ItemEmprestado obj) {
+        novoObj.setName(obj.getName());
+        novoObj.setDataEmprestimo(obj.getDataEmprestimo());
+        novoObj.seteStatus(obj.geteStatus());
     }
 
     @Override
