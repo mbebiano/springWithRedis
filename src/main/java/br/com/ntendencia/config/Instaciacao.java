@@ -4,6 +4,7 @@ import br.com.ntendencia.domain.ContratoEmprestimo;
 import br.com.ntendencia.domain.ItemEmprestado;
 import br.com.ntendencia.domain.Mutuante;
 import br.com.ntendencia.domain.Mutuario;
+import br.com.ntendencia.enums.CStatus;
 import br.com.ntendencia.enums.EStatus;
 import br.com.ntendencia.repositories.ContratoEmprestimoRepository;
 import br.com.ntendencia.repositories.ItemEmprestadoRepository;
@@ -13,10 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.logging.Logger;
-
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.logging.Logger;
 
 @Configuration
 public class Instaciacao implements CommandLineRunner {
@@ -62,7 +62,7 @@ public class Instaciacao implements CommandLineRunner {
 
 		//Instaciacão Item Emprestado
 
-		ItemEmprestado livro = new ItemEmprestado("Livro","1",7);
+		ItemEmprestado livro = new ItemEmprestado("Livro","1",12);
 		livro.setId("1");
 		livro.setIdItemEmprestado(1);
 		livro.seteStatus(EStatus.EMPRESTADO);
@@ -76,6 +76,7 @@ public class Instaciacao implements CommandLineRunner {
 		contrato1.setIdMutuario(maria.getIdUsuario());
 
 		itemEmprestadoRepo.saveAll(Arrays.asList(livro, notebook));
+		contrato1.setStatusContrato(CStatus.CONTRATOEMDIA);
 		contratoEmprestimoRepo.save(contrato1);
 //		//Instaciação Users
 //		Mutuante john = new Mutuante("2", "John Ferr", "johny@gmail.com", 2);

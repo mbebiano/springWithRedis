@@ -8,10 +8,12 @@ import javax.validation.constraints.Size;
 
 public class MutuarioDTO {
 
+	private String id;
 	@NotEmpty(message = "{card.id.empty}")
 	@Size(min = 3, message = "Minímo de 3 caracteres")
 	private String name;
-	@Email(message = "Email invalido")
+	@Email
+	@NotEmpty (message = "O campo não pode estar vazio")
 	private String email;
 
 	private Integer idMutuario;

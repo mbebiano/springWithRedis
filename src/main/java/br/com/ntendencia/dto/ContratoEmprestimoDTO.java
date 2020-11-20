@@ -1,6 +1,7 @@
 package br.com.ntendencia.dto;
 
 import br.com.ntendencia.domain.ContratoEmprestimo;
+import br.com.ntendencia.enums.CStatus;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -11,11 +12,13 @@ public class ContratoEmprestimoDTO {
 
     private String id;
 
-    @NotBlank(message = "{card.nomeusuario.empty}")
+    @NotBlank(message = "Id do mutuario não pode estar vazio")
     private String idMutuario;
 
     @Size(min = 1, message = "A lista de itens nao pode estar vazia")
     private List<String> listaIdsItens = new ArrayList<>();
+
+    private CStatus statusContrato;
 
     public ContratoEmprestimoDTO(){}
 
@@ -23,6 +26,7 @@ public class ContratoEmprestimoDTO {
         this.id =obj.getId();
         this.idMutuario = obj.getIdMutuario();
         this.listaIdsItens= obj.getListaIdsItens();
+        this.statusContrato = obj.getStatusContrato();
     }
 
     public String getId() {
@@ -47,5 +51,13 @@ public class ContratoEmprestimoDTO {
 
     public void setListaIdsItens(List<String> listaIdsItens) {
         this.listaIdsItens = listaIdsItens;
+    }
+
+    public CStatus getStatusContrato() {
+        return statusContrato;
+    }
+
+    public void setStatusContrato(CStatus statusContrato) {
+        this.statusContrato = statusContrato;
     }
 }

@@ -13,7 +13,8 @@ public class MutuanteDTO {
 	@NotEmpty (message = "O campo não pode estar vazio")
 	@Size(min = 3, message = "Minímo de 3 caracteres")
 	private String name;
-	@Email(message = "Emal invalido")
+	@Email
+	@NotEmpty (message = "O campo não pode estar vazio")
 	private String email;
 	private Integer idMutuante;
 

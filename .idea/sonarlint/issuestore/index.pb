@@ -103,3 +103,6 @@ z
 Jsrc/test/java/br/com/ntendencia/services/impl/MutuarioServicesImpTest.java,3\2\32cc9a6873a1125c4af700e09006cd3eb3df5753
 k
 ;src/main/java/br/com/ntendencia/utils/CollectionsUtils.java,2\f\2fd6326cc5f4d865c74e07a6468abb21ff40a27d
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302

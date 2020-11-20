@@ -1,5 +1,6 @@
 package br.com.ntendencia.domain;
 
+import br.com.ntendencia.enums.CStatus;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
@@ -16,18 +17,30 @@ public class ContratoEmprestimo {
 
 	private Integer idContrato;
 
-	private final List<String> listaIdsItens = new ArrayList<>();
+	private List<String> listaIdsItens = new ArrayList<>();
+
+	private CStatus statusContrato;
 	
 	public ContratoEmprestimo() {}
 
+	public ContratoEmprestimo(String id, String idMutuario, Integer idContrato, CStatus statusContrato) {
+		this.id = id;
+		this.idMutuario= idMutuario;
+		this.idContrato = idContrato;
+		this.statusContrato = statusContrato;
+	}
 	public ContratoEmprestimo(String id, String idMutuario, Integer idContrato) {
 		this.id = id;
 		this.idMutuario= idMutuario;
 		this.idContrato = idContrato;
+		this.statusContrato = statusContrato;
 	}
 	public ContratoEmprestimo(String idMutuario){ this.idMutuario = idMutuario;}
 
-	public String getId() {
+    public ContratoEmprestimo(ContratoEmprestimo contratoEmprestimo) {
+    }
+
+    public String getId() {
 		return id;
 	}
 
@@ -53,6 +66,14 @@ public class ContratoEmprestimo {
 
 	public List<String> getListaIdsItens() {
 		return listaIdsItens;
+	}
+
+	public CStatus getStatusContrato() {
+		return statusContrato;
+	}
+
+	public void setStatusContrato(CStatus statusContrato) {
+		this.statusContrato = statusContrato;
 	}
 
 	@Override

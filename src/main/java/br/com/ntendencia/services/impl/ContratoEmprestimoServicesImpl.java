@@ -3,6 +3,7 @@ package br.com.ntendencia.services.impl;
 import br.com.ntendencia.domain.ContratoEmprestimo;
 import br.com.ntendencia.domain.ItemEmprestado;
 import br.com.ntendencia.dto.ContratoEmprestimoDTO;
+import br.com.ntendencia.enums.CStatus;
 import br.com.ntendencia.repositories.ContratoEmprestimoRepository;
 import br.com.ntendencia.services.ContratoEmprestimoService;
 import br.com.ntendencia.services.ItemEmprestadoService;
@@ -12,6 +13,7 @@ import br.com.ntendencia.utils.CollectionsUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -37,7 +39,6 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
         this.itemEmprestadoServices = itemEmprestadoServices;
         this.mutuarioServices = mutuarioServices;
     }
-
 
     @Override
     public ContratoEmprestimo contratoEmprestimoSave(ContratoEmprestimoDTO contratoEmprestimoDTO) {
@@ -96,6 +97,7 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
         Integer idContrato = gerarId();
         contratoEmprestimo.setId(idContrato.toString());
         contratoEmprestimo.setIdContrato(idContrato);
+        contratoEmprestimo.setStatusContrato(CStatus.CONTRATOEMDIA);
         return contratoEmprestimoRepo.save(contratoEmprestimo);
     }
 
@@ -110,18 +112,36 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
 
     @Override
     public List<ContratoEmprestimo> listarTodoscontratosEmprestimo() {
+
+        //return (List<ContratoEmprestimo>) contratoEmprestimoRepo.findAll();
         return CollectionsUtils.getListFromIterable(contratoEmprestimoRepo.findAll());
     }
 
+//    @Override
+//    public List<ContratoEmprestimoDTO> listarTodoscontratosEmprestimoDTO() {
+//        if(listarTodoscontratosEmprestimo().isEmpty()){
+//            throw new ResourceNotFoundException("Não há contratos para exibir");
+//        }
+//        return listarTodoscontratosEmprestimo().stream().map(ContratoEmprestimoDTO::new).collect(Collectors.toList());
+//    }
+
     @Override
     public List<ContratoEmprestimoDTO> listarTodoscontratosEmprestimoDTO() {
-        return listarTodoscontratosEmprestimo().stream().map(ContratoEmprestimoDTO::new).collect(Collectors.toList());
+        if(listarTodoscontratosEmprestimo().isEmpty()){
+            throw new ResourceNotFoundException("Não há contratos para exibir");
+        }
+        return listarTodoscontratosEmprestimo().stream().map(contratoEmprestimo -> {
+            contratoEmprestimo.getListaIdsItens().forEach(idItem -> {
+                ItemEmprestado itemEmprestadoObj = itemEmprestadoServices.procurarItemEmprestado(idItem);
+                if(LocalDate.now().isAfter(itemEmprestadoObj.getDataEmprestimo().
+                        plusDays(itemEmprestadoObj.getQtdDiasDeDevolucao()))){
+                    contratoEmprestimo.setStatusContrato(CStatus.CONTRATOEMATRASO);
+                }
+            });
+            return contratoEmprestimoRepo.save(contratoEmprestimo);
+        }).collect(Collectors.toList()).stream().map(ContratoEmprestimoDTO::new).collect(Collectors.toList());
 
-//        List<ContratoEmprestimoDTO> list = new ArrayList<>();
-//        for (ContratoEmprestimo contratoEmprestimo : listarTodoscontratosEmprestimo()) {
-//            list.add(new ContratoEmprestimoDTO(contratoEmprestimo));
-//        }
-//        return list;
+        //return listarTodoscontratosEmprestimo().stream().map(ContratoEmprestimoDTO::new).collect(Collectors.toList());
     }
 
     @Override

@@ -22,4 +22,9 @@ public class ContratoEmprestimoLeitura {
 		return ResponseEntity.ok().body(contratoEmprestimoService.listarTodoscontratosEmprestimoDTO());
 	}
 
+	@GetMapping("/listarContratos")
+	public List<ContratoEmprestimoDTO> listarContratos(){
+		return contratoEmprestimoService.listarTodoscontratosEmprestimoDTO();
+	}
+
 }
