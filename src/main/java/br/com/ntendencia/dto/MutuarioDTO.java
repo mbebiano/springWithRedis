@@ -26,6 +26,7 @@ public class MutuarioDTO {
 		this.idMutuario= objDTO.getIdMutuario();
 	}
 	public MutuarioDTO(Mutuario obj) {
+		this.idMutuario = obj.getIdMutuario();
 		this.name = obj.getName();
 		this.email = obj.getEmail();
 	}

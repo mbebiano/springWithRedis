@@ -5,7 +5,6 @@ import br.com.ntendencia.dto.ItemEmprestadoDTO;
 import br.com.ntendencia.enums.EStatus;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface ItemEmprestadoService {
 	

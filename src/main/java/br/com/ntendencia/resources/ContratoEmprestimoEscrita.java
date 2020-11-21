@@ -1,7 +1,7 @@
 package br.com.ntendencia.resources;
 
 import br.com.ntendencia.dto.ContratoEmprestimoDTO;
-import br.com.ntendencia.services.impl.ContratoEmprestimoServicesImpl;
+import br.com.ntendencia.services.ContratoEmprestimoService;
 import br.com.ntendencia.services.impl.MutuarioServicesImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import javax.validation.Valid;
 public class ContratoEmprestimoEscrita {
 	
 	@Autowired
-	private ContratoEmprestimoServicesImpl contratoEmprestimoService;
+	private ContratoEmprestimoService contratoEmprestimoService;
 	
 	@Autowired
 	private MutuarioServicesImpl mutuarioService;

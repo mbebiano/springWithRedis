@@ -33,13 +33,9 @@ public class ContratoEmprestimo {
 		this.id = id;
 		this.idMutuario= idMutuario;
 		this.idContrato = idContrato;
-		this.statusContrato = statusContrato;
 	}
 	public ContratoEmprestimo(String idMutuario){ this.idMutuario = idMutuario;}
-
-    public ContratoEmprestimo(ContratoEmprestimo contratoEmprestimo) {
-    }
-
+	
     public String getId() {
 		return id;
 	}

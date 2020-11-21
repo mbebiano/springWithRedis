@@ -1,10 +1,13 @@
 package br.com.ntendencia.resources;
 
 import br.com.ntendencia.dto.MutuanteDTO;
-import br.com.ntendencia.services.impl.MutuanteServicesImpl;
+import br.com.ntendencia.services.MutuanteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -13,7 +16,7 @@ import java.util.List;
 public class MutuanteLeitura {
 	
 	@Autowired
-	private MutuanteServicesImpl mutuanteService;
+	private MutuanteService mutuanteService;
 
 	@GetMapping("/mutuanteId/{id}")
 	public MutuanteDTO mutuantePorId(@PathVariable String id){

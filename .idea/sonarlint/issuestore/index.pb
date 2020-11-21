@@ -87,18 +87,8 @@ n
 mvnw.cmd,1\f\1f1763f358c257ea3515417352b82b0165647ad1
 d
 4src/main/java/br/com/ntendencia/utils/DateUtils.java,5\a\5ae12be34bc9a26b3f429106e34b497a837b6e57
-h
-8.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml,d\7\d748d8766080efc90fdc1cab153cb0f95a859ff1
-z
-J.idea/libraries/Maven__jakarta_validation_jakarta_validation_api_2_0_2.xml,d\5\d547cb1fb5bdfb2adb7662382f960595e698dbd1
 v
 F.idea/libraries/Maven__org_apache_commons_commons_collections4_4_4.xml,9\5\95fd06d9d5f4b9c90d5bf8e2f9da97186bbdafb9
-Ç
-R.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_1_5_Final.xml,1\0\10f827191f174dcaed3cfc413eba70c6a60b325a
-v
-F.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_4_1_Final.xml,7\c\7c81ba4baa50d32307fa090c2970f7e03ecba056
-ê
-`.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_2_3_4_RELEASE.xml,3\e\3e80b1d812ab9d4cdb5884c45218ec063f36e761
 z
 Jsrc/test/java/br/com/ntendencia/services/impl/MutuarioServicesImpTest.java,3\2\32cc9a6873a1125c4af700e09006cd3eb3df5753
 k
@@ -106,3 +96,5 @@ k
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+b
+2src/main/java/br/com/ntendencia/enums/CStatus.java,3\5\356ee1a4e5f1598d466a128eb13d92c81d65ce0b

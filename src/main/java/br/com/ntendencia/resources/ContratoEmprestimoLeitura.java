@@ -2,10 +2,12 @@ package br.com.ntendencia.resources;
 
 
 import br.com.ntendencia.dto.ContratoEmprestimoDTO;
-import br.com.ntendencia.services.impl.ContratoEmprestimoServicesImpl;
+import br.com.ntendencia.services.ContratoEmprestimoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -15,7 +17,7 @@ import java.util.List;
 public class ContratoEmprestimoLeitura {
 	
 	@Autowired
-	private ContratoEmprestimoServicesImpl contratoEmprestimoService;
+	private ContratoEmprestimoService contratoEmprestimoService;
 
 	@GetMapping("/listaContratos")
 	public ResponseEntity<List<ContratoEmprestimoDTO>> findAll(){

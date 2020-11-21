@@ -1,7 +1,7 @@
 package br.com.ntendencia.resources;
 
 import br.com.ntendencia.dto.MutuarioDTO;
-import br.com.ntendencia.services.impl.MutuarioServicesImpl;
+import br.com.ntendencia.services.MutuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +13,7 @@ import javax.validation.Valid;
 public class MutuarioEscrita {
 
     @Autowired
-    private MutuarioServicesImpl mutuarioService;
+    private MutuarioService mutuarioService;
 
     @PostMapping("/save")
     public String createUser(@RequestBody @Valid MutuarioDTO mutuarioDTO) {

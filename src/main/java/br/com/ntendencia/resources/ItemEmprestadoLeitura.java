@@ -2,7 +2,7 @@ package br.com.ntendencia.resources;
 
 
 import br.com.ntendencia.dto.ItemEmprestadoDTO;
-import br.com.ntendencia.services.impl.ItemEmprestadoServicesImpl;
+import br.com.ntendencia.services.ItemEmprestadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +13,7 @@ import java.util.List;
 public class ItemEmprestadoLeitura {
 
     @Autowired
-    private ItemEmprestadoServicesImpl itemEmprestadoService;
+    private ItemEmprestadoService itemEmprestadoService;
 
     @GetMapping("/listarItens")
     public List<ItemEmprestadoDTO> listarItensDTO(@RequestParam(required = false) boolean atrasado,

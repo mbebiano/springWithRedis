@@ -1,15 +1,13 @@
 package br.com.ntendencia.services.impl;
 
+import br.com.ntendencia.domain.Mutuante;
 import br.com.ntendencia.dto.MutuanteDTO;
+import br.com.ntendencia.repositories.MutuanteRepository;
+import br.com.ntendencia.services.MutuanteService;
 import br.com.ntendencia.services.exceptions.ResourceNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-
-import br.com.ntendencia.domain.Mutuante;
-import br.com.ntendencia.repositories.MutuanteRepository;
-import br.com.ntendencia.services.MutuanteService;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -19,15 +17,19 @@ import java.util.Optional;
 @Service
 public class MutuanteServicesImpl implements MutuanteService {
 
-    @Autowired
-    private MutuanteRepository mutuanteRepo;
+    private final MutuanteRepository mutuanteRepo;
+
+    private final ModelMapper modelMapper;
 
     @Autowired
-    private ModelMapper modelMapper;
-
+    public MutuanteServicesImpl(MutuanteRepository mutuanteRepo,
+                                ModelMapper modelMapper) {
+        this.mutuanteRepo = mutuanteRepo;
+        this.modelMapper = modelMapper;
+    }
 
     @Override
-    public void deleteMutuante(@PathVariable String id) {
+    public void deleteMutuante(String id) {
         mutuanteRepo.deleteById(id);
     }
 
