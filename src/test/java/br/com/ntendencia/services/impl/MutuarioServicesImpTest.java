@@ -75,7 +75,7 @@ public class MutuarioServicesImpTest {
         Mutuario mutuarioSalvo = mutuarioService().salvarMutuario(mutuarioDTO);
 
         // verificação
-        Assert.assertEquals(Integer.valueOf(0), mutuarioSalvo.getIdMutuario()); // não retorna o mutuario salvo dto
+        Assert.assertEquals(Integer.valueOf(0), mutuarioSalvo.getIdMutuario()); // não retorna o mutuante salvo dto
     }
 
     @Test

@@ -30,7 +30,11 @@ public class MutuanteServicesImpl implements MutuanteService {
 
     @Override
     public void deleteMutuante(String id) {
-        mutuanteRepo.deleteById(id);
+        if (mutuanteRepo.findById(id).isPresent()) {
+            mutuanteRepo.deleteById(id);
+        } else {
+            throw new ResourceNotFoundException("Mutuante id: " + id + " não foi encontrado.");
+        }
     }
 
     @Override
@@ -77,9 +81,6 @@ public class MutuanteServicesImpl implements MutuanteService {
 
     @Override
     public Mutuante salvarMutuante(MutuanteDTO mutuanteDTO) {
-        if (mutuanteDTO.getId() != null || mutuanteDTO.getIdMutuante() != null) {
-            throw new ResourceNotFoundException("Id não pode ser inserido, será gerado de forma incremental");
-        }
         Mutuante mutuante = modelMapper.map(mutuanteDTO, Mutuante.class);
         Integer idMutuante = gerarId();
         mutuante.setIdUsuario(idMutuante.toString());

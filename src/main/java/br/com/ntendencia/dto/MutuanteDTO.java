@@ -26,6 +26,7 @@ public class MutuanteDTO {
 		this.id = obj.getIdUsuario();
 		this.name = obj.getName();
 		this.email = obj.getEmail();
+		this.idMutuante = obj.getIdMutuante();
 	}
 
 	public MutuanteDTO(Mutuante obj, Integer idMutuante) {
