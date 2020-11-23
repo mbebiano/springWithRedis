@@ -1,10 +1,22 @@
 package br.com.ntendencia.services.impl;
 
 import br.com.ntendencia.config.ModelMapperConfig;
+import br.com.ntendencia.domain.ContratoEmprestimo;
+import br.com.ntendencia.domain.ItemEmprestado;
 import br.com.ntendencia.domain.Mutuante;
+import br.com.ntendencia.domain.Mutuario;
+import br.com.ntendencia.dto.ContratoEmprestimoDTO;
 import br.com.ntendencia.dto.MutuanteDTO;
+import br.com.ntendencia.dto.MutuarioDTO;
+import br.com.ntendencia.enums.EStatus;
+import br.com.ntendencia.repositories.ContratoEmprestimoRepository;
+import br.com.ntendencia.repositories.ItemEmprestadoRepository;
 import br.com.ntendencia.repositories.MutuanteRepository;
+import br.com.ntendencia.repositories.MutuarioRepository;
+import br.com.ntendencia.services.ContratoEmprestimoService;
+import br.com.ntendencia.services.ItemEmprestadoService;
 import br.com.ntendencia.services.MutuanteService;
+import br.com.ntendencia.services.MutuarioService;
 import br.com.ntendencia.services.exceptions.ResourceNotFoundException;
 import org.junit.Assert;
 import org.junit.Before;
@@ -23,57 +35,61 @@ import static org.mockito.Mockito.*;
 
 
 @RunWith(SpringRunner.class)
-public class MutuanteServicesImpTest {
+public class ContratoEmprestimoServicesImpTest {
 
     private final ModelMapper mapper = new ModelMapperConfig().mapper();
 
     @Mock
-    private MutuanteRepository mutuanteRepo;
+    private ContratoEmprestimoRepository contratoRepo;
+    @Mock
+    private ItemEmprestadoService itemService;
+    @Mock
+    private MutuarioService mutuarioService;
 
-    private ModelMapper modelMapper = new ModelMapper();
-
-    private MutuanteService mutuanteService() {
-        return new MutuanteServicesImpl(mutuanteRepo, modelMapper);
+    private ContratoEmprestimoService contratoEmprestimoService() {
+        return new ContratoEmprestimoServicesImpl(contratoRepo, itemService, mutuarioService, mapper);
     }
 
-    protected Mutuante mutuante() {
-        Mutuante mutuante = new Mutuante();
-        mutuante.setIdMutuante(1);
-        mutuante.setIdUsuario("1");
-        mutuante.setName("Mattheus");
-        mutuante.setEmail("mattheusbebiano@gmail.com");
-        return mutuante;
+    protected ContratoEmprestimo contratoEmprestimo() {
+        ContratoEmprestimo contratoEmprestimo = new ContratoEmprestimo();
+        contratoEmprestimo.setIdMutuario("1");
+        return contratoEmprestimo;
     }
 
-    protected MutuanteDTO mutuanteDTO() {
-        MutuanteDTO mutuanteDTO = new MutuanteDTO();
-        mutuanteDTO.setIdMutuante(mutuante().getIdMutuante());
-        mutuanteDTO.setId(mutuante().getIdUsuario());
-        mutuanteDTO.setName(mutuante().getName());
-        mutuanteDTO.setEmail(mutuante().getEmail());
-        return mutuanteDTO;
+    protected ContratoEmprestimoDTO contratoEmprestimoDTO() {
+        ContratoEmprestimoDTO contratoEmprestimoDTO = new ContratoEmprestimoDTO();
+        contratoEmprestimoDTO.setId(contratoEmprestimo().getId());
+        contratoEmprestimoDTO.setIdMutuario(contratoEmprestimo().getIdMutuario());
+        return contratoEmprestimoDTO;
     }
 
     @Before
     public void setupMutuarioTest() {
-
     }
 
     @Test
     public void testarSalvar() {
         // cenário
-        Mutuante mutuanteMock = Mockito.mock(Mutuante.class);
+        ContratoEmprestimo contratoMock = Mockito.mock(ContratoEmprestimo.class);
+        ItemEmprestado itemEmprestadoMock = Mockito.mock(ItemEmprestado.class);
+        MutuarioDTO mutuarioDTO = Mockito.mock(MutuarioDTO.class);
         //Mock retorno do find all
-        when(mutuanteRepo.findAll()).thenReturn(Collections.singletonList(mutuanteMock));
-        MutuanteDTO mutuanteDTO = mutuanteDTO();
-        Mutuante mutuante = mapper.map(mutuanteDTO, Mutuante.class);
-        when(mutuanteRepo.save(Mockito.any())).thenReturn(mutuante);
-        Mutuante mutuanteSalvo = mutuanteService().salvarMutuante(mutuanteDTO);
+        itemEmprestadoMock.seteStatus(EStatus.DISPONIVEL);
+        itemEmprestadoMock.setId("1");
+        when(contratoRepo.findAll()).thenReturn(Collections.singletonList(contratoMock));
+        ContratoEmprestimoDTO contratoEmprestimoDTO = contratoEmprestimoDTO();
+        contratoEmprestimoDTO.getListaIdsItens().add("1");
+        ContratoEmprestimo contratoEmprestimo = mapper.map(contratoEmprestimoDTO, ContratoEmprestimo.class);
+        when(contratoRepo.save(Mockito.any())).thenReturn(contratoEmprestimo);
+        when(mutuarioService.findById("1")).thenReturn(mutuarioDTO);
+        when(itemService.procurarItemEmprestado("1")).thenReturn(itemEmprestadoMock);
+        ContratoEmprestimo contratoSalvo  = contratoEmprestimoService().contratoEmprestimoSave(contratoEmprestimoDTO);
 
         // verificação
-        Assert.assertEquals(Integer.valueOf(1), mutuanteSalvo.getIdMutuante());
+        Assert.assertEquals(Integer.valueOf(1), contratoSalvo.getIdContrato());
     }
 
+    /*
     @Test
     public void testarDeletarSucesso() {
         // cenário
@@ -175,4 +191,6 @@ public class MutuanteServicesImpTest {
         List<MutuanteDTO> list = mutuanteService().listaMutuantesDTO();
         when(mutuanteRepo.findAll()).thenReturn(Collections.emptyList());
     }
+
+     */
 }

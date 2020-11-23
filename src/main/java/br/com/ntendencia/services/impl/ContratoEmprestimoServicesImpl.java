@@ -1,5 +1,6 @@
 package br.com.ntendencia.services.impl;
 
+import br.com.ntendencia.config.ModelMapperConfig;
 import br.com.ntendencia.domain.ContratoEmprestimo;
 import br.com.ntendencia.domain.ItemEmprestado;
 import br.com.ntendencia.dto.ContratoEmprestimoDTO;
@@ -10,6 +11,7 @@ import br.com.ntendencia.services.ItemEmprestadoService;
 import br.com.ntendencia.services.MutuarioService;
 import br.com.ntendencia.services.exceptions.ResourceNotFoundException;
 import br.com.ntendencia.utils.CollectionsUtils;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,13 +33,17 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
 
     private final MutuarioService mutuarioServices;
 
+    private ModelMapper mapper = new ModelMapper();
+
     @Autowired
     public ContratoEmprestimoServicesImpl(ContratoEmprestimoRepository contratoEmprestimoRepo,
                                           ItemEmprestadoService itemEmprestadoServices,
-                                          MutuarioService mutuarioServices) {
+                                          MutuarioService mutuarioServices,
+                                          ModelMapper mapper) {
         this.contratoEmprestimoRepo = contratoEmprestimoRepo;
         this.itemEmprestadoServices = itemEmprestadoServices;
         this.mutuarioServices = mutuarioServices;
+        this.mapper = mapper;
     }
 
     @Override
@@ -51,7 +57,7 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
         if (mutuarioServices.findById(contratoEmprestimoDTO.getIdMutuario()) == null) {
             throw new ResourceNotFoundException("Mutuario não encontrado no banco de dados");
         }
-        ContratoEmprestimo contratoEmprestimo = new ContratoEmprestimo(contratoEmprestimoDTO.getIdMutuario());
+        ContratoEmprestimo contratoEmprestimo = mapper.map(contratoEmprestimoDTO, ContratoEmprestimo.class);
         //contratoEmprestimo.getItensEmprestados().addAll(contratoEmprestimoDTO.getItensEmprestados());
         contratoEmprestimo.getListaIdsItens().addAll(contratoEmprestimoDTO.getListaIdsItens());
         //  Verificar uso do filter trabalhando validação do item Emprestado
