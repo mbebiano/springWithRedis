@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "name": "Geladeira",
+  "idMutuante": "1",
+  "idItemEmprestado": 1,
+  "dataEmprestimo": null,
+  "qtdDiasDeDevolucao": 2,
+  "eStatus": null
+}

@@ -30,10 +30,8 @@ public class MutuanteServicesImpTest {
     @Mock
     private MutuanteRepository mutuanteRepo;
 
-    private ModelMapper modelMapper = new ModelMapper();
-
     private MutuanteService mutuanteService() {
-        return new MutuanteServicesImpl(mutuanteRepo, modelMapper);
+        return new MutuanteServicesImpl(mutuanteRepo, mapper);
     }
 
     protected Mutuante mutuante() {
@@ -55,7 +53,7 @@ public class MutuanteServicesImpTest {
     }
 
     @Before
-    public void setupMutuarioTest() {
+    public void setupMutuanteTest() {
 
     }
 

@@ -30,13 +30,10 @@ public class MutuarioServicesImpTest {
     @Mock
     private MutuarioRepository mutuarioRepo;
 
-
-    private ModelMapper modelMapper = new ModelMapper();
-
     //private final MutuarioService mutuarioService = new MutuarioServicesImpl(mutuarioRepo, modelMapper);
 
     private MutuarioService mutuarioService() {
-        return new MutuarioServicesImpl(mutuarioRepo, modelMapper);
+        return new MutuarioServicesImpl(mutuarioRepo, mapper);
     }
 
     protected Mutuario mutuario() {

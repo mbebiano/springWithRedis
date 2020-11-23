@@ -1,6 +1,5 @@
 package br.com.ntendencia.services.impl;
 
-import br.com.ntendencia.config.ModelMapperConfig;
 import br.com.ntendencia.domain.ContratoEmprestimo;
 import br.com.ntendencia.domain.ItemEmprestado;
 import br.com.ntendencia.dto.ContratoEmprestimoDTO;
@@ -104,7 +103,8 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
         contratoEmprestimo.setId(idContrato.toString());
         contratoEmprestimo.setIdContrato(idContrato);
         contratoEmprestimo.setStatusContrato(CStatus.CONTRATOEMDIA);
-        return contratoEmprestimoRepo.save(contratoEmprestimo);
+        contratoEmprestimoRepo.save(contratoEmprestimo);
+        return contratoEmprestimo;
     }
 
     @Override

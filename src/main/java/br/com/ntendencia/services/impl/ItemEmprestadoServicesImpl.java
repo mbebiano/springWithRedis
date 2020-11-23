@@ -5,6 +5,7 @@ import br.com.ntendencia.dto.ItemEmprestadoDTO;
 import br.com.ntendencia.enums.EStatus;
 import br.com.ntendencia.repositories.ItemEmprestadoRepository;
 import br.com.ntendencia.services.ItemEmprestadoService;
+import br.com.ntendencia.services.MutuanteService;
 import br.com.ntendencia.services.exceptions.ResourceNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +27,13 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 
     private final ItemEmprestadoRepository itemEmprestadoRepo;
 
-    private final MutuanteServicesImpl mutuanteService;
+    private final MutuanteService mutuanteService;
 
     private final ModelMapper modelMapper;
 
     @Autowired
     public ItemEmprestadoServicesImpl(ItemEmprestadoRepository itemEmprestadoRepo,
-                                      MutuanteServicesImpl mutuanteService,
+                                      MutuanteService mutuanteService,
                                       ModelMapper modelMapper) {
         this.itemEmprestadoRepo = itemEmprestadoRepo;
         this.mutuanteService = mutuanteService;
@@ -62,7 +63,8 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
         Integer idItemEmprestado = gerarId();
         itemEmprestado.setId(idItemEmprestado.toString());
         itemEmprestado.setIdItemEmprestado(idItemEmprestado);
-        return itemEmprestadoRepo.save(itemEmprestado);
+        itemEmprestadoRepo.save(itemEmprestado);
+        return itemEmprestado;
 
     }
 
@@ -74,7 +76,6 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
 
     @Override
     public List<ItemEmprestado> listarItensEmprestados() {
-
         if (itemEmprestadoRepo.findAll().iterator().hasNext()) {
             return (List<ItemEmprestado>) itemEmprestadoRepo.findAll();
         } else {
