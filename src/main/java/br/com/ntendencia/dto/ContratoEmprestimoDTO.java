@@ -20,12 +20,13 @@ public class ContratoEmprestimoDTO {
 
     private CStatus statusContrato;
 
-    public ContratoEmprestimoDTO(){}
+    public ContratoEmprestimoDTO() {
+    }
 
     public ContratoEmprestimoDTO(ContratoEmprestimo obj) {
-        this.id =obj.getId();
+        this.id = obj.getId();
         this.idMutuario = obj.getIdMutuario();
-        this.listaIdsItens= obj.getListaIdsItens();
+        this.listaIdsItens = obj.getListaIdsItens();
         this.statusContrato = obj.getStatusContrato();
     }
 

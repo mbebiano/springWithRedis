@@ -15,16 +15,15 @@ public class MutuarioEscrita {
     @Autowired
     private MutuarioService mutuarioService;
 
-    @PostMapping("/save")
+    @PostMapping("/salvar")
     public String createUser(@RequestBody @Valid MutuarioDTO mutuarioDTO) {
         mutuarioService.salvarMutuario(mutuarioDTO);
         return "Usuário Salvo";
     }
 	
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deletar/{id}")
     public String deleteMutuante(@PathVariable String id) {
         mutuarioService.deleteMutuario(id);
         return "Usuario Deletado";
     }
-
 }

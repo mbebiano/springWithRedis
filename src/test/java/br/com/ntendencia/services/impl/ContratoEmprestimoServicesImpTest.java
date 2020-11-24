@@ -212,32 +212,4 @@ public class ContratoEmprestimoServicesImpTest {
         // verificação
         Assert.assertEquals(1, list.size());
     }
-    /*
-    @Test(expected = ResourceNotFoundException.class)
-    public void testarBuscarTodosFalha() {
-        // cenário
-        List<Mutuante> list = mutuanteService().listaMutuantes();
-        when(mutuanteRepo.findAll()).thenReturn(Collections.emptyList());
-    }
-
-    @Test
-    public void testarBuscarTodosDTOSucesso() {
-        Mutuante mutuanteMock = Mockito.mock(Mutuante.class);
-        //Mock retorno do find all
-        when(mutuanteRepo.findAll()).thenReturn(Collections.singletonList(mutuanteMock));
-        // cenário
-        List<MutuanteDTO> list = mutuanteService().listaMutuantesDTO();
-
-        // verificação
-        Assert.assertEquals(1, list.size());
-    }
-
-    @Test(expected = ResourceNotFoundException.class)
-    public void testarBuscarTodosDTOFalha() {
-        // cenário
-        List<MutuanteDTO> list = mutuanteService().listaMutuantesDTO();
-        when(mutuanteRepo.findAll()).thenReturn(Collections.emptyList());
-    }
-
-     */
 }

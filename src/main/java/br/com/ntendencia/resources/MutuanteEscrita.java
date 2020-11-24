@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/mutuantes")
+@RequestMapping("/mutuante")
 public class MutuanteEscrita {
 	
 	@Autowired
@@ -19,16 +19,15 @@ public class MutuanteEscrita {
 	@Autowired
 	private ModelMapper modelMapper;
 	
-	@PostMapping("/save")
+	@PostMapping("/salvar")
 	public String createUser(@RequestBody @Valid MutuanteDTO mutuanteDTO) {
 		mutuanteService.salvarMutuante(mutuanteDTO);
 		return "Usuário Salvo";
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/deletar/{id}")
 	public String deleteMutuante(@PathVariable String id) {
 		mutuanteService.deleteMutuante(id);
 		return "Usuario Deletado";
 	}
-
 }

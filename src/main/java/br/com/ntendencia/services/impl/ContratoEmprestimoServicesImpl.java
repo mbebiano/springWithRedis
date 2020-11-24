@@ -133,14 +133,14 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
 
     @Override
     public List<ContratoEmprestimoDTO> listarTodoscontratosEmprestimoDTO() {
-        if(listarTodoscontratosEmprestimo().isEmpty()){
+        if (listarTodoscontratosEmprestimo().isEmpty()) {
             throw new ResourceNotFoundException("Não há contratos para exibir");
         }
         return listarTodoscontratosEmprestimo().stream().map(contratoEmprestimo -> {
             contratoEmprestimo.getListaIdsItens().forEach(idItem -> {
                 ItemEmprestado itemEmprestadoObj = itemEmprestadoServices.procurarItemEmprestado(idItem);
-                if(LocalDate.now().isAfter(itemEmprestadoObj.getDataEmprestimo().
-                        plusDays(itemEmprestadoObj.getQtdDiasDeDevolucao()))){
+                if (LocalDate.now().isAfter(itemEmprestadoObj.getDataEmprestimo().
+                        plusDays(itemEmprestadoObj.getQtdDiasDeDevolucao()))) {
                     contratoEmprestimo.setStatusContrato(CStatus.CONTRATOEMATRASO);
                 }
             });

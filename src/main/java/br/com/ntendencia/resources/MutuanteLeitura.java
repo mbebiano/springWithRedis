@@ -12,25 +12,24 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/mutuantes")
+@RequestMapping("/mutuante")
 public class MutuanteLeitura {
 	
 	@Autowired
 	private MutuanteService mutuanteService;
 
-	@GetMapping("/mutuanteId/{id}")
+	@GetMapping("/procurar-por-id/{id}")
 	public MutuanteDTO mutuantePorId(@PathVariable String id){
 		return mutuanteService.procurarPorId(id);
 	}
 
-	@GetMapping("/procuraPorNome/{nome}")
+	@GetMapping("/procurar-por-nome/{nome}")
 	public MutuanteDTO mutuantePorNome(@PathVariable String nome){
 		return mutuanteService.procurarPorNome(nome);
 	}
 
-	@GetMapping("/listaTodos")
+	@GetMapping("/listar-todos")
 	public ResponseEntity<List<MutuanteDTO>> listaTodosDTO(){
 		return ResponseEntity.ok().body(mutuanteService.listaMutuantesDTO());
 	}
-	
 }

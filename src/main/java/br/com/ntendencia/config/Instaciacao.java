@@ -20,64 +20,64 @@ import java.util.logging.Logger;
 
 @Configuration
 public class Instaciacao implements CommandLineRunner {
-	
-	@Autowired
-	private MutuanteRepository mutuanteRepo;
-	
-	@Autowired
-	private MutuarioRepository mutuarioRepo;
-	
-	@Autowired
-	private ItemEmprestadoRepository itemEmprestadoRepo;
-	
-	@Autowired
-	private ContratoEmprestimoRepository contratoEmprestimoRepo;
 
-	static Logger log = Logger.getLogger(String.valueOf(Instaciacao.class));
+    @Autowired
+    private MutuanteRepository mutuanteRepo;
 
-	@Override
-	public void run(String... args) throws Exception {
-		contratoEmprestimoRepo.deleteAll();
-		itemEmprestadoRepo.deleteAll();
-		mutuarioRepo.deleteAll();
-		mutuanteRepo.deleteAll();
-		log.warning("Deletados");
+    @Autowired
+    private MutuarioRepository mutuarioRepo;
 
-		//Instaciação Mutuante
-		Mutuante john = new Mutuante("1", "john@gmail.com","john", 1);
-		Mutuante john2 = new Mutuante("2", "john@gmail.com","john", 2);
-		Mutuante jose = new Mutuante("3", "jose@gmail.com","jose", 3);
-		mutuanteRepo.saveAll(Arrays.asList(john, john2, jose));
+    @Autowired
+    private ItemEmprestadoRepository itemEmprestadoRepo;
 
-		//Instaciação Mutuario
+    @Autowired
+    private ContratoEmprestimoRepository contratoEmprestimoRepo;
 
-		Mutuario maria = new Mutuario("1", "Maria", "maria@gmail.com", "maria8", 1);
-		Mutuario bob = new Mutuario("2", "Bob", "bob@gmail.com", "bob8", 2);
-		mutuarioRepo.saveAll(Arrays.asList(maria,bob));
+    static Logger log = Logger.getLogger(String.valueOf(Instaciacao.class));
 
-		//Instaciacão Contrato Emprestimo
+    @Override
+    public void run(String... args) throws Exception {
+        contratoEmprestimoRepo.deleteAll();
+        itemEmprestadoRepo.deleteAll();
+        mutuarioRepo.deleteAll();
+        mutuanteRepo.deleteAll();
+        log.warning("Deletados");
 
-		ContratoEmprestimo contrato1 = new ContratoEmprestimo("1","1", 1);
-		contratoEmprestimoRepo.save(contrato1);
+        //Instaciação Mutuante
+        Mutuante john = new Mutuante("1", "john@gmail.com", "john", 1);
+        Mutuante john2 = new Mutuante("2", "john@gmail.com", "john", 2);
+        Mutuante jose = new Mutuante("3", "jose@gmail.com", "jose", 3);
+        mutuanteRepo.saveAll(Arrays.asList(john, john2, jose));
 
-		//Instaciacão Item Emprestado
+        //Instaciação Mutuario
 
-		ItemEmprestado livro = new ItemEmprestado("Livro","1",12);
-		livro.setId("1");
-		livro.setIdItemEmprestado(1);
-		livro.seteStatus(EStatus.EMPRESTADO);
-		livro.setDataEmprestimo(LocalDate.of(2020, 11, 7));
-		ItemEmprestado notebook = new ItemEmprestado("Notebook","3",4);
-		notebook.seteStatus(EStatus.DISPONIVEL);
-		notebook.setId("2");
-		notebook.setIdItemEmprestado(2);
+        Mutuario maria = new Mutuario("1", "Maria", "maria@gmail.com", "maria8", 1);
+        Mutuario bob = new Mutuario("2", "Bob", "bob@gmail.com", "bob8", 2);
+        mutuarioRepo.saveAll(Arrays.asList(maria, bob));
 
-		contrato1.getListaIdsItens().add(livro.getId());
-		contrato1.setIdMutuario(maria.getIdUsuario());
+        //Instaciacão Contrato Emprestimo
 
-		itemEmprestadoRepo.saveAll(Arrays.asList(livro, notebook));
-		contrato1.setStatusContrato(CStatus.CONTRATOEMDIA);
-		contratoEmprestimoRepo.save(contrato1);
+        ContratoEmprestimo contrato1 = new ContratoEmprestimo("1", "1", 1);
+        contratoEmprestimoRepo.save(contrato1);
+
+        //Instaciacão Item Emprestado
+
+        ItemEmprestado livro = new ItemEmprestado("Livro", "1", 12);
+        livro.setId("1");
+        livro.setIdItemEmprestado(1);
+        livro.seteStatus(EStatus.EMPRESTADO);
+        livro.setDataEmprestimo(LocalDate.of(2020, 11, 7));
+        ItemEmprestado notebook = new ItemEmprestado("Notebook", "3", 4);
+        notebook.seteStatus(EStatus.DISPONIVEL);
+        notebook.setId("2");
+        notebook.setIdItemEmprestado(2);
+
+        contrato1.getListaIdsItens().add(livro.getId());
+        contrato1.setIdMutuario(maria.getIdUsuario());
+
+        itemEmprestadoRepo.saveAll(Arrays.asList(livro, notebook));
+        contrato1.setStatusContrato(CStatus.CONTRATOEMDIA);
+        contratoEmprestimoRepo.save(contrato1);
 //		//Instaciação Users
 //		Mutuante john = new Mutuante("2", "John Ferr", "johny@gmail.com", 2);
 //		mutuanteRepo.save(john);
@@ -131,13 +131,12 @@ public class Instaciacao implements CommandLineRunner {
 //		mutuanteRepo.save(john);
 //		mutuanteRepo.save(alex);
 //		itemEmprestadoRepo.save(livro);
-		// zerar DB
+        // zerar DB
 //		contratoEmprestimoRepo.deleteAll();
 //		itemEmprestadoRepo.deleteAll();
 //		mutuarioRepo.deleteAll();
 //		mutuanteRepo.deleteAll();
 
-		log.warning("Salvo");
-
-	}
+        log.warning("Salvo");
+    }
 }

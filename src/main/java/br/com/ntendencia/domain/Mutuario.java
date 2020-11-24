@@ -4,53 +4,54 @@ import org.springframework.data.redis.core.RedisHash;
 
 import java.util.Objects;
 
-@RedisHash(value="c_mutuario")
+@RedisHash(value = "c_mutuario")
 public class Mutuario extends Usuario {
 
-	private Integer idMutuario;
-	private String senha;
+    private Integer idMutuario;
+    private String senha;
 
-	public Mutuario() {
+    public Mutuario() {
 
-	}
+    }
 
-	public Mutuario(Mutuario mutuario){
-		this.idMutuario = mutuario.getIdMutuario();
-		this.senha = mutuario.getSenha();
-	}
-	public Mutuario(String id, String name, String email, String senha,Integer idMutuario) {
-		super(id, name, email);
-		this.senha = senha;
-		this.idMutuario = idMutuario;
-	}
+    public Mutuario(Mutuario mutuario) {
+        this.idMutuario = mutuario.getIdMutuario();
+        this.senha = mutuario.getSenha();
+    }
 
-	public Integer getIdMutuario() {
-		return idMutuario;
-	}
+    public Mutuario(String id, String name, String email, String senha, Integer idMutuario) {
+        super(id, name, email);
+        this.senha = senha;
+        this.idMutuario = idMutuario;
+    }
 
-	public void setIdMutuario(Integer idMutuario) {
-		this.idMutuario = idMutuario;
-	}
+    public Integer getIdMutuario() {
+        return idMutuario;
+    }
 
-	public String getSenha() {
-		return senha;
-	}
+    public void setIdMutuario(Integer idMutuario) {
+        this.idMutuario = idMutuario;
+    }
 
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+    public String getSenha() {
+        return senha;
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (!(o instanceof Mutuario)) return false;
-		if (!super.equals(o)) return false;
-		Mutuario mutuario = (Mutuario) o;
-		return Objects.equals(getIdMutuario(), mutuario.getIdMutuario());
-	}
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(super.hashCode(), getIdMutuario());
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Mutuario)) return false;
+        if (!super.equals(o)) return false;
+        Mutuario mutuario = (Mutuario) o;
+        return Objects.equals(getIdMutuario(), mutuario.getIdMutuario());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getIdMutuario());
+    }
 }

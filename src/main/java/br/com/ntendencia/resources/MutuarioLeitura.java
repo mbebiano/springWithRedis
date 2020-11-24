@@ -14,23 +14,22 @@ import java.util.List;
 @RestController
 @RequestMapping("/mutuario")
 public class MutuarioLeitura {
-	
-	@Autowired
-	private MutuarioService mutuarioService;
 
-	@GetMapping("/mutuarioId/{id}")
-	public MutuarioDTO mutuarioPorId(@PathVariable String id){
-		return mutuarioService.findById(id);
-		}
+    @Autowired
+    private MutuarioService mutuarioService;
 
-	@GetMapping("/procuraPorNome/{nome}")
-	public MutuarioDTO mutuarioPorNome(@PathVariable String nome){
-		return mutuarioService.procurarPorNome(nome);
-	}
+    @GetMapping("/procurar-por-id/{id}")
+    public MutuarioDTO mutuarioPorId(@PathVariable(value = "id") String id) {
+        return mutuarioService.findById(id);
+    }
 
-	@GetMapping("/listaTodos")
-	public ResponseEntity<List<MutuarioDTO>> listaTodos(){
-		return ResponseEntity.ok().body(mutuarioService.listaMutuariosDTO());
-	}
+    @GetMapping("/procurar-por-nome/{nome}")
+    public MutuarioDTO mutuarioPorNome(@PathVariable String nome) {
+        return mutuarioService.procurarPorNome(nome);
+    }
 
+    @GetMapping("/listar-todos")
+    public ResponseEntity<List<MutuarioDTO>> listaTodos() {
+        return ResponseEntity.ok().body(mutuarioService.listaMutuariosDTO());
+    }
 }

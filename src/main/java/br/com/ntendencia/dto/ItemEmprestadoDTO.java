@@ -20,18 +20,18 @@ public class ItemEmprestadoDTO {
     private long qtdDiasDeDevolucao;
     private EStatus eStatus;
 
-    public ItemEmprestadoDTO(){
+    public ItemEmprestadoDTO() {
 
     }
 
     public ItemEmprestadoDTO(ItemEmprestado obj) {
-        this.id =obj.getId();
+        this.id = obj.getId();
         this.name = obj.getName();
         this.idMutuante = obj.getIdMutuante();
         this.idItemEmprestado = obj.getIdItemEmprestado();
-        this.dataEmprestimo=obj.getDataEmprestimo();
-        this.qtdDiasDeDevolucao=obj.getQtdDiasDeDevolucao();
-        this.eStatus=obj.geteStatus();
+        this.dataEmprestimo = obj.getDataEmprestimo();
+        this.qtdDiasDeDevolucao = obj.getQtdDiasDeDevolucao();
+        this.eStatus = obj.geteStatus();
     }
 
     public String getId() {

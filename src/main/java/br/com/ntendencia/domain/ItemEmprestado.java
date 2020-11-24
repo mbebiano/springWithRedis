@@ -125,6 +125,4 @@ public class ItemEmprestado  {
 			return false;
 		return true;
 	}
-
-
 }

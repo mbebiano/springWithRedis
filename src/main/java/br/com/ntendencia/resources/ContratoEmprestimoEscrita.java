@@ -10,7 +10,7 @@ import javax.validation.Valid;
 
 
 @RestController
-@RequestMapping("/contratoEmprestimos")
+@RequestMapping("/contrato-emprestimo")
 public class ContratoEmprestimoEscrita {
 	
 	@Autowired
@@ -19,16 +19,15 @@ public class ContratoEmprestimoEscrita {
 	@Autowired
 	private MutuarioServicesImpl mutuarioService;
 	
-	@PostMapping("/save")
+	@PostMapping("/salvar")
 	public String createContratoEmprestimo(@RequestBody @Valid ContratoEmprestimoDTO contratoEmprestimoDTO) {
 		contratoEmprestimoService.contratoEmprestimoSave(contratoEmprestimoDTO);
 		return "Contrato Salvo";
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/deletar/{id}")
 	public String deleteContrato(@PathVariable String id) {
 		contratoEmprestimoService.deleteContratoEmprestimo(id);
 		return "Contrato Deletado";
 	}
-
 }
