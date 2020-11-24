@@ -129,7 +129,8 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
     public ItemEmprestado atualizarItemEmprestado(ItemEmprestado obj) {
         ItemEmprestado novoObj = procurarItemEmprestado(obj.getId());
         atualizarDadoItemEmprestado(novoObj, obj);
-        return itemEmprestadoRepo.save(obj);
+        itemEmprestadoRepo.save(obj);
+        return obj;
     }
 
     @Override
@@ -195,15 +196,4 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
         }
         return listDTO;
     }
-
-    @Override
-    public List<ItemEmprestadoDTO> listarItensEmprestadosOrdenarLista() {
-
-        // List<ItemEmprestado> listaDeItens = listarItensEmprestados();
-
-        //Collections.sort(listaDeItens, Comparator.comparing(ItemEmprestado::getDataEmprestimo));
-
-        return listarItensDTO(true, true);
-    }
-
 }

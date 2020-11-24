@@ -254,134 +254,65 @@ public class ItemEmprestadoServiceImpTest {
         itemEmprestado.setId("1");
         // cenário
         when(itemEmprestadoRepo.findById(Mockito.any())).thenReturn(Optional.of(itemEmprestado));
+        itemEmprestadoService().atualizarDadoItemEmprestado(itemEmprestado, itemEmprestadoMock);
+        ItemEmprestado itemEmprestadoSalvo = itemEmprestadoService().atualizarItemEmprestado(itemEmprestado);
         // verificação
-        Assert.assertEquals(LocalDate.now(), itemEmprestado.getDataEmprestimo());
-    }
-
-    /*
-    @Test
-    public void testarSalvar() {
-        // cenário
-        Mutuario mutuarioMock = Mockito.mock(Mutuario.class);
-        //Mock retorno do find all
-        when(mutuarioRepo.findAll()).thenReturn(Collections.singletonList(mutuarioMock));
-        MutuarioDTO mutuarioDTO = mutuarioDTO();
-        Mutuario mutuario = mapper.map(mutuarioDTO, Mutuario.class);
-        mutuario.setIdMutuario(0);
-        when(mutuarioRepo.save(Mockito.any())).thenReturn(mutuario);
-        Mutuario mutuarioSalvo = mutuarioService().salvarMutuario(mutuarioDTO);
-
-        // verificação
-        Assert.assertEquals(Integer.valueOf(0), mutuarioSalvo.getIdMutuario()); // não retorna o mutuante salvo dto
-    }
-
-    @Test
-    public void testarDeletarSucesso() {
-        // cenário
-        MutuarioDTO mutuarioDTO = mutuarioDTO();
-        Mutuario mutuario = mapper.map(mutuarioDTO, Mutuario.class);
-        mutuario.setIdMutuario(1);
-        when(mutuarioRepo.findById(Mockito.any())).thenReturn(Optional.of(mutuario));
-        mutuarioService().deleteMutuario(String.valueOf(mutuario.getIdMutuario()));
-
-        // verificação
-        verify(mutuarioRepo, times(1)).deleteById(String.valueOf(mutuario.getIdMutuario()));
-    }
-
-    @Test(expected = ResourceNotFoundException.class)
-    public void testarDeletarFalha() {
-        // cenário
-        MutuarioDTO mutuarioDTO = mutuarioDTO();
-        Mutuario mutuario = mapper.map(mutuarioDTO, Mutuario.class);
-        mutuario.setIdMutuario(1);
-        when(mutuarioRepo.findById(Mockito.any())).thenReturn(Optional.empty());
-        mutuarioService().deleteMutuario(String.valueOf(mutuario.getIdMutuario()));
-
-    }
-
-    @Test
-    public void testarBuscarIdSucesso() {
-        // cenário
-        MutuarioDTO mutuarioDTO = mutuarioDTO();
-        Mutuario mutuario = mapper.map(mutuarioDTO, Mutuario.class);
-        mutuario.setIdMutuario(1);
-        when(mutuarioRepo.findById(Mockito.any())).thenReturn(Optional.of(mutuario));
-        MutuarioDTO mutuarioEncontradoDTO = mutuarioService().findById(String.valueOf(mutuario.getIdMutuario()));
-
-        // verificação
-        Assert.assertEquals("1", String.valueOf(mutuarioEncontradoDTO.getIdMutuario()));
-    }
-
-    @Test(expected = ResourceNotFoundException.class)
-    public void testarBuscarIdFalha() {
-        // cenário
-        MutuarioDTO mutuarioDTO = mutuarioDTO();
-        Mutuario mutuario = mapper.map(mutuarioDTO, Mutuario.class);
-        mutuario.setIdMutuario(1);
-        when(mutuarioRepo.findById(Mockito.any())).thenReturn(Optional.empty());
-        MutuarioDTO mutuarioEncontradoDTO = mutuarioService().findById(String.valueOf(mutuario.getIdMutuario()));
-    }
-
-    @Test
-    public void testarBuscarNomeSucesso() {
-        // cenário
-        MutuarioDTO mutuarioDTO = mutuarioDTO();
-        Mutuario mutuario = mapper.map(mutuarioDTO, Mutuario.class);
-        mutuario.setIdMutuario(1);
-        when(mutuarioRepo.findByName(Mockito.any())).thenReturn(Optional.of(mutuario));
-        MutuarioDTO mutuarioEncontradoDTO = mutuarioService().procurarPorNome(mutuario.getName());
-
-        // verificação
-        Assert.assertEquals("Mattheus", mutuarioEncontradoDTO.getName());
-    }
-
-    @Test(expected = ResourceNotFoundException.class)
-    public void testarBuscarNomeFalha() {
-        // cenário
-        MutuarioDTO mutuarioDTO = mutuarioDTO();
-        Mutuario mutuario = mapper.map(mutuarioDTO, Mutuario.class);
-        mutuario.setIdMutuario(1);
-        when(mutuarioRepo.findByName(Mockito.any())).thenReturn(Optional.empty());
-        MutuarioDTO mutuarioEncontradoDTO = mutuarioService().procurarPorNome(mutuario.getName());
-    }
-
-    @Test
-    public void testarBuscarTodosSucesso() {
-        Mutuario mutuarioMock = Mockito.mock(Mutuario.class);
-        //Mock retorno do find all
-        when(mutuarioRepo.findAll()).thenReturn(Collections.singletonList(mutuarioMock));
-        // cenário
-        List<Mutuario> list = mutuarioService().listaMutuarios();
-
-        // verificação
-        Assert.assertEquals(1, list.size());
-    }
-
-    @Test(expected = ResourceNotFoundException.class)
-    public void testarBuscarTodosFalha() {
-        // cenário
-        List<Mutuario> list = mutuarioService().listaMutuarios();
-        when(mutuarioRepo.findAll()).thenReturn(Collections.emptyList());
+        Assert.assertEquals(itemEmprestado.getName(), itemEmprestadoSalvo.getName());
     }
 
     @Test
     public void testarBuscarTodosDTOSucesso() {
-        Mutuario mutuarioMock = Mockito.mock(Mutuario.class);
-        //Mock retorno do find all
-        when(mutuarioRepo.findAll()).thenReturn(Collections.singletonList(mutuarioMock));
+        //mocks
+        ItemEmprestado itemEmprestadoMock = getMockObject();
         // cenário
-        List<MutuarioDTO> list = mutuarioService().listaMutuariosDTO();
-
+        when(itemEmprestadoRepo.findAll()).thenReturn(Collections.singletonList(itemEmprestadoMock));
+        List<ItemEmprestadoDTO> list = itemEmprestadoService().listarItensDTO(false, false);
         // verificação
         Assert.assertEquals(1, list.size());
     }
 
-    @Test(expected = ResourceNotFoundException.class)
-    public void testarBuscarTodosDTOFalha() {
+    @Test
+    public void testarBuscarTodosDisponiveisDTOSucesso() {
+        //mocks
+        ItemEmprestado itemEmprestadoMock = getMockObject();
+        itemEmprestadoMock.seteStatus(EStatus.DISPONIVEL);
         // cenário
-        List<MutuarioDTO> list = mutuarioService().listaMutuariosDTO();
-        when(mutuarioRepo.findAll()).thenReturn(Collections.emptyList());
+        when(itemEmprestadoRepo.findAll()).thenReturn(Collections.singletonList(itemEmprestadoMock));
+        List<ItemEmprestadoDTO> list = itemEmprestadoService().listarItensDTO(false, true);
+        // verificação
+        Assert.assertEquals(1, list.size());
+    }
+    @Test (expected = ResourceNotFoundException.class)
+    public void testarBuscarTodosDisponiveisDTOFalha() {
+        //mocks
+        ItemEmprestado itemEmprestadoMock = getMockObject();
+        itemEmprestadoMock.seteStatus(EStatus.EMPRESTADO);
+        // cenário
+        when(itemEmprestadoRepo.findAll()).thenReturn(Collections.singletonList(itemEmprestadoMock));
+        List<ItemEmprestadoDTO> list = itemEmprestadoService().listarItensDTO(false, true);
     }
 
-     */
+    @Test
+    public void testarBuscarTodosAtrasadosDTOSucesso() {
+        //mocks
+        ItemEmprestado itemEmprestadoMock = getMockObject();
+        itemEmprestadoMock.seteStatus(EStatus.EMPRESTADO);
+        itemEmprestadoMock.setDataEmprestimo(LocalDate.now().
+                plusDays(-(1+itemEmprestadoMock.getQtdDiasDeDevolucao())));
+        // cenário
+        when(itemEmprestadoRepo.findAll()).thenReturn(Collections.singletonList(itemEmprestadoMock));
+        List<ItemEmprestadoDTO> list = itemEmprestadoService().listarItensDTO(true, false);
+        // verificação
+        Assert.assertEquals(1, list.size());
+    }
+    @Test(expected = ResourceNotFoundException.class)
+    public void testarBuscarTodosAtrasadosDTOFalha() {
+        //mocks
+        ItemEmprestado itemEmprestadoMock = getMockObject();
+        itemEmprestadoMock.seteStatus(EStatus.EMPRESTADO);
+        itemEmprestadoMock.setDataEmprestimo(LocalDate.now().plusDays(1));
+        // cenário
+        when(itemEmprestadoRepo.findAll()).thenReturn(Collections.singletonList(itemEmprestadoMock));
+        List<ItemEmprestadoDTO> list = itemEmprestadoService().listarItensDTO(true, false);
+    }
 }

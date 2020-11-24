@@ -21,5 +21,4 @@ public interface ItemEmprestadoService {
 	List<ItemEmprestado> listarItensEmAtraso();
 	List<ItemEmprestado> listarItensDisponiveis();
 	List<ItemEmprestadoDTO> listarItensDTO(boolean atrasado, boolean disponiveis);
-	List<ItemEmprestadoDTO> listarItensEmprestadosOrdenarLista();
 }
