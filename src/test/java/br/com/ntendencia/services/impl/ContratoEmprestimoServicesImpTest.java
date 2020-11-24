@@ -204,7 +204,7 @@ public class ContratoEmprestimoServicesImpTest {
         contratoMock.setId("1");
         contratoMock.setIdContrato(1);
         //Mock retorno do find all
-        when(contratoRepo.findAll()).thenReturn(Collections.singletonList(contratoMock));
+        when(contratoEmprestimoService().listarTodoscontratosEmprestimo()).thenReturn(Collections.singletonList(contratoMock));
         when(itemService.procurarItemEmprestado(Mockito.anyString())).thenReturn(itemEmprestadoMock);
         // cenário
         List<ContratoEmprestimoDTO> list = contratoEmprestimoService().listarTodoscontratosEmprestimoDTO();
