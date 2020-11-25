@@ -18,8 +18,8 @@ public class MutuarioLeitura {
     @Autowired
     private MutuarioService mutuarioService;
 
-    @GetMapping("/procurar-por-id/{id}")
-    public MutuarioDTO mutuarioPorId(@PathVariable(value = "id") String id) {
+    @GetMapping("/procurar/{id}")
+    public MutuarioDTO mutuarioPorId(@PathVariable String id) {
         return mutuarioService.findById(id);
     }
 

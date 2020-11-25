@@ -7,13 +7,13 @@ import java.util.List;
 
 public interface MutuarioService {
 
-    /***
+    /**
      * Procura e deleta, se existir, um objeto {@link Mutuario}
      * @param id Id de um objeto {@link Mutuario}
      */
     void deleteMutuario(String id);
 
-    /***
+    /**
      * Procura e retorna, se existir, um objeto {@link MutuarioDTO}
      * @param id Id de um objeto {@link MutuarioDTO}
      * @return objeto de {@link MutuarioDTO}
@@ -34,7 +34,7 @@ public interface MutuarioService {
      */
     List<MutuarioDTO> listaMutuariosDTO();
 
-    /***
+    /**
      * Gera um id de forma incremental com base no ultimo objeto salvo
      * @return id gerado de forma incremental
      */

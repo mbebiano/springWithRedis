@@ -8,6 +8,7 @@ import javax.validation.constraints.Size;
 
 public class MutuarioDTO {
 
+    //TODO Trocar mensagem
     @NotEmpty(message = "{card.id.empty}")
     @Size(min = 3, message = "Minímo de 3 caracteres")
     private String name;

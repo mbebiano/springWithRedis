@@ -15,9 +15,10 @@ public class MutuanteLeitura {
 	@Autowired
 	private MutuanteService mutuanteService;
 
+	//TODO Remover depois do teste
 	@ResponseBody
-	@GetMapping("/procurar-por-id")
-	public MutuanteDTO mutuantePorId(@RequestParam("id") String id){
+	@GetMapping("/procurar/{id}")
+	public MutuanteDTO mutuantePorId(@PathVariable String id){
 		return mutuanteService.procurarPorId(id);
 	}
 

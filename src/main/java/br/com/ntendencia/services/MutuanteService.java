@@ -7,13 +7,13 @@ import java.util.List;
 
 public interface MutuanteService {
 
-    /***
+    /**
      * Procura e deleta, se existir, um objeto {@link Mutuante}
      * @param id Id de um objeto {@link Mutuante}
      */
     void deleteMutuante(String id);
 
-    /***
+    /**
      * Procura e retorna, se existir, um objeto {@link MutuanteDTO}
      * @param id Id de um objeto {@link MutuanteDTO}
      * @return objeto de {@link MutuanteDTO}
@@ -34,7 +34,7 @@ public interface MutuanteService {
      */
     List<MutuanteDTO> listaMutuantesDTO();
 
-    /***
+    /**
      * Gera um id de forma incremental com base no ultimo objeto salvo
      * @return id gerado de forma incremental
      */

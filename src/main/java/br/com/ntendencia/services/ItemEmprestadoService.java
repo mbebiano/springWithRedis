@@ -16,7 +16,7 @@ public interface ItemEmprestadoService {
      */
     ItemEmprestado salvarItemEmprestado(ItemEmprestadoDTO itemEmprestadoDTO);
 
-    /***
+    /**
      * Procura e deleta, se existir, um objeto {@link ItemEmprestado}
      * @param id Id de um objeto {@link ItemEmprestado}
      */
@@ -29,14 +29,14 @@ public interface ItemEmprestadoService {
      */
     List<ItemEmprestado> listarItensEmprestados();
 
-    /***
+    /**
      * Procura e retorna, se existir, um objeto {@link ItemEmprestado}
      * @param id Id de um objeto {@link ItemEmprestado}
      * @return objeto de {@link ItemEmprestado}
      */
     ItemEmprestado procurarItemEmprestado(String id);
 
-    /***
+    /**
      * Procura e retorna, se existir, um objeto {@link ItemEmprestadoDTO}
      * @param id Id de um objeto {@link ItemEmprestadoDTO}
      * @return objeto de {@link ItemEmprestadoDTO}
@@ -51,7 +51,7 @@ public interface ItemEmprestadoService {
      */
     void alterarStatusItemEmprestado(String id, EStatus status);
 
-    /***
+    /**
      * Gera um id de forma incremental com base no ultimo objeto salvo
      * @return id gerado de forma incremental
      */
