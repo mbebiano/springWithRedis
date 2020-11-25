@@ -1,36 +1,19 @@
-# Spring With Redis
-Criação de projeto Coisas Emprestada usando spring e redis.
-
-Escopo do projeto Release2.0:
-
-Adicionar ID de forma incremental no Redis
-
-Validação dos Endpoints
-
-Retornar Status Code 
-
-Lock para não permitir um item ser emprestado novamente
-
-Separação de Endpoints, em leitura e escrita
-
-Criação de endpoint para listar itens atrasados
-
-Refatoração de classes mutuário e mutuante 
-
-Refatoração de código 
-
-Criar endpoint de update para Mutuário 
-
-Refatoração dos Domínios  
-
-Remodelagem das associações
-
-Refatoração do endpoint para listar itens atrasados
-
-DTO camada de resources
-
-Criação de Endpoint de cadastro
-
+# Sistema de Coisas Emprestadas Spring e Redis
+## Lista de Correção de funcionalidades e inclusão de novas :
+-DTOS, fazer validações para verificar se é nulo
+-Lock para não permitir adicionar itens vazios no banco de dados
+-Validação se a lista de itens passadas é nula para o contrato de empréstimo 
+-Lista de itens emprestados ser passado apenas com id dos itens
+-Validar métodos no Item Emprestado Service
+-Inclusão do javax validation e implementação nos DTOS
+-Refatoração dos Endpoints passando ID na request
+-Verificar bug de não exibir corretamente mensagem de validação Spring 2.3.4
+-Implementar teste unitário do mutuário service
+-Testes unitários Mutuante Service
+-Testes unitários ItemEmprestado Service
+-Testes unitários ContratoEmprestimo Service
+-Padronização do projeto
+-Atualizar Readme Github
 
 
 
