@@ -17,4 +17,4 @@
 
 
 
-![alt text](https://github.com/mbebiano/springWithRedis/blob/main/images/modeloDominioCoisasEmprestadas.png)
+![alt text](https://github.com/mbebiano/springWithRedis/blob/main/images/1.png)
