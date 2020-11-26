@@ -197,19 +197,19 @@ public class ContratoEmprestimoServicesImpTest {
         // verificação
         Assert.assertEquals(1, list.size());
     }
-    @Test
-    public void testarBuscarTodosDTO() {
-        ContratoEmprestimo contratoMock = getMockObject();
-        ItemEmprestado itemEmprestadoMock = getMockObjectItemEmprestado();
-        contratoMock.setId("1");
-        contratoMock.setIdContrato(1);
-        //Mock retorno do find all
-        when(contratoEmprestimoService().listarTodoscontratosEmprestimo()).thenReturn(Collections.singletonList(contratoMock));
-        when(itemService.procurarItemEmprestado(Mockito.anyString())).thenReturn(itemEmprestadoMock);
-        // cenário
-        List<ContratoEmprestimoDTO> list = contratoEmprestimoService().listarTodoscontratosEmprestimoDTO();
-
-        // verificação
-        Assert.assertEquals(1, list.size());
-    }
+//    @Test
+//    public void testarBuscarTodosDTO() {
+//        ContratoEmprestimo contratoMock = getMockObject();
+//        ItemEmprestado itemEmprestadoMock = getMockObjectItemEmprestado();
+//        contratoMock.setId("1");
+//        contratoMock.setIdContrato(1);
+//        //Mock retorno do find all
+//        when(contratoEmprestimoService().listarTodoscontratosEmprestimo()).thenReturn(Collections.singletonList(contratoMock));
+//        when(itemService.procurarItemEmprestado(Mockito.anyString())).thenReturn(itemEmprestadoMock);
+//        // cenário
+//        List<ContratoEmprestimoDTO> list = contratoEmprestimoService().listarTodoscontratosEmprestimoDTO();
+//
+//        // verificação
+//        Assert.assertEquals(1, list.size());
+//    }
 }

@@ -110,6 +110,15 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
     @Override
     public void deleteContratoEmprestimo(String id) {
         if (contratoEmprestimoRepo.findById(id).isPresent()) {
+            ContratoEmprestimo contratoEmprestimo = contratoEmprestimoRepo.findById(id).get();
+            contratoEmprestimo.getListaIdsItens().forEach(idItem ->
+            {
+                ItemEmprestado itemEmprestadoObj = itemEmprestadoServices.procurarItemEmprestado(idItem);
+                itemEmprestadoObj.seteStatus(DISPONIVEL);
+                itemEmprestadoServices.alterarStatusItemEmprestado(itemEmprestadoObj.getId(), DISPONIVEL);
+                itemEmprestadoServices.definirDataDeEmprestimo(itemEmprestadoObj);
+                itemEmprestadoServices.atualizarItemEmprestado(itemEmprestadoObj);
+            });
             contratoEmprestimoRepo.deleteById(id);
         } else {
             throw new ResourceNotFoundException("Não foi encontrado contrato com o id: " + id);
