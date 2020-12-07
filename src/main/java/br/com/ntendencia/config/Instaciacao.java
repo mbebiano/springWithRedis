@@ -36,7 +36,7 @@ public class Instaciacao implements CommandLineRunner {
     static Logger log = Logger.getLogger(String.valueOf(Instaciacao.class));
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         contratoEmprestimoRepo.deleteAll();
         itemEmprestadoRepo.deleteAll();
         mutuarioRepo.deleteAll();

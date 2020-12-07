@@ -110,7 +110,8 @@ public class ContratoEmprestimoServicesImpl implements ContratoEmprestimoService
     @Override
     public void deleteContratoEmprestimo(String id) {
         if (contratoEmprestimoRepo.findById(id).isPresent()) {
-            ContratoEmprestimo contratoEmprestimo = contratoEmprestimoRepo.findById(id).get();
+            ContratoEmprestimo contratoEmprestimo = contratoEmprestimoRepo.
+                    findById(id).orElseThrow(() -> new ResourceNotFoundException("Contrato não encotrado."));
             contratoEmprestimo.getListaIdsItens().forEach(idItem ->
             {
                 ItemEmprestado itemEmprestadoObj = itemEmprestadoServices.procurarItemEmprestado(idItem);

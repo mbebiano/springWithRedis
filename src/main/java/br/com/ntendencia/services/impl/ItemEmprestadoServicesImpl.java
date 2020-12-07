@@ -71,6 +71,10 @@ public class ItemEmprestadoServicesImpl implements ItemEmprestadoService {
     @Override
     public void deletarItemEmprestado(String id) {
         ItemEmprestado itemEmprestado = procurarItemEmprestado(id);
+        if (itemEmprestado.geteStatus() == EMPRESTADO) {
+            throw new ResourceNotFoundException("Item id"+itemEmprestado.getId()+
+                    "não pode ser deletado pois encontra-se emprestado");
+        }
         itemEmprestadoRepo.deleteById(itemEmprestado.getId());
     }
 
